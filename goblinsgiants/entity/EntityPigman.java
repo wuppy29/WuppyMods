@@ -1,0 +1,141 @@
+package goblinsgiants.entity;
+
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class EntityPigman extends EntityAnimal
+{
+	float moveSpeed = 0.25F;
+	
+    public EntityPigman(World par1World)
+    {
+        super(par1World);
+        this.getNavigator().setAvoidsWater(true);
+        float var2 = 0.25F;
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIPanic(this, var2));
+        this.tasks.addTask(5, new EntityAIWander(this, var2));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
+    }
+    
+    protected void func_110147_ax()
+    {
+        super.func_110147_ax();
+        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(moveSpeed);
+    }
+
+    public int getMaxHealth()
+    {
+        return 15;
+    }
+
+    /**
+     * Returns true if the newer Entity AI code should be run
+     */
+    protected boolean isAIEnabled()
+    {
+        return true;
+    }
+
+    /**
+     * Returns the sound this mob makes while it's alive.
+     */
+    protected String getLivingSound()
+    {
+        return "mob.zombiepig.zpig";
+    }
+
+    /**
+     * Returns the sound this mob makes when it is hurt.
+     */
+    protected String getHurtSound()
+    {
+        return "mob.zombiepig.zpighurt";
+    }
+
+    /**
+     * Returns the sound this mob makes on death.
+     */
+    protected String getDeathSound()
+    {
+        return "mob.zombiepig.zpigdeath";
+    }
+
+    protected void dropFewItems(boolean par1, int par2)
+    {
+    	if(this.isBurning())
+    	{
+    		this.dropItem(Item.porkCooked.itemID, 2);
+            this.dropItemWithOffset(Item.porkCooked.itemID, 2, rand.nextFloat());
+    	}
+    	else
+    	{
+    		this.dropItem(Item.porkRaw.itemID, 2);
+            this.dropItemWithOffset(Item.porkRaw.itemID, 2, rand.nextFloat());
+    	}
+    }
+
+    public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
+    {
+        if (!this.worldObj.isRemote)
+        {
+            EntityPigZombie var2 = new EntityPigZombie(this.worldObj);
+            var2.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+            this.worldObj.spawnEntityInWorld(var2);
+            this.setDead();
+        }
+    }
+
+    protected void dropRareDrop(int par1)
+    {
+        if (par1 > 0)
+        {
+            ItemStack var2 = new ItemStack(Item.swordGold);
+            EnchantmentHelper.addRandomEnchantment(this.rand, var2, 5);
+            this.entityDropItem(var2, 0.0F);
+        }
+        else
+        {
+            int var3 = this.rand.nextInt(3);
+
+            if (var3 == 0)
+            {
+                this.dropItem(Item.ingotGold.itemID, 1);
+            }
+            else if (var3 == 1)
+            {
+                this.dropItem(Item.swordGold.itemID, 1);
+            }
+            else if (var3 == 2)
+            {
+                this.dropItem(Item.helmetGold.itemID, 1);
+            }
+        }
+    }
+
+	public EntityAnimal spawnBabyAnimal(EntityAnimal var1)
+	{
+		return null;
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable var1)
+	{
+		return null;
+	}
+}
