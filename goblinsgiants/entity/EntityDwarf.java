@@ -25,6 +25,7 @@ public class EntityDwarf extends EntityAnimal
     public EntityDwarf(World par1World)
     {
         super(par1World);
+        this.setSize(1.0F, 1.0F);
         this.getNavigator().setAvoidsWater(true);
         this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));

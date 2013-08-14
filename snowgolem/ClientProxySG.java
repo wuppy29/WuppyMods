@@ -1,13 +1,11 @@
 package snowgolem;
 
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.entity.RenderSnowMan;
-import net.minecraft.entity.monster.EntitySnowman;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxySG extends CommonProxySG
 {
 	public void registerRenderThings() 
 	{
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityCleanSnowGolem.class, new RenderCleanSnowGolem());
 	}
 }

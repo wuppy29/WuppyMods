@@ -24,11 +24,11 @@ public class EntityPigman extends EntityAnimal
     public EntityPigman(World par1World)
     {
         super(par1World);
+        this.setSize(1.0F, 2.0F);
         this.getNavigator().setAvoidsWater(true);
-        float var2 = 0.25F;
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, var2));
-        this.tasks.addTask(5, new EntityAIWander(this, var2));
+        this.tasks.addTask(1, new EntityAIPanic(this, moveSpeed));
+        this.tasks.addTask(5, new EntityAIWander(this, moveSpeed));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
     }
@@ -127,14 +127,8 @@ public class EntityPigman extends EntityAnimal
             }
         }
     }
-
-	public EntityAnimal spawnBabyAnimal(EntityAnimal var1)
-	{
-		return null;
-	}
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1)
+    
+	public EntityAgeable createChild(EntityAgeable entityageable) 
 	{
 		return null;
 	}

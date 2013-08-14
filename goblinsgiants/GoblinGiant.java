@@ -58,7 +58,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.2.4")
+@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.2.5")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class GoblinGiant
 {
