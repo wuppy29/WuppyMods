@@ -29,7 +29,7 @@ public class PeacefulGenerator implements IWorldGenerator
 		}
 	}
 
-	public void generateSurface(World world, Random random, int blockX, int blockZ)
+	public static void generateSurface(World world, Random random, int blockX, int blockZ)
 	{
 		int Xcoord = blockX + random.nextInt(16);
 		int Ycoord = random.nextInt(60);
@@ -68,9 +68,10 @@ public class PeacefulGenerator implements IWorldGenerator
 			int Zcoord8 = blockZ + random.nextInt(16);
 			new WorldGenRemains().generate(world, random, Xcoord8, Ycoord8, Zcoord8);
 		}
+		System.out.println("generated: " + blockX + " " + blockZ);
 	}
 
-	public void generateNether(World world, Random random, int blockX, int blockZ)
+	public static void generateNether(World world, Random random, int blockX, int blockZ)
 	{
 		int Xcoord4 = blockX + random.nextInt(16);
 		int Ycoord4 = random.nextInt(120);
@@ -87,5 +88,4 @@ public class PeacefulGenerator implements IWorldGenerator
 		int Zcoord9 = blockZ + random.nextInt(16);
 		(new PeacefulNetherGenMinable(PeacefulPack.ghastore.blockID, 15)).generate(world, random, Xcoord9, Ycoord9, Zcoord9);
 	}
-
 }

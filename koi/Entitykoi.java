@@ -1,5 +1,6 @@
 package koi;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAIWander;
@@ -14,9 +15,10 @@ public class Entitykoi extends EntityWaterMob
     public Entitykoi(World par1World)
     {
     	super (par1World);
-    	tasks.addTask(0, new EntityAISwimmingFish(this));
-    	tasks.addTask(1, new EntityAIPanic(this, 0.38F));
-    	tasks.addTask(2, new EntityAIWander(this, 0.3F));
+    	tasks.addTask(0, new EntityAIMoveToWater(this, this.worldObj));
+    	tasks.addTask(1, new EntityAISwimmingFish(this));
+    	tasks.addTask(2, new EntityAIPanicKoi(this, 0.38F));
+    	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F));
     }
     
     protected void func_110147_ax()
@@ -40,14 +42,14 @@ public class Entitykoi extends EntityWaterMob
         return true;
     }
 	
-	public void onLivingUpdate()
+	/*public void onLivingUpdate()
     {
-		if(worldObj.getBlockId((int)this.posX, (int)this.posY, (int)this.posZ) == 0)
+		if(worldObj.getBlockId((int)this.posX, (int)this.posY, (int)this.posZ) == 0 && !(worldObj.getBlockId((int)this.posX, (int)this.posY - 1, (int)this.posZ) == Block.waterMoving.blockID) && !(worldObj.getBlockId((int)this.posX, (int)this.posY - 1, (int)this.posZ) == Block.waterStill.blockID))
         {
 			attackEntityFrom(DamageSource.drown, 1.0F);
         }
         super.onLivingUpdate();
-    }
+    }*/
 	
 	protected boolean canDespawn()
     {
