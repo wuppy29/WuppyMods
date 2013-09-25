@@ -15,7 +15,7 @@ public class WorldGenSlimepool extends WorldGenerator
 	
 	public boolean generate(World world, Random rand, int x, int y, int z)
 	{
-		if (y > 45)
+		if (y > 45 || y < 1)
 		{
 			return false;
 		}
