@@ -4,6 +4,7 @@ import goblinsgiants.GoblinGiant;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAICreeperSwell;
@@ -48,8 +49,8 @@ public class EntityRedCreeper extends EntityMob
         super(par1World);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIRedCreeperSwell(this));
-        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.25F, false));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.2F));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
+        this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
@@ -57,6 +58,12 @@ public class EntityRedCreeper extends EntityMob
         this.isImmuneToFire = true;
     }
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+    }
+    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -65,9 +72,9 @@ public class EntityRedCreeper extends EntityMob
         return true;
     }
 
-    public int func_82143_as()
+    public int getMaxSafePointTries()
     {
-        return this.getAttackTarget() == null ? 3 : 3 + ((int) (func_110143_aJ()) - 1);
+        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
     }
 
     /**
@@ -94,11 +101,6 @@ public class EntityRedCreeper extends EntityMob
             }
     	}
         super.onLivingUpdate();
-    }
-
-    public int getMaxHealth()
-    {
-        return 20;
     }
 
     protected void entityInit()

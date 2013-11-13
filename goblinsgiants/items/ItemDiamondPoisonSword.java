@@ -1,25 +1,26 @@
 package goblinsgiants.items;
 
-
 import goblinsgiants.GoblinGiant;
 
 import java.util.List;
 
-
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+
+import com.google.common.collect.Multimap;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -27,30 +28,26 @@ public class ItemDiamondPoisonSword extends Item
 {
     private float weaponDamage;
     private final EnumToolMaterial toolMaterial;
-
+    
     @SideOnly(Side.CLIENT)
 	private Icon[] icons;
-    
+
     public ItemDiamondPoisonSword(int par1, EnumToolMaterial par2EnumToolMaterial)
     {
         super(par1);
         this.toolMaterial = par2EnumToolMaterial;
         this.maxStackSize = 1;
         this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
-        this.weaponDamage = 4 + par2EnumToolMaterial.getDamageVsEntity();
         this.setCreativeTab(CreativeTabs.tabCombat);
+        this.weaponDamage = 4.0F + par2EnumToolMaterial.getDamageVsEntity();
     }
 
-    /**
-     * Returns the strength of the stack against a given block. 1.0F base, (Quality+1)*2 if correct blocktype, 1.5F if
-     * sword
-     */
-    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
+    public float func_82803_g()
     {
-        return par2Block.blockID == Block.web.blockID ? 15.0F : 1.5F;
+        return this.toolMaterial.getDamageVsEntity();
     }
     
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
 		icons = new Icon[6];
@@ -92,49 +89,54 @@ public class ItemDiamondPoisonSword extends Item
     }
     
     /**
-     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-     * the damage on the stack.
+     * Returns the strength of the stack against a given block. 1.0F base, (Quality+1)*2 if correct blocktype, 1.5F if
+     * sword
      */
-    public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving)
+    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
     {
-    	int howManyTicks = 10;
-
-    	if(par2EntityLiving.isEntityUndead())
-    	{
-    		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.heal.getId(),30*howManyTicks,0));
-    	}
-    	else if(!par2EntityLiving.isEntityUndead())
-    	{
-    		par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.getId(),30*howManyTicks,0));
-    	}
-        par1ItemStack.damageItem(1, par3EntityLiving);
-
-        if(par1ItemStack.getItemDamage() > 59)
+        if (par2Block.blockID == Block.web.blockID)
         {
-        	par3EntityLiving.dropItem(Item.swordDiamond.itemID, 1);
-        	par1ItemStack.damageItem(1, par3EntityLiving);
+            return 15.0F;
         }
-        return true;
-    }
-
-    public boolean onBlockDestroyed(ItemStack par1ItemStack, int par2, int par3, int par4, int par5, EntityLiving par6EntityLiving)
-    {
-        par1ItemStack.damageItem(2, par6EntityLiving);
-        return true;
+        else
+        {
+            Material material = par2Block.blockMaterial;
+            return material != Material.plants && material != Material.vine && material != Material.coral && material != Material.leaves && material != Material.pumpkin ? 1.0F : 1.5F;
+        }
     }
 
     /**
-     * Returns the damage against a given entity.
+     * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
+     * the damage on the stack.
      */
-    public float getDamageVsEntity(Entity par1Entity)
+    public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase)
     {
-        return this.weaponDamage;
+        par1ItemStack.damageItem(1, par3EntityLivingBase);
+        
+        if(par1ItemStack.getItemDamage() > 59)
+        {
+        	par3EntityLivingBase.dropItem(Item.swordDiamond.itemID, 1);
+        	par1ItemStack.damageItem(1, par3EntityLivingBase);
+        }
+        
+        return true;
     }
+
+    public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase)
+    {
+        if ((double)Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D)
+        {
+            par1ItemStack.damageItem(2, par7EntityLivingBase);
+        }
+
+        return true;
+    }
+
+    @SideOnly(Side.CLIENT)
 
     /**
      * Returns True is the item is renderer in full 3D when hold.
      */
-    @SideOnly(Side.CLIENT)
     public boolean isFull3D()
     {
         return true;
@@ -181,6 +183,32 @@ public class ItemDiamondPoisonSword extends Item
         return this.toolMaterial.getEnchantability();
     }
 
+    /**
+     * Return the name for this tool's material.
+     */
+    public String getToolMaterialName()
+    {
+        return this.toolMaterial.toString();
+    }
+
+    /**
+     * Return whether this item is repairable in an anvil.
+     */
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
+    /**
+     * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
+     */
+    public Multimap getItemAttributeModifiers()
+    {
+        Multimap multimap = super.getItemAttributeModifiers();
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.weaponDamage, 0));
+        return multimap;
+    }
+    
     @SideOnly(Side.CLIENT)
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {

@@ -1,6 +1,11 @@
 package slimedungeons;
 
+import java.io.IOException;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
@@ -8,17 +13,24 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = SlimeDungeon.modid, name = "Slime Dungeons", version = "1.5.5")
+@Mod(modid = SlimeDungeon.modid, name = "Slime Dungeons", version = "1.5.6")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class SlimeDungeon 
 {
 	public static final String modid = "wuppy29_slimedungeon";
+	
+	public static final int VERSION = 1;
+	public static String updates = "";
+	public static boolean outdated = false;
+	
+	static int startEntityId = 300;
 	
 	@SidedProxy(clientSide = "slimedungeons.ClientProxySlime", serverSide = "slimedungeons.CommonProxySlime")
     public static CommonProxySlime proxy;
@@ -40,6 +52,14 @@ public class SlimeDungeon
 		SlimeBlockID = config.getBlock("Slime Block ID", Configuration.CATEGORY_BLOCK, 316).getInt();
 		
 		config.save();
+		
+		try
+		{
+			UpdateChecker.checkForUpdates();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@EventHandler
@@ -59,6 +79,8 @@ public class SlimeDungeon
 		LanguageRegistry.instance().addStringLocalization("tile.slimeblock.name", "nl_NL", "Slijmerig Blok");
 		
 		EntityRegistry.registerModEntity(EntitySlimeZombie.class, "SlimeZombie", 44, this, 40, 1, true);
+		LanguageRegistry.instance().addStringLocalization("entity.wuppy29_slimedungeon.SlimeZombie.name", "Slime Zombie");
+		registerEntityEgg(EntitySlimeZombie.class, 0x009696, 0x478c36);
 		
 		GameRegistry.registerWorldGenerator(new SlimeGenerator());
 		
@@ -73,5 +95,28 @@ public class SlimeDungeon
 				});
 		
 		GameRegistry.addSmelting(SlimeCobble.blockID, new ItemStack(Item.slimeBall), 0.2F);
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		GameRegistry.registerPlayerTracker(new SlimeDungeonLogin());
+	}
+	
+	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor)
+	{
+		int id = getUniqueEntityId();
+		EntityList.IDtoClassMapping.put(id, entity);
+		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
+	}
+	
+	public static int getUniqueEntityId()
+	{
+		do
+		{
+			startEntityId++;
+		} while (EntityList.getStringFromID(startEntityId) != null);
+		
+		return startEntityId;
 	}
 }

@@ -84,9 +84,8 @@ public class RenderMagicThunder extends Render
     {
         this.renderArrow((EntityMagicThunder)par1Entity, par2, par4, par6, par8, par9);
     }
-
-	@Override
-	protected ResourceLocation func_110775_a(Entity entity) 
+    
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		return texture;
 	}

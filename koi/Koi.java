@@ -1,5 +1,7 @@
 package koi;
 
+import java.io.IOException;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
@@ -9,23 +11,42 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = Koi.modid, name = "Koi", version = "1.10.3")
+@Mod(modid = Koi.modid, name = "Koi", version = "1.10.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-public class Koi 
+public class Koi
 {
 	public static final String modid = "wuppy29_koi";
 	
+	public static final int VERSION = 1;
+	public static String updates = "";
+	public static boolean outdated = false;
+	
 	@SidedProxy(clientSide = "koi.ClientProxyKoi", serverSide = "koi.CommonProxyKoi")
-    public static CommonProxyKoi proxy;
+	public static CommonProxyKoi proxy;
 	
 	static int startEntityId = 300;
 	
 	@EventHandler
-	public void load(FMLInitializationEvent event) 
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		try
+		{
+			UpdateChecker.checkForUpdates();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@EventHandler
+	public void load(FMLInitializationEvent event)
 	{
 		proxy.registerRenderThings();
 		
@@ -36,18 +57,23 @@ public class Koi
 		registerEntityEgg(Entitykoi.class, 0x4A8FFF, 0xFFDB4A);
 	}
 	
-	public static int getUniqueEntityId() 
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
 	{
-		do 
+		GameRegistry.registerPlayerTracker(new KoiLogin());
+	}
+	
+	public static int getUniqueEntityId()
+	{
+		do
 		{
 			startEntityId++;
-		} 
-		while (EntityList.getStringFromID(startEntityId) != null);
-
+		} while (EntityList.getStringFromID(startEntityId) != null);
+		
 		return startEntityId;
 	}
 	
-	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor) 
+	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor)
 	{
 		int id = getUniqueEntityId();
 		EntityList.IDtoClassMapping.put(id, entity);

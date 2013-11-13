@@ -68,7 +68,6 @@ public class PeacefulGenerator implements IWorldGenerator
 			int Zcoord8 = blockZ + random.nextInt(16);
 			new WorldGenRemains().generate(world, random, Xcoord8, Ycoord8, Zcoord8);
 		}
-		System.out.println("generated: " + blockX + " " + blockZ);
 	}
 
 	public static void generateNether(World world, Random random, int blockX, int blockZ)

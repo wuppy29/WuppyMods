@@ -4,11 +4,21 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAIFollowGolem;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAILookAtTradePlayer;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIMoveIndoors;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAIPlay;
 import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.ai.EntityAITradePlayer;
+import net.minecraft.entity.ai.EntityAIVillagerMate;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
@@ -29,21 +39,22 @@ public class EntityDwarf extends EntityAnimal
         this.getNavigator().setAvoidsWater(true);
         this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.3F, 0.35F));
+        this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(2, new EntityAIMoveIndoors(this));
         this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3F));
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
-        this.tasks.addTask(9, new EntityAIWander(this, 0.3F));
-        this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
+        this.tasks.addTask(6, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
+        this.tasks.addTask(8, new EntityAIWander(this, 0.6D));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
     }
     
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.25D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10D);
     }
 
     /**
@@ -57,11 +68,6 @@ public class EntityDwarf extends EntityAnimal
     public int getTotalArmorValue()
     {
         return 5;
-    }
-
-    public int getMaxHealth()
-    {
-        return 20;
     }
 
     /**
@@ -128,11 +134,6 @@ public class EntityDwarf extends EntityAnimal
     {
         this.dropItem(Item.pickaxeStone.itemID, 1);
     }
-
-	public EntityAnimal spawnBabyAnimal(EntityAnimal var1)
-	{
-		return null;
-	}
 
 	public EntityAgeable createChild(EntityAgeable var1)
 	{

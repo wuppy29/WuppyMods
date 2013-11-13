@@ -4,9 +4,13 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIControlledByPlayer;
+import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -27,21 +31,17 @@ public class EntityPigman extends EntityAnimal
         this.setSize(1.0F, 2.0F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, moveSpeed));
-        this.tasks.addTask(5, new EntityAIWander(this, moveSpeed));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
     }
     
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(moveSpeed);
-    }
-
-    public int getMaxHealth()
-    {
-        return 15;
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15D);
     }
 
     /**

@@ -5,6 +5,8 @@ import goblinsgiants.GoblinGiant;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
@@ -14,45 +16,36 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EntityGiant extends EntityMob
 {
-	float moveSpeed = 0.25F;
-	
-    public EntityGiant(World par1World)
+	public EntityGiant(World par1World)
     {
         super(par1World);
         this.setSize(2F, 4F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAttackFasterOnHurt(this, EntityPlayer.class, this.moveSpeed + 0.1F, false));
-        this.tasks.addTask(2, new EntityAIAttackOnCollideNight(this, EntityPlayer.class, this.moveSpeed, false));
-        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, this.moveSpeed));
-        this.tasks.addTask(5, new EntityAIMoveThroughVillage(this, this.moveSpeed, false));
-        this.tasks.addTask(6, new EntityAIWander(this, this.moveSpeed));
+        this.tasks.addTask(1, new EntityAIAttackFasterOnHurt(this, EntityPlayer.class, 1.2D, false));
+        this.tasks.addTask(2, new EntityAIAttackOnCollideNight(this, EntityPlayer.class, 1.0D, false));
+        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D));
+        this.tasks.addTask(5, new EntityAIMoveThroughVillage(this, 1.0D, false));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
     }
     
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(moveSpeed);
-    }
-    
-    public int func_82193_c(Entity par1Entity)
-    {
-    	return 8;
-    }
-
-    public int getMaxHealth()
-    {
-        return 60;
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8D);
     }
 
     /**

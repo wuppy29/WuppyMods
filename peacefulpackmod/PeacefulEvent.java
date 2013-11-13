@@ -34,25 +34,4 @@ public class PeacefulEvent
         	event.setResult(Result.ALLOW);
         }
     }
-	
-	@ForgeSubscribe
-    public void onChunkDataEvent(ChunkDataEvent.Load evt)
-	{
-            NBTTagCompound nbt = evt.getData();
-            
-            if(!nbt.getBoolean("peacefulOresGenerated") && !evt.getChunk().getAreLevelsEmpty(2, 20))
-            {
-            	nbt.setBoolean("peacefulOresGenerated", true);
-            	
-            	World world = evt.world;
-            	
-            	Random random = evt.world.rand;
-            	
-            	switch (world.provider.dimensionId)
-        		{
-        			case -1: PeacefulGenerator.generateNether(world, random, evt.getChunk().xPosition, evt.getChunk().zPosition);
-        			case 0: PeacefulGenerator.generateSurface(world, random, evt.getChunk().xPosition, evt.getChunk().zPosition);
-        		}
-            }
-    }
 }

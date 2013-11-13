@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagIntArray;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 
 public class ComponentMineshaftRoomSavannah extends StructureComponent
 {
-    private List field_74949_a = new LinkedList();
+    private List linkedRoom = new LinkedList();
 
     public ComponentMineshaftRoomSavannah(int par1, Random par2Random, int par3, int par4)
     {
@@ -51,7 +54,7 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
             if (var7 != null)
             {
                 var8 = var7.getBoundingBox();
-                this.field_74949_a.add(new StructureBoundingBox(var8.minX, var8.minY, this.boundingBox.minZ, var8.maxX, var8.maxY, this.boundingBox.minZ + 1));
+                this.linkedRoom.add(new StructureBoundingBox(var8.minX, var8.minY, this.boundingBox.minZ, var8.maxX, var8.maxY, this.boundingBox.minZ + 1));
             }
         }
 
@@ -69,7 +72,7 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
             if (var7 != null)
             {
                 var8 = var7.getBoundingBox();
-                this.field_74949_a.add(new StructureBoundingBox(var8.minX, var8.minY, this.boundingBox.maxZ - 1, var8.maxX, var8.maxY, this.boundingBox.maxZ));
+                this.linkedRoom.add(new StructureBoundingBox(var8.minX, var8.minY, this.boundingBox.maxZ - 1, var8.maxX, var8.maxY, this.boundingBox.maxZ));
             }
         }
 
@@ -87,7 +90,7 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
             if (var7 != null)
             {
                 var8 = var7.getBoundingBox();
-                this.field_74949_a.add(new StructureBoundingBox(this.boundingBox.minX, var8.minY, var8.minZ, this.boundingBox.minX + 1, var8.maxY, var8.maxZ));
+                this.linkedRoom.add(new StructureBoundingBox(this.boundingBox.minX, var8.minY, var8.minZ, this.boundingBox.minX + 1, var8.maxY, var8.maxZ));
             }
         }
 
@@ -105,7 +108,7 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
             if (var7 != null)
             {
                 var8 = var7.getBoundingBox();
-                this.field_74949_a.add(new StructureBoundingBox(this.boundingBox.maxX - 1, var8.minY, var8.minZ, this.boundingBox.maxX, var8.maxY, var8.maxZ));
+                this.linkedRoom.add(new StructureBoundingBox(this.boundingBox.maxX - 1, var8.minY, var8.minZ, this.boundingBox.maxX, var8.maxY, var8.maxZ));
             }
         }
     }
@@ -124,7 +127,7 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
         {
             this.fillWithBlocks(par1World, par3StructureBoundingBox, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.minZ, this.boundingBox.maxX, this.boundingBox.minY, this.boundingBox.maxZ, Block.sand.blockID, 0, true);
             this.fillWithBlocks(par1World, par3StructureBoundingBox, this.boundingBox.minX, this.boundingBox.minY + 1, this.boundingBox.minZ, this.boundingBox.maxX, Math.min(this.boundingBox.minY + 3, this.boundingBox.maxY), this.boundingBox.maxZ, 0, 0, false);
-            Iterator var4 = this.field_74949_a.iterator();
+            Iterator var4 = this.linkedRoom.iterator();
 
             while (var4.hasNext())
             {
@@ -134,6 +137,30 @@ public class ComponentMineshaftRoomSavannah extends StructureComponent
 
             this.randomlyRareFillWithBlocks(par1World, par3StructureBoundingBox, this.boundingBox.minX, this.boundingBox.minY + 4, this.boundingBox.minZ, this.boundingBox.maxX, this.boundingBox.maxY, this.boundingBox.maxZ, 0, false);
             return true;
+        }
+    }
+
+    protected void func_143012_a(NBTTagCompound par1NBTTagCompound)
+    {
+        NBTTagList nbttaglist = new NBTTagList("Entrances");
+        Iterator iterator = this.linkedRoom.iterator();
+
+        while (iterator.hasNext())
+        {
+            StructureBoundingBox structureboundingbox = (StructureBoundingBox)iterator.next();
+            nbttaglist.appendTag(structureboundingbox.func_143047_a(""));
+        }
+
+        par1NBTTagCompound.setTag("Entrances", nbttaglist);
+    }
+
+    protected void func_143011_b(NBTTagCompound par1NBTTagCompound)
+    {
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Entrances");
+
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            this.linkedRoom.add(new StructureBoundingBox(((NBTTagIntArray)nbttaglist.tagAt(i)).intArray));
         }
     }
 }

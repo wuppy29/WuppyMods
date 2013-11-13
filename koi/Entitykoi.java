@@ -21,42 +21,24 @@ public class Entitykoi extends EntityWaterMob
     	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F));
     }
     
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(1D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
     }
     
     public boolean isAIEnabled()
     {
         return true;
     }
-
-	public int getMaxHealth() 
-	{
-		return 10;
-	}
 	
 	public boolean canBreatheUnderwater()
     {
         return true;
     }
 	
-	/*public void onLivingUpdate()
-    {
-		if(worldObj.getBlockId((int)this.posX, (int)this.posY, (int)this.posZ) == 0 && !(worldObj.getBlockId((int)this.posX, (int)this.posY - 1, (int)this.posZ) == Block.waterMoving.blockID) && !(worldObj.getBlockId((int)this.posX, (int)this.posY - 1, (int)this.posZ) == Block.waterStill.blockID))
-        {
-			attackEntityFrom(DamageSource.drown, 1.0F);
-        }
-        super.onLivingUpdate();
-    }*/
-	
 	protected boolean canDespawn()
-    {
-        return true;
-    }
-	
-	protected boolean canspawn()
     {
         return true;
     }
@@ -85,10 +67,5 @@ public class Entitykoi extends EntityWaterMob
     public boolean getCanSpawnHere()
     {
         return worldObj.checkNoEntityCollision(boundingBox);
-    }
-    
-    protected int scoreValue()
-    {
-    	return 1;
     }
 }

@@ -14,4 +14,9 @@ public class MapGenMineshaftSavannah extends MapGenStructure
     {
         return new StructureMineshaftStartSavannah(this.worldObj, this.rand, par1, par2);
     }
+
+    public String func_143025_a()
+    {
+        return "Mineshaft";
+    }
 }

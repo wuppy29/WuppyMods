@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCleanSnowGolem extends RenderLiving
 {
-    private static final ResourceLocation field_110895_a = new ResourceLocation("textures/entity/snowman.png");
+    private static final ResourceLocation texture = new ResourceLocation("textures/entity/snowman.png");
 
     /** A reference to the Snowman model in RenderSnowMan. */
     private ModelSnowMan snowmanModel;
@@ -35,13 +35,9 @@ public class RenderCleanSnowGolem extends RenderLiving
         this.setRenderPassModel(this.snowmanModel);
     }
 
-    protected ResourceLocation func_110894_a(EntitySnowman par1EntitySnowman)
-    {
-        return field_110895_a;
-    }
-
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.func_110894_a((EntitySnowman)par1Entity);
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return texture;
+	}
 }

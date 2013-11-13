@@ -50,7 +50,7 @@ public class RenderSavannahTNTPrimed extends RenderTNTPrimed
         }
 
         f2 = (1.0F - ((float)par1EntityTNTPrimed.fuse - par9 + 1.0F) / 100.0F) * 0.8F;
-        this.func_110777_b(par1EntityTNTPrimed);
+        this.bindEntityTexture(par1EntityTNTPrimed);
         this.blockRenderer.renderBlockAsItem(GoblinGiant.savannahtnt, 0, par1EntityTNTPrimed.getBrightness(par9));
 
         if (par1EntityTNTPrimed.fuse / 5 % 2 == 0)

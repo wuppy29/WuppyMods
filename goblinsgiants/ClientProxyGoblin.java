@@ -19,6 +19,7 @@ import goblinsgiants.render.RenderBoneSpear;
 import goblinsgiants.render.RenderCustomWood;
 import goblinsgiants.render.RenderExplosiveArrow;
 import goblinsgiants.render.RenderGGMob;
+import goblinsgiants.render.RenderOrc;
 import goblinsgiants.render.RenderRedCreeper;
 import goblinsgiants.render.RenderSavannahTNTPrimed;
 import net.minecraft.client.model.ModelBiped;
@@ -39,7 +40,7 @@ public class ClientProxyGoblin extends CommonProxyGoblin
 		RenderingRegistry.registerEntityRenderingHandler(EntityPigman.class, new RenderGGMob(new ModelBiped(), 0.5F, "textures/models/pigman.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoblin.class, new RenderGGMob(new ModelGoblin(), 0.5F, "textures/models/goblin.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGiant.class, new RenderGGMob(new ModelGiant(), 0.5F, "textures/models/giant.png"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityUruk.class, new RenderGGMob(new ModelBiped(), 0.5F, "textures/models/orc.png"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityUruk.class, new RenderOrc(new ModelBiped(), 0.5F, "textures/models/orc.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRedCreeper.class, new RenderRedCreeper());
 		
 		RenderingRegistry.registerBlockHandler(new RenderCustomWood());

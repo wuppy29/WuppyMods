@@ -18,8 +18,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderRedCreeper extends RenderLiving
 {
-    private static final ResourceLocation field_110831_a = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
-    private static final ResourceLocation field_110830_f = new ResourceLocation(GoblinGiant.modid, "textures/models/redcreeper.png");
+    private static final ResourceLocation texture_armor = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
+    private static final ResourceLocation texture = new ResourceLocation(GoblinGiant.modid, "textures/models/redcreeper.png");
 
     /** The creeper model. */
     private ModelBase creeperModel = new ModelCreeper(2.0F);
@@ -105,7 +105,7 @@ public class RenderRedCreeper extends RenderLiving
             if (par2 == 1)
             {
                 float f1 = (float)par1EntityRedCreeper.ticksExisted + par3;
-                this.func_110776_a(field_110831_a);
+                this.bindTexture(texture_armor);
                 GL11.glMatrixMode(GL11.GL_TEXTURE);
                 GL11.glLoadIdentity();
                 float f2 = f1 * 0.01F;
@@ -139,11 +139,6 @@ public class RenderRedCreeper extends RenderLiving
         return -1;
     }
 
-    protected ResourceLocation func_110829_a(EntityRedCreeper par1EntityRedCreeper)
-    {
-        return field_110830_f;
-    }
-
     /**
      * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
      * entityLiving, partialTickTime
@@ -174,8 +169,9 @@ public class RenderRedCreeper extends RenderLiving
         return this.func_77061_b((EntityRedCreeper)par1EntityLivingBase, par2, par3);
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.func_110829_a((EntityRedCreeper)par1Entity);
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return texture;
+	}
 }

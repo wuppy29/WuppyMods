@@ -55,7 +55,6 @@ public class FoodStatsHP extends FoodStats
             if (this.foodSaturationLevel > 0.0F)
             {
                 this.foodSaturationLevel = Math.max(this.foodSaturationLevel - 1.0F, 0.0F);
-                System.out.println(foodSaturationLevel);
             }
             else
             {
@@ -80,7 +79,7 @@ public class FoodStatsHP extends FoodStats
 
             if (this.foodTimer >= 80)
             {
-                if (par1EntityPlayer.func_110143_aJ() > 10.0F || i >= 3 || par1EntityPlayer.func_110143_aJ() > 1.0F && i >= 2)
+                if (par1EntityPlayer.getHealth() > 10.0F || i >= 3 || par1EntityPlayer.getHealth() > 1.0F && i >= 2)
                 {
                     par1EntityPlayer.attackEntityFrom(DamageSource.starve, 1.0F);
                 }

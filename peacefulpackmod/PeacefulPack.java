@@ -1,5 +1,6 @@
 package peacefulpackmod;
 
+import java.io.IOException;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -25,16 +26,21 @@ import peacefulpackmod.item.Itemseed;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.6.0")
+@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.6.3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class PeacefulPack 
 {
 	public static final String modid = "wuppy29_peacefulpack";
+	
+	public static final int VERSION = 1;
+	public static String updates = "";
+	public static boolean outdated = false;
 	
 	// block config
 	public static int OreBlockID;
@@ -113,6 +119,14 @@ public class PeacefulPack
 		RottenPlantSeedID = config.getItem("Rotten Plant Seed ID", Configuration.CATEGORY_ITEM, 4043).getInt();
 		
 		config.save();
+		
+		try
+		{
+			UpdateChecker.checkForUpdates();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@EventHandler
@@ -131,7 +145,7 @@ public class PeacefulPack
 		remains = new BlockBuriedRemains(RemainsID).setStepSound(Block.soundGravelFootstep).setHardness(0.5F).setUnlocalizedName("remains");
 		
 		Block.blocksList[customWebID] = null;
-		customWeb = new BlockCustomWeb(customWebID).setLightOpacity(1).setHardness(4.0F).setUnlocalizedName("web").func_111022_d("web");
+		customWeb = new BlockCustomWeb(customWebID).setLightOpacity(1).setHardness(4.0F).setUnlocalizedName("web").setTextureName("web");
 		
 		//items
 		sulphDust = new ItemDust(SulphurCrystalID).setUnlocalizedName("sulphdust");
@@ -340,5 +354,11 @@ public class PeacefulPack
 				{
 					new ItemStack(Item.book), new ItemStack(niterDust), new ItemStack(Item.feather)
 				});
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		GameRegistry.registerPlayerTracker(new PeacefulPackLogin());
 	}
 }

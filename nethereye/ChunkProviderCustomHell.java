@@ -586,6 +586,12 @@ public class ChunkProviderCustomHell implements IChunkProvider
     }
 
     /**
+     * Save extra data not associated with any Chunk.  Not saved during autosave, only during world unload.  Currently
+     * unimplemented.
+     */
+    public void saveExtraData() {}
+
+    /**
      * Unloads chunks that are marked to be unloaded. This is not guaranteed to unload every such chunk.
      */
     public boolean unloadQueuedChunks()
@@ -614,15 +620,21 @@ public class ChunkProviderCustomHell implements IChunkProvider
      */
     public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
     {
-        if (par1EnumCreatureType == EnumCreatureType.monster && this.genNetherBridge.hasStructureAt(par2, par3, par4))
+        if (par1EnumCreatureType == EnumCreatureType.monster)
         {
-            return this.genNetherBridge.getSpawnList();
+            if (this.genNetherBridge.hasStructureAt(par2, par3, par4))
+            {
+                return this.genNetherBridge.getSpawnList();
+            }
+
+            if (this.genNetherBridge.func_142038_b(par2, par3, par4) && this.worldObj.getBlockId(par2, par3 - 1, par4) == Block.netherBrick.blockID)
+            {
+                return this.genNetherBridge.getSpawnList();
+            }
         }
-        else
-        {
-            BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);
-            return biomegenbase == null ? null : biomegenbase.getSpawnableList(par1EnumCreatureType);
-        }
+
+        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);
+        return biomegenbase == null ? null : biomegenbase.getSpawnableList(par1EnumCreatureType);
     }
 
     /**
@@ -642,10 +654,4 @@ public class ChunkProviderCustomHell implements IChunkProvider
     {
         this.genNetherBridge.generate(this, this.worldObj, par1, par2, (byte[])null);
     }
-
-	@Override
-	public void func_104112_b()
-	{
-		
-	}
 }

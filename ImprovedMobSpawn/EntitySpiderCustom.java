@@ -21,15 +21,15 @@ public class EntitySpiderCustom extends EntitySpider
         super(par1World);
     }
 
-    public EntityLivingData func_110161_a(EntityLivingData par1EntityLivingData)
+    public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
     {
-        Object par1EntityLivingData1 = super.func_110161_a(par1EntityLivingData);
+        Object par1EntityLivingData1 = super.onSpawnWithEgg(par1EntityLivingData);
 
         if (this.worldObj.rand.nextInt(20) == 0)
         {
             EntitySkeleton entityskeleton = new EntitySkeleton(this.worldObj);
             entityskeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-            entityskeleton.func_110161_a((EntityLivingData)null);
+            entityskeleton.onSpawnWithEgg((EntityLivingData)null);
             this.worldObj.spawnEntityInWorld(entityskeleton);
             entityskeleton.mountEntity(this);
         }
@@ -38,7 +38,7 @@ public class EntitySpiderCustom extends EntitySpider
         {
             par1EntityLivingData1 = new SpiderEffectsGroupData();
 
-            if (this.worldObj.difficultySetting > 2 && this.worldObj.rand.nextFloat() < 0.1F * this.worldObj.func_110746_b(this.posX, this.posY, this.posZ))
+            if (this.worldObj.difficultySetting > 2 && this.worldObj.rand.nextFloat() < 0.1F * this.worldObj.getLocationTensionFactor(this.posX, this.posY, this.posZ))
             {
                 ((SpiderEffectsGroupData)par1EntityLivingData1).func_111104_a(this.worldObj.rand);
             }

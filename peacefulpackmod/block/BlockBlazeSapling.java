@@ -37,7 +37,6 @@ public class BlockBlazeSapling extends BlockFlower
     
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-    	System.out.println("running");
     	if(par1World.getBlockId(par2, par3 - 1, par4) == Block.netherrack.blockID)
     		return true;
     	else

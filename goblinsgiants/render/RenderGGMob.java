@@ -19,13 +19,8 @@ public class RenderGGMob extends RenderLiving
         texture = new ResourceLocation(GoblinGiant.modid, string);
     }
 
-    protected ResourceLocation func_110832_a(Entity par1Entity)
-    {
-        return texture;
-    }
-
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.func_110832_a(par1Entity);
-    }
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return texture;
+	}
 }

@@ -8,6 +8,5 @@ public class EntityCleanSnowGolem extends EntitySnowman
 	public EntityCleanSnowGolem(World par1World) 
 	{
 		super(par1World);
-		System.out.println("clean");
 	}
 }

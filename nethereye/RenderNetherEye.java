@@ -9,6 +9,8 @@ import net.minecraft.item.ItemPotion;
 import net.minecraft.potion.PotionHelper;
 import net.minecraft.util.Icon;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -93,7 +95,7 @@ public class RenderNetherEye extends Render
     }
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		return texture;
 	}

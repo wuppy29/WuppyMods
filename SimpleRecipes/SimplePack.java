@@ -1,19 +1,39 @@
 package SimpleRecipes;
 
+import java.io.IOException;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.7.3")
+@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.7.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class SimplePack 
 {
 	public static final String modid = "wuppy29_simplerecipes";
+	
+	public static final int VERSION = 1;
+	public static String updates = "";
+	public static boolean outdated = false;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		try
+		{
+			UpdateChecker.checkForUpdates();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event) 
@@ -95,5 +115,11 @@ public class SimplePack
 				});
 		GameRegistry.addSmelting(Block.netherrack.blockID, new ItemStack(Block.netherBrick), 0.1F);
 		GameRegistry.addSmelting(Block.stoneBrick.blockID, new ItemStack(Block.stoneBrick, 1, 3), 0.1F);
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		GameRegistry.registerPlayerTracker(new SimpleRecipesLogin());
 	}
 }

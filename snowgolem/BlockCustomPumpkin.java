@@ -145,8 +145,8 @@ public class BlockCustomPumpkin extends BlockDirectional
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.field_94475_c = par1IconRegister.registerIcon(this.func_111023_E() + "_face_" + (this.blockType ? "on" : "off"));
-        this.field_94474_b = par1IconRegister.registerIcon(this.func_111023_E() + "_top");
-        this.blockIcon = par1IconRegister.registerIcon(this.func_111023_E() + "_side");
+        this.field_94475_c = par1IconRegister.registerIcon(this.getTextureName() + "_face_" + (this.blockType ? "on" : "off"));
+        this.field_94474_b = par1IconRegister.registerIcon(this.getTextureName() + "_top");
+        this.blockIcon = par1IconRegister.registerIcon(this.getTextureName() + "_side");
     }
 }

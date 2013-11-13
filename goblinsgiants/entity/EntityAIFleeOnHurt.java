@@ -8,12 +8,12 @@ import net.minecraft.util.Vec3;
 public class EntityAIFleeOnHurt extends EntityAIBase
 {
     private EntityCreature theEntityCreature;
-    private float speed;
+    private double speed;
     private double randPosX;
     private double randPosY;
     private double randPosZ;
 
-    public EntityAIFleeOnHurt(EntityCreature par1EntityCreature, float par2)
+    public EntityAIFleeOnHurt(EntityCreature par1EntityCreature, double par2)
     {
         this.theEntityCreature = par1EntityCreature;
         this.speed = par2;
@@ -25,24 +25,26 @@ public class EntityAIFleeOnHurt extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        if(theEntityCreature.func_110143_aJ() <= 4)
+        if (this.theEntityCreature.getHealth() > 4F)
         {
-            Vec3 var1 = RandomPositionGenerator.findRandomTarget(this.theEntityCreature, 5, 4);
+            return false;
+        }
+        else
+        {
+            Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.theEntityCreature, 5, 4);
 
-            if (var1 == null)
+            if (vec3 == null)
             {
                 return false;
             }
             else
             {
-                this.randPosX = var1.xCoord;
-                this.randPosY = var1.yCoord;
-                this.randPosZ = var1.zCoord;
+                this.randPosX = vec3.xCoord;
+                this.randPosY = vec3.yCoord;
+                this.randPosZ = vec3.zCoord;
                 return true;
             }
         }
-        else
-        	return false;
     }
 
     /**

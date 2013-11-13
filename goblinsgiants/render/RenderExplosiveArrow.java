@@ -20,7 +20,7 @@ public class RenderExplosiveArrow extends Render
 
     public void renderArrow(EntityExplosiveArrow par1EntityExplosiveArrow, double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntityExplosiveArrow);
+        this.bindEntityTexture(par1EntityExplosiveArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntityExplosiveArrow.prevRotationYaw + (par1EntityExplosiveArrow.rotationYaw - par1EntityExplosiveArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -79,16 +79,6 @@ public class RenderExplosiveArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntityExplosiveArrow par1EntityExplosiveArrow)
-    {
-        return field_110780_a;
-    }
-
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.func_110779_a((EntityExplosiveArrow)par1Entity);
-    }
-
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
@@ -99,4 +89,10 @@ public class RenderExplosiveArrow extends Render
     {
         this.renderArrow((EntityExplosiveArrow)par1Entity, par2, par4, par6, par8, par9);
     }
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		 return field_110780_a;
+	}
 }
