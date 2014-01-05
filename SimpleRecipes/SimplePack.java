@@ -2,34 +2,37 @@ package SimpleRecipes;
 
 import java.io.IOException;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.7.4")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.7.5")
 public class SimplePack 
 {
 	public static final String modid = "wuppy29_simplerecipes";
 	
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 	public static String updates = "";
 	public static boolean outdated = false;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		FMLCommonHandler.instance().bus().register(this);
 		try
 		{
 			UpdateChecker.checkForUpdates();
-		} catch (IOException e)
+		} 
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -38,88 +41,93 @@ public class SimplePack
 	@EventHandler
 	public void load(FMLInitializationEvent event) 
 	{
-		GameRegistry.addRecipe(new ItemStack(Block.blockClay, 4), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), new Object[]
 				{
-					"ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Item.dyePowder, 1, 15), 'C', Item.bucketWater, 'X', Block.sand
+					"ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand
 				});
-		GameRegistry.addRecipe(new ItemStack(Block.cobblestoneMossy, 1), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.mossy_cobblestone, 1), new Object[]
 				{
-					" X ", "XZX", " X ", 'Z', Block.cobblestone, 'X', Block.vine
+					" X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine
 				});
-		GameRegistry.addRecipe(new ItemStack(Block.web, 5), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.web, 5), new Object[]
 				{
-					"X X", " X ", "X X", 'X', Item.silk
+					"X X", " X ", "X X", 'X', Items.string
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.obsidian, 1), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian, 1), new Object[]
 				{
-					new ItemStack(Item.bucketWater), new ItemStack(Item.bucketLava)
+					new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.gravel, 2), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.gravel, 2), new Object[]
 				{
-					new ItemStack(Item.flint), new ItemStack(Block.cobblestone)
+					new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone)
 				});
-		GameRegistry.addRecipe(new ItemStack(Block.sponge, 4), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.sponge, 4), new Object[]
 				{
-					" X ", "XZX", " X ", 'X', new ItemStack(Block.cloth, 1, 11), 'Z', Item.bucketWater
+					" X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 11), 'Z', Items.water_bucket
 				});
-		GameRegistry.addRecipe(new ItemStack(Block.ice, 1), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.ice, 1), new Object[]
 				{
-					" X ", "XZX", " X ", 'X', Item.snowball, 'Z', Item.bucketWater
+					" X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket
 				});
-		GameRegistry.addRecipe(new ItemStack(Block.stoneBrick, 1, 1), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new Object[]
 				{
-					" X ", "XZX", " X ", 'Z', new ItemStack(Block.stoneBrick, 1, 0), 'X', Block.vine
+					" X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.grass), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), new Object[]
 				{
-					new ItemStack(Block.dirt), new ItemStack(Block.vine)
+					new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.bone), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
 				{
-					new ItemStack(Item.chickenRaw)
+					new ItemStack(Items.chicken)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.bone), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
 				{
-					new ItemStack(Item.porkRaw)
+					new ItemStack(Items.porkchop)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.bone), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
 				{
-					new ItemStack(Item.beefRaw)
+					new ItemStack(Items.beef)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.stoneBrick, 1, 2), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 2), new Object[]
 				{
-					new ItemStack(Item.flint), new ItemStack(Block.stoneBrick)
+					new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.redstone, 2), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.redstone, 2), new Object[]
 				{
-					new ItemStack(Item.glowstone), new ItemStack(Item.dyePowder, 1, 1)
+					new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.glowstone, 2), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.glowstone_dust, 2), new Object[]
 				{
-					new ItemStack(Item.redstone), new ItemStack(Item.dyePowder, 1, 11)
+					new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.book, 1), new Object[] 
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.book, 1), new Object[] 
 				{
-					new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Block.cloth)
+					new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool)
 				});
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 0), new Object[]
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 0), new Object[]
 				{
-					new ItemStack(Item.coal)
+					new ItemStack(Items.coal)
 				});
-		GameRegistry.addRecipe(new ItemStack(Item.arrow, 2), new Object[]
+		GameRegistry.addRecipe(new ItemStack(Items.arrow, 2), new Object[]
 				{
 					"XCX",
 					" V ",
 					" B ",
-					'X', Block.leaves, 'C', Item.silk, 'V', Item.stick, 'B', Item.flint
+					'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint
 				});
-		GameRegistry.addSmelting(Block.netherrack.blockID, new ItemStack(Block.netherBrick), 0.1F);
-		GameRegistry.addSmelting(Block.stoneBrick.blockID, new ItemStack(Block.stoneBrick, 1, 3), 0.1F);
+		GameRegistry.addSmelting(Blocks.netherrack, new ItemStack(Blocks.nether_brick), 0.1F);
+		GameRegistry.addSmelting(Blocks.stonebrick, new ItemStack(Blocks.stonebrick, 1, 3), 0.1F);
 	}
 	
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
+	@SubscribeEvent
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
 	{
-		GameRegistry.registerPlayerTracker(new SimpleRecipesLogin());
+		if(outdated)
+		{
+			event.player.func_146105_b(new ChatComponentText("Simple Recipes is outdated."));
+			event.player.func_146105_b(new ChatComponentText("Changelog: "));
+			event.player.func_146105_b(new ChatComponentText(updates));
+		}
 	}
 }

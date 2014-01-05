@@ -1,7 +1,6 @@
 package SimpleRecipes;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -51,6 +50,8 @@ public class UpdateChecker
 		}
 		br.close();
 		
+		System.out.println(response.toString());
+		
 		return Integer.parseInt(response.toString());
 	}
 	
@@ -78,6 +79,8 @@ public class UpdateChecker
 			
 		}
 		br.close();
+		
+		System.out.println(response.toString());
 		
 		return response.toString();
 	}

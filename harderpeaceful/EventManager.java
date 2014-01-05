@@ -4,13 +4,12 @@ import java.lang.reflect.Field;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.FoodStats;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EventManager 
 {
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void updateFood(EntityJoinWorldEvent event) 
 	{
 		if(event.entity instanceof EntityPlayer)

@@ -2,50 +2,52 @@ package harderpeaceful;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.FoodStats;
+import net.minecraft.world.EnumDifficulty;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class FoodStatsHP extends FoodStats
 {
     /** The player's food level. */
+
     private int foodLevel = 20;
-
     /** The player's food saturation. */
+
     private float foodSaturationLevel = 5.0F;
-
     /** The player's food exhaustion. */
-    private float foodExhaustionLevel;
 
+    private float foodExhaustionLevel;
     /** The player's food timer value. */
+
     private int foodTimer;
     private int prevFoodLevel = 20;
 
     /**
      * Args: int foodLevel, float foodSaturationModifier
      */
+
     public void addStats(int par1, float par2)
     {
         this.foodLevel = Math.min(par1 + this.foodLevel, 20);
         this.foodSaturationLevel = Math.min(this.foodSaturationLevel + (float)par1 * par2 * 2.0F, (float)this.foodLevel);
     }
 
-    /**
-     * Eat some food.
-     */
-    public void addStats(ItemFood par1ItemFood)
+    public void func_151686_a(ItemFood p_151686_1_, ItemStack p_151686_2_)
     {
-        this.addStats(par1ItemFood.getHealAmount(), par1ItemFood.getSaturationModifier());
+        this.addStats(p_151686_1_.func_150905_g(p_151686_2_), p_151686_1_.func_150906_h(p_151686_2_));
     }
 
     /**
      * Handles the food game logic.
      */
+
     public void onUpdate(EntityPlayer par1EntityPlayer)
     {
-        int i = par1EntityPlayer.worldObj.difficultySetting;
+        EnumDifficulty enumdifficulty = par1EntityPlayer.worldObj.difficultySetting;
         this.prevFoodLevel = this.foodLevel;
 
         if (this.foodExhaustionLevel > 4.0F)
@@ -62,7 +64,7 @@ public class FoodStatsHP extends FoodStats
             }
         }
 
-        if (this.foodLevel >= 18 && par1EntityPlayer.shouldHeal())
+        if (par1EntityPlayer.worldObj.getGameRules().getGameRuleBooleanValue("naturalRegeneration") && this.foodLevel >= 18 && par1EntityPlayer.shouldHeal())
         {
             ++this.foodTimer;
 
@@ -79,7 +81,7 @@ public class FoodStatsHP extends FoodStats
 
             if (this.foodTimer >= 80)
             {
-                if (par1EntityPlayer.getHealth() > 10.0F || i >= 3 || par1EntityPlayer.getHealth() > 1.0F && i >= 2)
+                if (par1EntityPlayer.getHealth() > 10.0F || enumdifficulty == EnumDifficulty.HARD || par1EntityPlayer.getHealth() > 1.0F && enumdifficulty == EnumDifficulty.NORMAL || HarderPeaceful.starveToDeath)
                 {
                     par1EntityPlayer.attackEntityFrom(DamageSource.starve, 1.0F);
                 }
@@ -96,9 +98,10 @@ public class FoodStatsHP extends FoodStats
     /**
      * Reads food stats from an NBT object.
      */
+
     public void readNBT(NBTTagCompound par1NBTTagCompound)
     {
-        if (par1NBTTagCompound.hasKey("foodLevel"))
+        if (par1NBTTagCompound.func_150297_b("foodLevel", 99))
         {
             this.foodLevel = par1NBTTagCompound.getInteger("foodLevel");
             this.foodTimer = par1NBTTagCompound.getInteger("foodTickTimer");
@@ -110,6 +113,7 @@ public class FoodStatsHP extends FoodStats
     /**
      * Writes food stats to an NBT object.
      */
+
     public void writeNBT(NBTTagCompound par1NBTTagCompound)
     {
         par1NBTTagCompound.setInteger("foodLevel", this.foodLevel);
@@ -121,6 +125,7 @@ public class FoodStatsHP extends FoodStats
     /**
      * Get the player's food level.
      */
+
     public int getFoodLevel()
     {
         return this.foodLevel;
@@ -135,6 +140,7 @@ public class FoodStatsHP extends FoodStats
     /**
      * If foodLevel is not max.
      */
+
     public boolean needFood()
     {
         return this.foodLevel < 20;
@@ -143,6 +149,7 @@ public class FoodStatsHP extends FoodStats
     /**
      * adds input to foodExhaustionLevel to a max of 40
      */
+
     public void addExhaustion(float par1)
     {
         this.foodExhaustionLevel = Math.min(this.foodExhaustionLevel + par1, 40.0F);
@@ -151,6 +158,7 @@ public class FoodStatsHP extends FoodStats
     /**
      * Get the player's food saturation level.
      */
+
     public float getSaturationLevel()
     {
         return this.foodSaturationLevel;
