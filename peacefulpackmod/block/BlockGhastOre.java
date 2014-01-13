@@ -1,74 +1,70 @@
 package peacefulpackmod.block;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import peacefulpackmod.PeacefulPack;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class BlockGhastOre extends Block
 {
-	public BlockGhastOre(int id)
+	public BlockGhastOre()
 	{
-		super(id, Material.rock);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		super(Material.field_151576_e);
+		this.func_149647_a(CreativeTabs.tabBlock);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
-    {
-        this.blockIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }
-	
-	public int idDropped(int par1, Random par2Random, int par3)
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
 	{
-		if(brokenByPlayer)
+		ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
+
+		if (brokenByPlayer)
 		{
-			for (int i : surroundingBlocks)
+			if(lavaAround)
 			{
-				if (i == Block.lavaMoving.blockID || i == Block.lavaStill.blockID)
-				{
-					return Item.ghastTear.itemID;
-				}
+				ret.add(new ItemStack(Items.ghast_tear));
 			}
+			else
+				ret.add(new ItemStack(this));
 		}
-		return this.blockID;
+
+		return ret;
 	}
-	
+
 	boolean brokenByPlayer = false;
-	
-	List<Integer> surroundingBlocks;
-	
+	boolean lavaAround = false;
+
+	List<Block> surroundingBlocks;
+
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int l)
 	{
 		brokenByPlayer = true;
 		surroundingBlocks = null;
-		surroundingBlocks = Arrays.asList(world.getBlockId(x + 1, y, z), world.getBlockId(x - 1, y, z), world.getBlockId(x, y, z + 1), world.getBlockId(x, y, z - 1), world.getBlockId(x, y + 1, z), world.getBlockId(x, y - 1, z));
-		
-		for (int i : surroundingBlocks)
+		surroundingBlocks = Arrays.asList(world.func_147439_a(x + 1, y, z), world.func_147439_a(x - 1, y, z), world.func_147439_a(x, y, z + 1), world.func_147439_a(x, y, z - 1), world.func_147439_a(x, y + 1, z), world.func_147439_a(x, y - 1, z));
+
+		for (Block i : surroundingBlocks)
 		{
-			if (i == Block.lavaMoving.blockID || i == Block.lavaStill.blockID)
+			if (i == Blocks.flowing_lava || i == Blocks.lava)
 			{
+				lavaAround = true;
 				int var8 = 0;
-	        	
-	        	var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 7);
-	        	
-	        	this.dropXpOnBlockBreak(world, x, y, z, var8);
+
+				var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 7);
+
+				this.func_149657_c(world, x, y, z, var8);
 			}
 		}
 	}
-	
+
 	public int quantityDropped(Random par1Random)
 	{
 		return 1;

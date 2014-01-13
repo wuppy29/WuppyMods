@@ -2,31 +2,22 @@ package peacefulpackmod.block;
 
 import java.util.Random;
 
-import peacefulpackmod.PeacefulPack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 public class BlockBuriedRemains extends Block
 {
-	public BlockBuriedRemains(int par1)
+	public BlockBuriedRemains()
 	{
-		super(par1, Material.ground);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		super(Material.field_151578_c);
+		this.func_149647_a(CreativeTabs.tabBlock);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-	}
-
-	public int idDropped(int i, Random random, int j)
-	{
-		return Item.rottenFlesh.itemID;
+	public Item func_149650_a(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    {
+		return Items.rotten_flesh;
 	}
 }

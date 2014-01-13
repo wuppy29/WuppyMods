@@ -2,10 +2,10 @@ package peacefulpackmod.worldgen;
 
 import java.util.Random;
 
-import peacefulpackmod.PeacefulPack;
-
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import peacefulpackmod.PeacefulPack;
 
 public class WorldGenSlimepool extends WorldGenerator
 {
@@ -20,46 +20,45 @@ public class WorldGenSlimepool extends WorldGenerator
 			return false;
 		}
 		
-		int block = PeacefulPack.slimeslab.blockID;
-		
-		if(world.getBlockMaterial(x, y, z).isSolid() == true && rand.nextInt(4) == 1)
+		Block block = PeacefulPack.slimeslab;
+		if(world.func_147439_a(x, y, z).func_149688_o().isSolid() == true && rand.nextInt(4) == 1)
 		{
-			world.setBlock(x, y, z, block);
-			if(world.getBlockMaterial(x + 1, y, z). isSolid() == true)
+			world.func_147465_d(x, y, z, block, 0, 2);
+			if(world.func_147439_a(x + 1, y, z).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x+1, y, z, block);
+				world.func_147465_d(x+1, y, z, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x - 1, y, z). isSolid() == true)
+			if(world.func_147439_a(x - 1, y, z).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x - 1, y, z, block);
+				world.func_147465_d(x - 1, y, z, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x, y, z + 1). isSolid() == true)
+			if(world.func_147439_a(x, y, z + 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x, y, z + 1, block);
+				world.func_147465_d(x, y, z + 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x, y, z - 1). isSolid() == true)
+			if(world.func_147439_a(x, y, z - 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x, y, z - 1, block);
+				world.func_147465_d(x, y, z - 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x + 1, y, z + 1). isSolid() == true)
+			if(world.func_147439_a(x + 1, y, z + 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x + 1, y, z + 1, block);
+				world.func_147465_d(x + 1, y, z + 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x + 1, y, z - 1). isSolid() == true)
+			if(world.func_147439_a(x + 1, y, z - 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x+1, y, z - 1, block);
+				world.func_147465_d(x+1, y, z - 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x - 1, y, z + 1). isSolid() == true)
+			if(world.func_147439_a(x - 1, y, z + 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x - 1, y, z + 1, block);
+				world.func_147465_d(x - 1, y, z + 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x - 1, y, z - 1). isSolid() == true)
+			if(world.func_147439_a(x - 1, y, z - 1).func_149688_o().isSolid() == true)
 			{
-				world.setBlock(x - 1, y, z - 1, block);
+				world.func_147465_d(x - 1, y, z - 1, block, 0, 2);
 			}
-			if(world.getBlockMaterial(x + 2, y, z).isSolid() == true && world.getBlockId(x + 1, y, z) == block)
+			if(world.func_147439_a(x + 2, y, z).func_149688_o().isSolid() == true && world.func_147439_a(x + 1, y, z) == block)
 			{
-				world.setBlock(x + 2, y, z, block);
+				world.func_147465_d(x + 2, y, z, block, 0, 2);
 			}
 			return true;
 		}

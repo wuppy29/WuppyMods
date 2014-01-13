@@ -1,0 +1,21 @@
+tile.flax.name=Vlas
+tile.rottenplant.name=Verrotte Plant
+tile.blazelog.name=Blaze Hout
+tile.blazeleaves.name=Blaze Bladeren
+tile.ghastore.name=Ghast Erts
+tile.enderclam.name=Ender Oester
+tile.blazeSapling.name=Blaze Kiemplant
+tile.oreblock.sulphur.name=Zwavel Erts
+tile.oreblock.niter.name=Salpeter Erts
+tile.oreblock.fossil.name=Fossiel
+tile.remains.name=Begraven Restanten
+tile.slime.name=Slijm
+
+item.sulphdust.name=Zwavel Kristal
+item.niterdust.name=Salpeter Kristal
+item.flaxfibre.name=Vlas Vezel
+item.cloth.name=Doek
+item.flaxseed.name=Vlas Zaad
+item.cookedflesh.name=Gekookt Vlees
+item.chain.name=Keten Materiaal
+item.rottenseed.name=Verrot Zaad

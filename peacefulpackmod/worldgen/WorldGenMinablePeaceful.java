@@ -3,6 +3,7 @@ package peacefulpackmod.worldgen;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -10,16 +11,16 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenMinablePeaceful extends WorldGenerator
 {
     /** The block ID of the ore to be placed using this generator. */
-    private int minableBlockId;
+    private Block minableBlock;
 
     private int metadata;
     
     /** The number of blocks to generate. */
     private int numberOfBlocks;
 
-    public WorldGenMinablePeaceful(int par1, int par2, int par3)
+    public WorldGenMinablePeaceful(Block par1, int par2, int par3)
     {
-        this.minableBlockId = par1;
+        this.minableBlock = par1;
         this.metadata = par2;
         this.numberOfBlocks = par3;
     }
@@ -65,9 +66,9 @@ public class WorldGenMinablePeaceful extends WorldGenerator
                             {
                                 double var45 = ((double)var44 + 0.5D - var24) / (var28 / 2.0D);
 
-                                if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == Block.stone.blockID)
+                                if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.func_147439_a(var38, var41, var44) == Blocks.stone)
                                 {
-                                    par1World.setBlock(var38, var41, var44, this.minableBlockId, this.metadata, 2);
+                                    par1World.func_147465_d(var38, var41, var44, this.minableBlock, this.metadata, 2);
                                 }
                             }
                         }

@@ -1,35 +1,38 @@
 package peacefulpackmod.item;
 
-import peacefulpackmod.PeacefulPack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+import peacefulpackmod.PeacefulPack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class Itemseed extends Item
+public class Itemseed extends Item implements IPlantable
 {
     /**
      * the type of block this seed turns into (wheat or pumpkin stems for instance)
      */
-    private int blockType;
+    private Block blockType;
 
     /** BlockID of the block the seeds can be planted on. */
-    private int soilBlockID;
+    private Block soilBlock;
     
-    public Itemseed(int par1, int par2, int par3)
+    public Itemseed(Block block, Block soil)
     {
-        super(par1);
-        blockType = par2;
-        soilBlockID = par3;
+        blockType = block;
+        soilBlock = soil;
         this.setCreativeTab(CreativeTabs.tabMaterials);
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.itemIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
     }
@@ -42,11 +45,11 @@ public class Itemseed extends Item
         }
         else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
         {
-            int var11 = par3World.getBlockId(par4, par5, par6);
+            Block var11 = par3World.func_147439_a(par4, par5, par6);
 
-            if (var11 == this.soilBlockID && par3World.isAirBlock(par4, par5 + 1, par6))
+            if (var11 == this.soilBlock && par3World.func_147437_c(par4, par5 + 1, par6))
             {
-                par3World.setBlock(par4, par5 + 1, par6, this.blockType);
+                par3World.func_147449_b(par4, par5 + 1, par6, this.blockType);
                 --par1ItemStack.stackSize;
                 return true;
             }
@@ -60,4 +63,22 @@ public class Itemseed extends Item
             return false;
         }
     }
+    
+    @Override
+    public Block getPlant(IBlockAccess world, int x, int y, int z)
+    {
+        return blockType;
+    }
+
+    @Override
+    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+    {
+        return 0;
+    }
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) 
+	{
+		return EnumPlantType.Crop;
+	}
 }

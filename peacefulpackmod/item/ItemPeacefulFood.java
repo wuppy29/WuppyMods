@@ -1,9 +1,6 @@
 package peacefulpackmod.item;
 
-import peacefulpackmod.PeacefulPack;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -11,6 +8,9 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import peacefulpackmod.PeacefulPack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPeacefulFood extends ItemFood
 {
@@ -43,31 +43,26 @@ public class ItemPeacefulFood extends ItemFood
     /** probably of the set potion effect occurring */
     private float potionEffectProbability;
 
-    public ItemPeacefulFood(int par1, int par2, float par3, boolean par4)
+    public ItemPeacefulFood(int health, float saturation, boolean wolfFood)
     {
-        super(par1, par2, par3, par4);
+        super(health, saturation, wolfFood);
         this.itemUseDuration = 32;
-        this.healAmount = par2;
-        this.isWolfsFavoriteMeat = par4;
-        this.saturationModifier = par3;
+        this.healAmount = health;
+        this.isWolfsFavoriteMeat = wolfFood;
+        this.saturationModifier = saturation;
         this.setCreativeTab(CreativeTabs.tabFood);
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.itemIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }
-    
-    public ItemPeacefulFood(int par1, int par2, boolean par3)
-    {
-        this(par1, par2, 0.6F, par3);
     }
 
     public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         --par1ItemStack.stackSize;
-        par3EntityPlayer.getFoodStats().addStats(this);
+        par3EntityPlayer.getFoodStats().func_151686_a(this, par1ItemStack);
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
         this.func_77849_c(par1ItemStack, par2World, par3EntityPlayer);
         return par1ItemStack;

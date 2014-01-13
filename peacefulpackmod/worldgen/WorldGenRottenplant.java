@@ -2,11 +2,10 @@ package peacefulpackmod.worldgen;
 
 import java.util.Random;
 
-import peacefulpackmod.PeacefulPack;
-
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import peacefulpackmod.PeacefulPack;
 
 public class WorldGenRottenplant extends WorldGenerator
 {
@@ -18,9 +17,9 @@ public class WorldGenRottenplant extends WorldGenerator
             int k = (par4 + par2Random.nextInt(4)) - par2Random.nextInt(4);
             int l = (par5 + par2Random.nextInt(8)) - par2Random.nextInt(8);
 
-            if (par1World.isAirBlock(j, k, l) && par1World.getBlockId(j, k - 1, l) == Block.netherrack.blockID)
+            if (par1World.func_147437_c(j, k, l) && par1World.func_147439_a(j, k - 1, l) == Blocks.netherrack)
             {
-                par1World.setBlock(j, k, l, PeacefulPack.rottenplant.blockID);
+                par1World.func_147465_d(j, k, l, PeacefulPack.rottenplant, 0, 2);
             }
         }
 

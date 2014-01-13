@@ -1,37 +1,57 @@
 package peacefulpackmod;
 
-import java.util.Random;
-
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import net.minecraftforge.event.Event.Result;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-import net.minecraftforge.event.world.ChunkDataEvent;
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import peacefulpackmod.block.BlockBlazeSapling;
 import peacefulpackmod.block.BlockRottenPlant;
 import peacefulpackmod.block.Blockflax;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 public class PeacefulEvent 
 {
-	@ForgeSubscribe
+	@SubscribeEvent
     public void bonemealUsed(BonemealEvent event)
     {
-		if(event.world.getBlockId(event.X, event.Y, event.Z)== PeacefulPack.flax.blockID)
+		if(event.world.func_147439_a(event.x, event.y, event.z)== PeacefulPack.flax)
         {
-        	((Blockflax)PeacefulPack.flax).fertilize(event.world, event.X, event.Y, event.Z);
-        	event.setResult(Result.ALLOW);
+        	((Blockflax)PeacefulPack.flax).fertilize(event.world, event.x, event.y, event.z);
         }
-        if(event.world.getBlockId(event.X, event.Y, event.Z)== PeacefulPack.rottenplant.blockID)
+        if(event.world.func_147439_a(event.x, event.y, event.z)== PeacefulPack.rottenplant)
         {
-        	((BlockRottenPlant)PeacefulPack.rottenplant).fertilize(event.world, event.X, event.Y, event.Z);
-        	event.setResult(Result.ALLOW);
+        	((BlockRottenPlant)PeacefulPack.rottenplant).fertilize(event.world, event.x, event.y, event.z);
         }
-        if(event.world.getBlockId(event.X, event.Y, event.Z)== PeacefulPack.blazeSapling.blockID)
+        if(event.world.func_147439_a(event.x, event.y, event.z)== PeacefulPack.blazeSapling)
         {
-        	event.world.setBlockToAir(event.X, event.Y, event.Z);
-        	((BlockBlazeSapling)PeacefulPack.blazeSapling).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
-        	event.setResult(Result.ALLOW);
+        	event.world.func_147468_f(event.x, event.y, event.z);
+        	((BlockBlazeSapling)PeacefulPack.blazeSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
         }
     }
+	
+	@SubscribeEvent
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		if(PeacefulPack.outdated)
+		{
+			event.player.func_146105_b(new ChatComponentText("Peacefulpack is outdated."));
+			event.player.func_146105_b(new ChatComponentText("Changelog: "));
+			event.player.func_146105_b(new ChatComponentText(PeacefulPack.updates));
+		}
+	}
+	
+	@SubscribeEvent
+	public void dropSpiderEyes(HarvestDropsEvent event)
+	{
+		if(PeacefulPack.changeWeb)
+		{
+			if(event.block == Blocks.web)
+			{
+				event.drops.add(new ItemStack(Items.spider_eye));
+			}
+		}
+	}
 }

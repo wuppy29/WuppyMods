@@ -2,11 +2,11 @@ package peacefulpackmod.worldgen;
 
 import java.util.Random;
 
-import peacefulpackmod.PeacefulPack;
-
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import peacefulpackmod.PeacefulPack;
 
 public class WorldGenBlazeTrees extends WorldGenerator
 {
@@ -39,8 +39,8 @@ public class WorldGenBlazeTrees extends WorldGenerator
                 {
                     if(i1 >= 0)
                     {
-                        int j3 = world.getBlockId(i2, i1, l2);
-                        if(j3 != 0 && j3 != PeacefulPack.blazeleaves.blockID)  
+                        Block j3 = world.func_147439_a(i2, i1, l2);
+                        if(j3 != null && j3 != PeacefulPack.blazeleaves)  
                         {
                             flag = false;
                         }
@@ -58,12 +58,12 @@ public class WorldGenBlazeTrees extends WorldGenerator
         {
             return false;
         }
-        int j1 = world.getBlockId(i, j - 1, k);
-        if(j1 != Block.netherrack.blockID)
+        Block j1 = world.func_147439_a(i, j - 1, k);
+        if(j1 != Blocks.netherrack)
         {
             return false;
         }
-        world.setBlock(i, j - 1, k, Block.netherrack.blockID); 
+        world.func_147465_d(i, j - 1, k, Blocks.netherrack, 0, 2); 
         for(int k1 = (j - 3) + l; k1 <= j + l; k1++)
         {
             int j2 = k1 - (j + l);
@@ -74,9 +74,9 @@ public class WorldGenBlazeTrees extends WorldGenerator
                 for(int i4 = k - i3; i4 <= k + i3; i4++)
                 {
                     int j4 = i4 - k;
-                    if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k3, k1, i4)])
+                    if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0))
                     {
-                    	setBlockAndMetadata(world, k3, k1, i4, PeacefulPack.blazeleaves.blockID, 0);
+                    	world.func_147465_d(k3, k1, i4, PeacefulPack.blazeleaves, 0, 2);
                     }
                 }
 
@@ -86,10 +86,10 @@ public class WorldGenBlazeTrees extends WorldGenerator
 
         for(int l1 = 0; l1 < l; l1++)
         {
-            int k2 = world.getBlockId(i, j + l1, k);
-            if(k2 == 0 || k2 == PeacefulPack.blazeleaves.blockID) 
+            Block k2 = world.func_147439_a(i, j + l1, k);
+            if(k2 == null || k2 == PeacefulPack.blazeleaves) 
             {
-            	setBlockAndMetadata(world, i, j + l1, k, PeacefulPack.blazelog.blockID, 0); 
+            	world.func_147465_d(i, j + l1, k, PeacefulPack.blazelog, 0, 2); 
             }
         }
 

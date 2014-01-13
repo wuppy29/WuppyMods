@@ -1,34 +1,38 @@
 package peacefulpackmod.block;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import peacefulpackmod.PeacefulPack;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import peacefulpackmod.PeacefulPack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Blockflax extends BlockFlower
+public class Blockflax extends BlockBush implements IGrowable
 {
-    public Blockflax(int par1)
+    public Blockflax()
     {
-        super(par1);
-        setTickRandomly(true);
+    	super(Material.field_151585_k);
+    	func_149675_a(true);
         float f = 0.5F;
-        setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-        this.setCreativeTab((CreativeTabs)null);
-        this.disableStats();
+        func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+        this.func_149649_H();
+        this.func_149647_a((CreativeTabs)null);
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public IIcon func_149691_a(int par1, int par2)
     {
         if(par2 == 0)
         	return iconArray[0];
@@ -39,33 +43,32 @@ public class Blockflax extends BlockFlower
     }
     
     @SideOnly(Side.CLIENT)
-    private Icon[] iconArray;
+    private IIcon[] iconArray;
     
     @SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void func_149651_a(IIconRegister par1IconRegister)
     {
-		iconArray = new Icon[3];
+		iconArray = new IIcon[3];
 		for (int i = 0; i < this.iconArray.length; ++i)
         {
-            this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
+            this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.func_149739_a().substring(5)) + i);
         }
     }
     
-    /**
-     * Gets passed in the blockID of the block below and supposed to return true if its allowed to grow on the type of
-     * blockID passed in. Args: blockID
-     */
-    protected boolean canThisPlantGrowOnThisBlockID(int par1)
+    public boolean func_149742_c(World par1World, int par2, int par3, int par4)
     {
-        return par1 == Block.grass.blockID;
+        if(par1World.func_147439_a(par2, par3 - 1, par4) == Blocks.grass)
+    		return true;
+    	else
+    		return false;
     }
 
     /**
      * Ticks the block if it's been scheduled
      */
-    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    public void func_149674_a(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        super.updateTick(par1World, par2, par3, par4, par5Random);
+        super.func_149674_a(par1World, par2, par3, par4, par5Random);
 
         if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
         {
@@ -73,7 +76,7 @@ public class Blockflax extends BlockFlower
 
             if (i < 2)
             {
-                float f = getGrowthRate(par1World, par2, par3, par4);
+                float f = func_149864_n(par1World, par2, par3, par4);
 
                 if (par5Random.nextInt((int)(25F / f) + 1) == 0)
                 {
@@ -97,41 +100,40 @@ public class Blockflax extends BlockFlower
      * different sides that aren't opposing, and by adding growth for every crop next to this one (and for crop below
      * this one). Args: x, y, z
      */
-    private float getGrowthRate(World par1World, int par2, int par3, int par4)
+    private float func_149864_n(World p_149864_1_, int p_149864_2_, int p_149864_3_, int p_149864_4_)
     {
         float f = 1.0F;
-        int i = par1World.getBlockId(par2, par3, par4 - 1);
-        int j = par1World.getBlockId(par2, par3, par4 + 1);
-        int k = par1World.getBlockId(par2 - 1, par3, par4);
-        int l = par1World.getBlockId(par2 + 1, par3, par4);
-        int i1 = par1World.getBlockId(par2 - 1, par3, par4 - 1);
-        int j1 = par1World.getBlockId(par2 + 1, par3, par4 - 1);
-        int k1 = par1World.getBlockId(par2 + 1, par3, par4 + 1);
-        int l1 = par1World.getBlockId(par2 - 1, par3, par4 + 1);
-        boolean flag = k == blockID || l == blockID;
-        boolean flag1 = i == blockID || j == blockID;
-        boolean flag2 = i1 == blockID || j1 == blockID || k1 == blockID || l1 == blockID;
+        Block block = p_149864_1_.func_147439_a(p_149864_2_, p_149864_3_, p_149864_4_ - 1);
+        Block block1 = p_149864_1_.func_147439_a(p_149864_2_, p_149864_3_, p_149864_4_ + 1);
+        Block block2 = p_149864_1_.func_147439_a(p_149864_2_ - 1, p_149864_3_, p_149864_4_);
+        Block block3 = p_149864_1_.func_147439_a(p_149864_2_ + 1, p_149864_3_, p_149864_4_);
+        Block block4 = p_149864_1_.func_147439_a(p_149864_2_ - 1, p_149864_3_, p_149864_4_ - 1);
+        Block block5 = p_149864_1_.func_147439_a(p_149864_2_ + 1, p_149864_3_, p_149864_4_ - 1);
+        Block block6 = p_149864_1_.func_147439_a(p_149864_2_ + 1, p_149864_3_, p_149864_4_ + 1);
+        Block block7 = p_149864_1_.func_147439_a(p_149864_2_ - 1, p_149864_3_, p_149864_4_ + 1);
+        boolean flag = block2 == this || block3 == this;
+        boolean flag1 = block == this || block1 == this;
+        boolean flag2 = block4 == this || block5 == this || block6 == this || block7 == this;
 
-        for (int i2 = par2 - 1; i2 <= par2 + 1; i2++)
+        for (int l = p_149864_2_ - 1; l <= p_149864_2_ + 1; ++l)
         {
-            for (int j2 = par4 - 1; j2 <= par4 + 1; j2++)
+            for (int i1 = p_149864_4_ - 1; i1 <= p_149864_4_ + 1; ++i1)
             {
-                int k2 = par1World.getBlockId(i2, par3 - 1, j2);
                 float f1 = 0.0F;
 
-                if (k2 == Block.grass.blockID)
+                if (p_149864_1_.func_147439_a(l, p_149864_3_ - 1, i1).canSustainPlant(p_149864_1_, l, p_149864_3_ - 1, i1, ForgeDirection.UP, this))
                 {
                     f1 = 1.0F;
 
-                    if (par1World.getBlockMetadata(i2, par3 - 1, j2) > 0)
+                    if (p_149864_1_.func_147439_a(l, p_149864_3_ - 1, i1).isFertile(p_149864_1_, l, p_149864_3_ - 1, i1))
                     {
-                        f1 = 3F;
+                        f1 = 3.0F;
                     }
                 }
 
-                if (i2 != par2 || j2 != par4)
+                if (l != p_149864_2_ || i1 != p_149864_4_)
                 {
-                    f1 /= 4F;
+                    f1 /= 4.0F;
                 }
 
                 f += f1;
@@ -153,66 +155,48 @@ public class Blockflax extends BlockFlower
     {
         return 6;
     }
-
-    /**
-     * Drops the block items with a specified chance of dropping the specified items
-     */
-    public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
+    
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
-        super.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, par6, 0);
+        ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
 
-        if (par1World.isRemote)
+        if(metadata == 2)
         {
-            return;
+        	ret.add(new ItemStack(PeacefulPack.flaxfibre, 2));
+        }
+        if(world.rand.nextInt(2) == 0)
+        {
+        	ret.add(new ItemStack(PeacefulPack.flaxseed));
         }
 
-        int i = 3 + par7;
-
-        for (int j = 0; j < i; j++)
-        {
-            if (par1World.rand.nextInt(15) <= par5)
-            {
-                float f = 0.7F;
-                float f1 = par1World.rand.nextFloat() * f + (1.0F - f) * 0.5F;
-                float f2 = par1World.rand.nextFloat() * f + (1.0F - f) * 0.5F;
-                float f3 = par1World.rand.nextFloat() * f + (1.0F - f) * 0.5F;
-                EntityItem entityitem = new EntityItem(par1World, (float)par2 + f1, (float)par3 + f2, (float)par4 + f3, new ItemStack(PeacefulPack.flaxseed));
-                entityitem.delayBeforeCanPickup = 10;
-                par1World.spawnEntityInWorld(entityitem);
-            }
-        }
+        return ret;
     }
 
-    /**
-     * Returns the ID of the items to drop on destruction.
-     */
-    public int idDropped(int par1, Random par2Random, int par3)
+    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
     {
-        if (par1 == 2)
-        {
-            return PeacefulPack.flaxfibre.itemID;
-        }
-        else
-        {
-            return -1;
-        }
+        return false;
     }
 
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    public int quantityDropped(Random par1Random)
+    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
     {
-        return 1;
+        return true;
     }
     
-    @SideOnly(Side.CLIENT)
-
-    /**
-     * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
-     */
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_)
     {
-        return PeacefulPack.flaxseed.itemID;
+        this.func_149863_m(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_);
+    }
+    
+    public void func_149863_m(World p_149863_1_, int p_149863_2_, int p_149863_3_, int p_149863_4_)
+    {
+        int l = p_149863_1_.getBlockMetadata(p_149863_2_, p_149863_3_, p_149863_4_) + MathHelper.getRandomIntegerInRange(p_149863_1_.rand, 2, 5);
+
+        if (l > 7)
+        {
+            l = 7;
+        }
+
+        p_149863_1_.setBlockMetadataWithNotify(p_149863_2_, p_149863_3_, p_149863_4_, l, 2);
     }
 }

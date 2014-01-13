@@ -2,50 +2,35 @@ package peacefulpackmod.block;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import peacefulpackmod.PeacefulPack;
 import peacefulpackmod.worldgen.WorldGenBlazeTrees;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
-
-public class BlockBlazeSapling extends BlockFlower
+public class BlockBlazeSapling extends Block
 {
-    public BlockBlazeSapling(int id)
+    public BlockBlazeSapling()
     {
-        super(id);
+        super(Material.field_151585_k);
         float f = 0.4F;
-        setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-        this.setTickRandomly(true);
+        func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+        this.func_149675_a(true);
     }
     
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public boolean func_149742_c(World par1World, int par2, int par3, int par4)
     {
-        this.blockIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }
-    
-    protected boolean canThisPlantGrowOnThisBlockID(int i)
-    {
-        return i == Block.netherrack.blockID;
-    }
-    
-    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
-    {
-    	if(par1World.getBlockId(par2, par3 - 1, par4) == Block.netherrack.blockID)
+    	if(par1World.func_147439_a(par2, par3 - 1, par4) == Blocks.netherrack)
     		return true;
     	else
     		return false;
     }
     
-    public void updateTick(World world, int i, int j, int k, Random random)
+    public void func_149674_a(World world, int i, int j, int k, Random random)
     {
-        super.updateTick(world, i, j, k, random);
+        super.func_149674_a(world, i, j, k, random);
         
         if(world.getBlockLightValue(i, j + 1, k) >= 9 && random.nextInt(7) == 0)
         {
@@ -63,13 +48,13 @@ public class BlockBlazeSapling extends BlockFlower
     public void growTree(World world, int i, int j, int k, Random random)
     {
         int l = world.getBlockMetadata(i, j, k);
-        world.setBlockToAir(i, j, k);
+        world.func_147468_f(i, j, k);
         Object obj = null;
         obj = new WorldGenBlazeTrees();
         
         if(!((WorldGenerator) (obj)).generate(world, random, i, j, k))
         {
-            world.setBlock(i, j, k, blockID, l, 2);
+            world.func_147465_d(i, j, k, PeacefulPack.blazelog, l, 2);
         }
     }
 }

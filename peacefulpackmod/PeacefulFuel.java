@@ -7,9 +7,9 @@ public class PeacefulFuel implements IFuelHandler
 {
 	public int getBurnTime(ItemStack fuel) 
 	{
-		if(fuel.itemID == PeacefulPack.sulphDust.itemID)
+		if(fuel == new ItemStack(PeacefulPack.sulphDust))
 			return 1000;
-		if(fuel == new ItemStack(PeacefulPack.blazelog, 1))
+		if(fuel == new ItemStack(PeacefulPack.blazelog))
 			return 1600;
 		
 		else

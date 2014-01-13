@@ -2,47 +2,31 @@ package peacefulpackmod.block;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import peacefulpackmod.PeacefulPack;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 public class Blockslime extends Block
 {
-	public Blockslime(int id)
+	public Blockslime()
     {
-        super(id, Material.ground);
-        setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        super(Material.field_151578_c);
+        func_149676_a(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+        this.func_149647_a(CreativeTabs.tabBlock);
     }
 	
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public Item func_149650_a(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        this.blockIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }
-    
-	public int idDropped(int par1, Random par2Random, int par3)
-    {
-        return Item.slimeBall.itemID;
-    }
-	
-    public int quantityDropped(Random par1Random)
-    {
-        return 1;
+        return Items.slime_ball;
     }
 
-    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    public void func_149734_b(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
+        super.func_149734_b(par1World, par2, par3, par4, par5Random);
 
         if (par5Random.nextInt(2) == 0)
         {

@@ -1,28 +1,27 @@
 package peacefulpackmod.block;
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import peacefulpackmod.PeacefulPack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import peacefulpackmod.PeacefulPack;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.Icon;
-import net.minecraft.world.World;
-
 public class BlockBlazelog extends Block
 {
-	public BlockBlazelog(int i)
+	public BlockBlazelog()
     {
-        super(i, Material.wood);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        super(Material.field_151575_d);
+        this.func_149647_a(CreativeTabs.tabBlock);
     }
 	
-	public Icon getIcon(int par1, int par2)
+	public IIcon func_149691_a(int par1, int par2)
     {
         if(par1 == 0 || par1 == 1)
         	return iconArray[1];
@@ -30,31 +29,26 @@ public class BlockBlazelog extends Block
         	return iconArray[0];
     }
 	@SideOnly(Side.CLIENT)
-	private Icon[] iconArray;
+	private IIcon[] iconArray;
 	
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void func_149651_a(IIconRegister par1IconRegister)
     {
-		iconArray = new Icon[2];
+		iconArray = new IIcon[2];
 		for (int i = 0; i < this.iconArray.length; ++i)
         {
-            this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
+            this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.func_149739_a().substring(5)) + i);
         }
     }
 	
-    public int quantityDropped(Random random)
+	public Item func_149650_a(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return 1;
+        return Item.func_150898_a(this);
     }
 
-    public int idDropped(int i, Random random, int j)
+    public void func_149636_a(World world, EntityPlayer entityplayer, int i, int j, int k, int l)
     {
-        return PeacefulPack.blazelog.blockID;
-    }
-
-    public void harvestBlock(World world, EntityPlayer entityplayer, int i, int j, int k, int l)
-    {
-        super.harvestBlock(world, entityplayer, i, j, k, l);
+        super.func_149636_a(world, entityplayer, i, j, k, l);
     }
 
     public void onBlockRemoval(World world, int i, int j, int k)
@@ -69,8 +63,8 @@ public class BlockBlazelog extends Block
                 {
                     for(int k1 = -byte0; k1 <= byte0; k1++)
                     {
-                        int l1 = world.getBlockId(i + i1, j + j1, k + k1);
-                        if(l1 != PeacefulPack.blazeleaves.blockID)  ///Leaf//////////////
+                        Block l1 = world.func_147439_a(i + i1, j + j1, k + k1);
+                        if(l1 != PeacefulPack.blazeleaves)
                         {
                             continue;
                         }
