@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -12,12 +11,10 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Koi.modid, name = "Koi", version = "1.11.0")
 public class Koi
@@ -76,9 +73,9 @@ public class Koi
 	{
 		if(outdated)
 		{
-			event.player.func_146105_b(new ChatComponentText("Koi is outdated."));
-			event.player.func_146105_b(new ChatComponentText("Changelog: "));
-			event.player.func_146105_b(new ChatComponentText(updates));
+			event.player.addChatComponentMessage(new ChatComponentText("Koi is outdated."));
+			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
+			event.player.addChatComponentMessage(new ChatComponentText(updates));
 		}
 	}
 }

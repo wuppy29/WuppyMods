@@ -15,12 +15,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.7.5")
+@Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.8.1")
 public class SimplePack 
 {
 	public static final String modid = "wuppy29_simplerecipes";
 	
-	public static final int VERSION = 2;
+	public static final int VERSION = 3;
 	public static String updates = "";
 	public static boolean outdated = false;
 	
@@ -42,82 +42,100 @@ public class SimplePack
 	public void load(FMLInitializationEvent event) 
 	{
 		GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), new Object[]
-				{
-					"ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand
-				});
+		{
+			"ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand
+		});
+		GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), new Object[]
+		{
+			"ZXZ", "XCX", "ZXZ", 'Z', Blocks.sand, 'C', Items.water_bucket, 'X', new ItemStack(Items.dye, 1, 15)
+		});
 		GameRegistry.addRecipe(new ItemStack(Blocks.mossy_cobblestone, 1), new Object[]
-				{
-					" X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine
-				});
+		{
+			" X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine
+		});
 		GameRegistry.addRecipe(new ItemStack(Blocks.web, 5), new Object[]
-				{
-					"X X", " X ", "X X", 'X', Items.string
-				});
+		{
+			"X X", " X ", "X X", 'X', Items.string
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian, 1), new Object[]
-				{
-					new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket)
-				});
+		{
+			new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.gravel, 2), new Object[]
-				{
-					new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone)
-				});
+		{
+			new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone)
+		});
 		GameRegistry.addRecipe(new ItemStack(Blocks.sponge, 4), new Object[]
-				{
-					" X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 11), 'Z', Items.water_bucket
-				});
+		{
+			" X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 4), 'Z', Items.water_bucket
+		});
 		GameRegistry.addRecipe(new ItemStack(Blocks.ice, 1), new Object[]
-				{
-					" X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket
-				});
+		{
+			" X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket
+		});
 		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new Object[]
-				{
-					" X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine
-				});
+		{
+			" X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), new Object[]
-				{
-					new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine)
-				});
+		{
+			new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-				{
-					new ItemStack(Items.chicken)
-				});
+		{
+			new ItemStack(Items.chicken)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-				{
-					new ItemStack(Items.porkchop)
-				});
+		{
+			new ItemStack(Items.porkchop)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-				{
-					new ItemStack(Items.beef)
-				});
+		{
+			new ItemStack(Items.beef)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 2), new Object[]
-				{
-					new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick)
-				});
+		{
+			new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.redstone, 2), new Object[]
-				{
-					new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1)
-				});
+		{
+			new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.glowstone_dust, 2), new Object[]
-				{
-					new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11)
-				});
+		{
+			new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.book, 1), new Object[] 
-				{
-					new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool)
-				});
+		{
+			new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool)
+		});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 0), new Object[]
-				{
-					new ItemStack(Items.coal)
-				});
+		{
+			new ItemStack(Items.coal)
+		});
 		GameRegistry.addRecipe(new ItemStack(Items.arrow, 2), new Object[]
-				{
-					"XCX",
-					" V ",
-					" B ",
-					'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint
-				});
+		{
+			"XCX",
+			" V ",
+			" B ",
+			'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint
+		});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new Object[]
+		{
+			Blocks.wool
+		});
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.mycelium), new Object[]
+		{
+			Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.dirt
+		});
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.packed_ice), new Object[]
+		{
+			Blocks.ice, Blocks.ice, Blocks.ice, Blocks.ice
+		});
 		GameRegistry.addSmelting(Blocks.netherrack, new ItemStack(Blocks.nether_brick), 0.1F);
 		GameRegistry.addSmelting(Blocks.stonebrick, new ItemStack(Blocks.stonebrick, 1, 3), 0.1F);
+		GameRegistry.addSmelting(Items.rotten_flesh, new ItemStack(Items.leather), 0.1F);
+		GameRegistry.addSmelting(Blocks.gravel, new ItemStack(Items.flint), 0.1F);
 	}
 	
 	@SubscribeEvent
@@ -125,9 +143,9 @@ public class SimplePack
 	{
 		if(outdated)
 		{
-			event.player.func_146105_b(new ChatComponentText("Simple Recipes is outdated."));
-			event.player.func_146105_b(new ChatComponentText("Changelog: "));
-			event.player.func_146105_b(new ChatComponentText(updates));
+			event.player.addChatComponentMessage(new ChatComponentText("Simple Recipes is outdated."));
+			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
+			event.player.addChatComponentMessage(new ChatComponentText(updates));
 		}
 	}
 }

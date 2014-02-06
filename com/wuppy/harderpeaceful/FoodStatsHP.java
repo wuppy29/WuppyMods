@@ -111,7 +111,7 @@ public class FoodStatsHP extends FoodStats
      */
     public void readNBT(NBTTagCompound par1NBTTagCompound)
     {
-        if (par1NBTTagCompound.func_150297_b("foodLevel", 99))
+        if (par1NBTTagCompound.hasKey("foodLevel", 99))
         {
             this.foodLevel = par1NBTTagCompound.getInteger("foodLevel");
             this.foodTimer = par1NBTTagCompound.getInteger("foodTickTimer");

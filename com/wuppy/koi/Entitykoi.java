@@ -11,19 +11,18 @@ public class Entitykoi extends EntityWaterMob
 {
     public Entitykoi(World par1World)
     {
-    	super (par1World);
+    	super(par1World);
     	tasks.addTask(0, new EntityAIMoveToWater(this, this.worldObj));
     	tasks.addTask(1, new EntityAISwimmingFish(this));
     	tasks.addTask(2, new EntityAIPanicKoi(this, 0.38F));
-    	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F)); 
-    	System.out.println("build");
+    	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F));
     }
     
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
     }
     
     public boolean isAIEnabled()

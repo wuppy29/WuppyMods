@@ -16,9 +16,9 @@ public class EventManager
 	{
 		if(HarderPeaceful.outdated)
 		{
-			event.player.func_146105_b(new ChatComponentText("Harder Peaceful is outdated."));
-			event.player.func_146105_b(new ChatComponentText("Changelog: "));
-			event.player.func_146105_b(new ChatComponentText(HarderPeaceful.updates));
+			event.player.addChatComponentMessage(new ChatComponentText("Harder Peaceful is outdated."));
+			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
+			event.player.addChatComponentMessage(new ChatComponentText(HarderPeaceful.updates));
 		}
 	}
 	

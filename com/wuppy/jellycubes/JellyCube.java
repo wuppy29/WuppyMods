@@ -61,9 +61,9 @@ public class JellyCube
 	{
 		if(outdated)
 		{
-			event.player.func_146105_b(new ChatComponentText("Jelly Cubes is outdated."));
-			event.player.func_146105_b(new ChatComponentText("Changelog: "));
-			event.player.func_146105_b(new ChatComponentText(updates));
+			event.player.addChatComponentMessage(new ChatComponentText("Jelly Cubes is outdated."));
+			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
+			event.player.addChatComponentMessage(new ChatComponentText(updates));
 		}
 	}
 }

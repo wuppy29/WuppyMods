@@ -26,7 +26,7 @@ public class EntityAIMoveToWater extends EntityAIBase
 		int y = (int) entity.posY;
 		int z = (int) entity.posZ;
 		
-		if(entity.isInWater() || world.func_147439_a(x, y - 1, z) == Blocks.water || world.func_147439_a(x, y - 1, z) == Blocks.flowing_water || entity.hasPath())
+		if(entity.isInWater() || world.getBlock(x, y - 1, z) == Blocks.water || world.getBlock(x, y - 1, z) == Blocks.flowing_water || entity.hasPath())
 			return false;
 		else
 			return true;
@@ -51,7 +51,7 @@ public class EntityAIMoveToWater extends EntityAIBase
 				{
 					for(int zOff = -5; zOff < 5; zOff++)
 					{
-						surroundingBlocks.add(world.func_147439_a(x + xOff, y - yOff, z + zOff));
+						surroundingBlocks.add(world.getBlock(x + xOff, y - yOff, z + zOff));
 						xOffset.add(xOff);
 						yOffset.add(yOff);
 						zOffset.add(zOff);
