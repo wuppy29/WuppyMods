@@ -20,12 +20,12 @@ public class ClientProxyMagic extends CommonProxyMagic
 
 	public void registerItemRender() 
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityExpBottlexl.class, new RenderMagicalBottle(MagicalExperience.xpbottlexl, 0, "assets/wuppy29_magicalexperience/textures/items/xpbottlexl.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityThunderbottle.class, new RenderMagicalBottle(MagicalExperience.thunderbottle, 0, "assets/wuppy29_magicalexperience/textures/items/thunderbottle.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityTntbottle.class, new RenderMagicalBottle(MagicalExperience.tntbottle, 0, "assets/wuppy29_magicalexperience/textures/items/Tntbottle.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityClusterBottle.class, new RenderMagicalBottle(MagicalExperience.clusterbottle, 0, "assets/wuppy29_magicalexperience/textures/items/clusterbottle.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityFirebottle.class, new RenderMagicalBottle(MagicalExperience.firebottle, 0, "assets/wuppy29_magicalexperience/textures/items/firebottle.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityDirtBottle.class, new RenderMagicalBottle(MagicalExperience.dirtbottle, 0, "assets/wuppy29_magicalexperience/textures/items/dirtbottle.png"));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityBonemealBottle.class, new RenderMagicalBottle(MagicalExperience.bonebottle, 0, "assets/wuppy29_magicalexperience/textures/items/bonebottle.png"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityExpBottlexl.class, new RenderMagicalBottle(MagicalExperience.xpbottlexl));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityThunderbottle.class, new RenderMagicalBottle(MagicalExperience.thunderbottle));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityTntbottle.class, new RenderMagicalBottle(MagicalExperience.tntbottle));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityClusterBottle.class, new RenderMagicalBottle(MagicalExperience.clusterbottle));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityFirebottle.class, new RenderMagicalBottle(MagicalExperience.firebottle));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityDirtBottle.class, new RenderMagicalBottle(MagicalExperience.dirtbottle));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityBonemealBottle.class, new RenderMagicalBottle(MagicalExperience.bonebottle));
 	}
 }

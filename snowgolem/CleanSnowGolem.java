@@ -3,6 +3,7 @@ package snowgolem;
 import java.io.IOException;
 
 import net.minecraft.block.Block;
+import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -13,7 +14,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = CleanSnowGolem.modid, name = "Clean Snow Golem", version = "1.5.1")
+@Mod(modid = CleanSnowGolem.modid, name = "Clean Snow Golem", version = "1.5.1b")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class CleanSnowGolem 
 {
@@ -29,15 +30,27 @@ public class CleanSnowGolem
 	public static int customPumpkinID = Block.pumpkin.blockID;
 	public static Block customPumpkin;
 	
+	public static boolean checkForUpdates = true;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		try
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		
+		config.load();
+		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "Check Updates", true).getBoolean(true);
+		config.save();
+		
+		if (checkForUpdates)
 		{
-			UpdateChecker.checkForUpdates();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
+			try
+			{
+				UpdateChecker.checkForUpdates();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 	

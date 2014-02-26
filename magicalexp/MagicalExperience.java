@@ -49,13 +49,13 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = MagicalExperience.modid, name = "Magical Experience", version = "1.1.4.0")
+@Mod(modid = MagicalExperience.modid, name = "Magical Experience", version = "1.1.4.1b")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class MagicalExperience 
 {
 	public static final String modid = "wuppy29_magicalexperience";
 	
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 	public static String updates = "";
 	public static boolean outdated = false;
 	
@@ -108,6 +108,8 @@ public class MagicalExperience
     public static Item bonebottle;
     public static Item airbottle;
     
+    public static boolean checkForUpdates = true;
+    
     static EnumToolMaterial STAFF = EnumHelper.addToolMaterial("STAFF", 1, 500, 7F, 1, 14);
     static EnumToolMaterial experion = EnumHelper.addToolMaterial("experion", 2, 500, 7F, 2, 14);
     
@@ -139,14 +141,20 @@ public class MagicalExperience
 		DirtBottleID = config.getItem("Dirt Bottle ID", Configuration.CATEGORY_ITEM, 4033).getInt();
 		BonemealBottleID = config.getItem("Bonemeal Bottle ID", Configuration.CATEGORY_ITEM, 4034).getInt();
 		
+		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "Check Updates", true).getBoolean(true);
+		
 		config.save();
 		
-		try
+		if (checkForUpdates)
 		{
-			UpdateChecker.checkForUpdates();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
+			try
+			{
+				UpdateChecker.checkForUpdates();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
     

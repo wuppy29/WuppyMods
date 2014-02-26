@@ -1,0 +1,68 @@
+tile.savportal.name=Savannah Portal
+tile.red cactus.name=Red Cactus
+tile.savannahtnt.name=Savannah TNT
+tile.customwood.name=Sausage Wood
+
+tile.oreblock.yellow.name=Citrine Ore
+tile.oreblock.blue.name=Kyanite Ore
+tile.oreblock.white.name=Moonstone Ore
+tile.oreblock.gray.name=Lepidolite Ore
+tile.oreblock.light blue.name=Aquamarine Ore
+tile.oreblock.brown.name=Hematite Ore
+tile.oreblock.red.name=Ruby Ore
+
+tile.customstone.gold.name=Sandstone Gold Ore
+tile.customstone.iron.name=Sandstone Iron Ore
+tile.customstone.coal.name=Sandstone Coal Ore
+tile.customstone.diamond.name=Sandstone Diamond Ore
+tile.customstone.redstone.name=Sandstone Redstone Ore
+tile.customstone.lapis.name=Sandstone Lapis Lazuli Ore
+
+
+
+item.bonespear.name=Bone Spear
+item.uruksword.name=Uruk Hai Sword
+item.wood poison.name=Wooden Poison Sword
+item.stone poison.name=Stone Poison Sword
+item.iron poison.name=Iron Poison Sword
+item.gold poison.name=Gold Poison Sword
+item.diamon poison.name=Diamond Poison Sword
+item.redcactusfood.name=Cooked Red Cactus
+item.waterhoe.name=Hoe Of Watering
+item.explosivebow.name=Creepers' Soul Bow
+item.portalPlacer.name=Portal Placer
+item.dagger.name=Dagger
+
+item.component.vampireblood.name=Vampire Blood
+item.component.speartip.name=Spear Tip
+item.component.giantbone.name=Giant Bone
+item.component.redgiantbone.name=Bloody Giant Bone
+item.component.poisonbottle.name=Poison Bottle
+item.component.savannahgunpowder.name=Savannah Gunpowder
+
+item.key.yellow.name=Yellow Key
+item.key.blue.name=Blue Key
+item.key.white.name=White Key
+item.key.grey.name=Gray Key
+item.key.cyan.name=Light Blue Key
+item.key.brown.name=Brown Key
+item.key.red.name=Red Key
+
+item.gem.yellow.name=Citrine
+item.gem.blue.name=Kyanite
+item.gem.white.name=Moonstone
+item.gem.grey.name=Lepidolite
+item.gem.cyan.name=Aquamarine
+item.gem.brown.name=Hematite
+item.gem.red.name=Ruby
+
+
+
+entity.vampire.name=Vampire
+entity.dwarf.name=Dwarf
+entity.werewolf.name=Werewolf
+entity.pigman.name=Pigman
+entity.goblin.name=Goblin
+entity.giant.name=Giant
+entity.orc.name=Orc
+entity.redcreeper.name=Red Creeper

@@ -20,7 +20,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = SlimeDungeon.modid, name = "Slime Dungeons", version = "1.5.6")
+@Mod(modid = SlimeDungeon.modid, name = "Slime Dungeons", version = "1.5.6b")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class SlimeDungeon 
 {
@@ -41,6 +41,8 @@ public class SlimeDungeon
 	public static Block SlimeCobble;
 	public static Block SlimeBlock;
 	
+	public static boolean checkForUpdates = true;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -50,15 +52,20 @@ public class SlimeDungeon
 		
 		SlimeCobbleStoneId = config.getBlock("Slime Cobblestone ID", Configuration.CATEGORY_BLOCK, 315).getInt();
 		SlimeBlockID = config.getBlock("Slime Block ID", Configuration.CATEGORY_BLOCK, 316).getInt();
+		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "Check Updates", true).getBoolean(true);
 		
 		config.save();
 		
-		try
+		if (checkForUpdates)
 		{
-			UpdateChecker.checkForUpdates();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
+			try
+			{
+				UpdateChecker.checkForUpdates();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 	
