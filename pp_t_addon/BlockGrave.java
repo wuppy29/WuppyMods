@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
+import thaumcraft.common.config.ConfigItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -34,10 +34,14 @@ public class BlockGrave extends Block
 			return Block.stone.getIcon(0, 0);
 	}
 	
-	//TODO add Thaumcraft drop
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-		return Item.appleGold.itemID;
+		return ConfigItems.itemResource.itemID;
+	}
+	
+	public int damageDropped(int par1)
+	{
+		return 5;
 	}
 	
 	public boolean isOpaqueCube()

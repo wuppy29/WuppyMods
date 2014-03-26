@@ -58,11 +58,13 @@ item.gem.red.name=Ruby
 
 
 
-entity.vampire.name=Vampire
-entity.dwarf.name=Dwarf
-entity.werewolf.name=Werewolf
-entity.pigman.name=Pigman
-entity.goblin.name=Goblin
-entity.giant.name=Giant
-entity.orc.name=Orc
-entity.redcreeper.name=Red Creeper
+entity.wuppy29_goblingiant.vampire.name=Vampire
+entity.wuppy29_goblingiant.dwarf.name=Dwarf
+entity.wuppy29_goblingiant.werewolf.name=Werewolf
+entity.wuppy29_goblingiant.pigman.name=Pigman
+entity.wuppy29_goblingiant.goblin.name=Goblin
+entity.wuppy29_goblingiant.giant.name=Giant
+entity.wuppy29_goblingiant.orc.name=Orc
+entity.wuppy29_goblingiant.redcreeper.name=Red Creeper
+
+

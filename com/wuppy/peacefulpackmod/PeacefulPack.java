@@ -31,7 +31,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.7.0")
+@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.7.1")
 public class PeacefulPack
 {
 	public static final String modid = "wuppy29_peacefulpack";

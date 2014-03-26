@@ -69,7 +69,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.3.0")
+@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.3.1")
 public class GoblinGiant
 {
 	public static final int VERSION = 3;
@@ -215,6 +215,8 @@ public class GoblinGiant
 		EntityRegistry.registerModEntity(EntityGiant.class, "giant", 7, this, 80, 3, true);
 		EntityRegistry.registerModEntity(EntityUruk.class, "orc", 8, this, 80, 3, true);
 		EntityRegistry.registerModEntity(EntityRedCreeper.class, "redcreeper", 9, this, 80, 3, true);
+		
+		//EntityRegistry.registerModEntity(EntityGreenSnake.class, "snake", 10, this, 80, 3, true);
 
 		// spawns
 		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++)
