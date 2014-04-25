@@ -1,4 +1,4 @@
-package com.wuppy.goblinsgiants.entity;
+package com.wuppy.goblinsgiants.entity.ai;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,7 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 @SuppressWarnings("rawtypes")
-public class EntityAIAttackOnCollideNight extends EntityAIBase
+public class EntityAIAttackFireOnCollide extends EntityAIBase
 {
     World worldObj;
     EntityCreature attacker;
@@ -29,18 +29,18 @@ public class EntityAIAttackOnCollideNight extends EntityAIBase
 
     /** The PathEntity of our entity. */
     PathEntity entityPathEntity;
-    Class classTarget;
+	Class classTarget;
     private int field_75445_i;
 
     private int failedPathFindingPenalty;
 
-    public EntityAIAttackOnCollideNight(EntityCreature par1EntityCreature, Class par2Class, double par3, boolean par5)
+    public EntityAIAttackFireOnCollide(EntityCreature par1EntityCreature, Class par2Class, double par3, boolean par5)
     {
         this(par1EntityCreature, par3, par5);
         this.classTarget = par2Class;
     }
 
-    public EntityAIAttackOnCollideNight(EntityCreature par1EntityCreature, double par2, boolean par4)
+    public EntityAIAttackFireOnCollide(EntityCreature par1EntityCreature, double par2, boolean par4)
     {
         this.attacker = par1EntityCreature;
         this.worldObj = par1EntityCreature.worldObj;
@@ -68,10 +68,6 @@ public class EntityAIAttackOnCollideNight extends EntityAIBase
         else if (this.classTarget != null && !this.classTarget.isAssignableFrom(entitylivingbase.getClass()))
         {
             return false;
-        }
-        else if(this.worldObj.isDaytime())
-        {
-        	return false;
         }
         else
         {
@@ -159,6 +155,7 @@ public class EntityAIAttackOnCollideNight extends EntityAIBase
                 }
 
                 this.attacker.attackEntityAsMob(entitylivingbase);
+                entitylivingbase.setFire(6);
             }
         }
     }

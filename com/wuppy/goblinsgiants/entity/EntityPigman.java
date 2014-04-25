@@ -32,6 +32,7 @@ public class EntityPigman extends EntityAnimal
         this.tasks.addTask(8, new EntityAILookIdle(this));
     }
     
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -42,6 +43,7 @@ public class EntityPigman extends EntityAnimal
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     protected boolean isAIEnabled()
     {
         return true;
@@ -50,6 +52,7 @@ public class EntityPigman extends EntityAnimal
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return "mob.zombiepig.zpig";
@@ -58,6 +61,7 @@ public class EntityPigman extends EntityAnimal
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return "mob.zombiepig.zpighurt";
@@ -66,11 +70,13 @@ public class EntityPigman extends EntityAnimal
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return "mob.zombiepig.zpigdeath";
     }
 
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
     	if(this.isBurning())
@@ -83,6 +89,7 @@ public class EntityPigman extends EntityAnimal
     	}
     }
 
+    @Override
     public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
     {
         if (!this.worldObj.isRemote)
@@ -94,6 +101,7 @@ public class EntityPigman extends EntityAnimal
         }
     }
 
+    @Override
     protected void dropRareDrop(int par1)
     {
         if (par1 > 0)
@@ -121,6 +129,7 @@ public class EntityPigman extends EntityAnimal
         }
     }
     
+    @Override
 	public EntityAgeable createChild(EntityAgeable entityageable) 
 	{
 		return null;

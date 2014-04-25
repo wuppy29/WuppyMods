@@ -1,7 +1,5 @@
 package com.wuppy.goblinsgiants.entity;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -19,9 +17,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.wuppy.goblinsgiants.entity.ai.EntityAIAttackFireOnCollide;
+import com.wuppy.goblinsgiants.items.ModItems;
+
 public class EntityUruk extends EntityMob
 {
-	private static final ItemStack defaultHeldItem = new ItemStack(GoblinGiant.uruksword, 1);
+	private static final ItemStack defaultHeldItem = new ItemStack(ModItems.uruksword, 1);
 	
     public EntityUruk(World par1World)
     {
@@ -42,6 +43,7 @@ public class EntityUruk extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
     }
     
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -52,11 +54,13 @@ public class EntityUruk extends EntityMob
     /**
      * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
      */
+    @Override
     public int getTotalArmorValue()
     {
         return 2;
     }
 
+    @Override
     public ItemStack getHeldItem()
     {
         return defaultHeldItem;
@@ -65,6 +69,7 @@ public class EntityUruk extends EntityMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     protected boolean isAIEnabled()
     {
         return true;
@@ -73,6 +78,7 @@ public class EntityUruk extends EntityMob
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return null;
@@ -81,6 +87,7 @@ public class EntityUruk extends EntityMob
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return null;
@@ -89,27 +96,22 @@ public class EntityUruk extends EntityMob
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return null;
     }
 
-    /**
-     * Returns the item ID for the item the mob drops on death.
-     */
-    protected int getDropItemId()
-    {
-        return 0;
-    }
-
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
     	if(worldObj.rand.nextInt(5) == 0)
     	{
-    		this.entityDropItem(new ItemStack(GoblinGiant.uruksword, 1), 0.0F);
+    		this.entityDropItem(new ItemStack(ModItems.uruksword, 1), 0.0F);
     	}
     }
 
+    @Override
     protected void dropRareDrop(int par1)
     {
         switch (this.rand.nextInt(4))

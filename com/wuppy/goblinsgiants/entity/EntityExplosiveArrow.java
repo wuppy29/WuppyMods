@@ -1,20 +1,16 @@
 package com.wuppy.goblinsgiants.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
@@ -23,7 +19,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityExplosiveArrow extends Entity implements IProjectile
+public class EntityExplosiveArrow extends EntityArrow
 {
     private int field_145791_d = -1;
     private int field_145792_e = -1;
@@ -119,68 +115,6 @@ public class EntityExplosiveArrow extends Entity implements IProjectile
         this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
         this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
         this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, par3 * 1.5F, 1.0F);
-    }
-
-    protected void entityInit()
-    {
-        this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
-    }
-
-    /**
-     * Similar to setArrowHeading, it's point the throwable entity to a x, y, z direction.
-     */
-    public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8)
-    {
-        float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
-        par1 /= (double)f2;
-        par3 /= (double)f2;
-        par5 /= (double)f2;
-        par1 += this.rand.nextGaussian() * (double)(this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * (double)par8;
-        par3 += this.rand.nextGaussian() * (double)(this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * (double)par8;
-        par5 += this.rand.nextGaussian() * (double)(this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * (double)par8;
-        par1 *= (double)par7;
-        par3 *= (double)par7;
-        par5 *= (double)par7;
-        this.motionX = par1;
-        this.motionY = par3;
-        this.motionZ = par5;
-        float f3 = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-        this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
-        this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f3) * 180.0D / Math.PI);
-        this.ticksInGround = 0;
-    }
-
-    /**
-     * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
-     * posY, posZ, yaw, pitch
-     */
-    @SideOnly(Side.CLIENT)
-    public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
-    {
-        this.setPosition(par1, par3, par5);
-        this.setRotation(par7, par8);
-    }
-
-    /**
-     * Sets the velocity to the args. Args: x, y, z
-     */
-    @SideOnly(Side.CLIENT)
-    public void setVelocity(double par1, double par3, double par5)
-    {
-        this.motionX = par1;
-        this.motionY = par3;
-        this.motionZ = par5;
-
-        if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
-        {
-            float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-            this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
-            this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f) * 180.0D / Math.PI);
-            this.prevRotationPitch = this.rotationPitch;
-            this.prevRotationYaw = this.rotationYaw;
-            this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
-            this.ticksInGround = 0;
-        }
     }
 
     /**
@@ -469,141 +403,5 @@ public class EntityExplosiveArrow extends Entity implements IProjectile
             this.setPosition(this.posX, this.posY, this.posZ);
             this.func_145775_I();
         }
-    }
-
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        par1NBTTagCompound.setShort("xTile", (short)this.field_145791_d);
-        par1NBTTagCompound.setShort("yTile", (short)this.field_145792_e);
-        par1NBTTagCompound.setShort("zTile", (short)this.field_145789_f);
-        par1NBTTagCompound.setShort("life", (short)this.ticksInGround);
-        par1NBTTagCompound.setByte("inTile", (byte)Block.getIdFromBlock(this.field_145790_g));
-        par1NBTTagCompound.setByte("inData", (byte)this.inData);
-        par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
-        par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
-        par1NBTTagCompound.setByte("pickup", (byte)this.canBePickedUp);
-        par1NBTTagCompound.setDouble("damage", this.damage);
-    }
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
-        this.field_145791_d = par1NBTTagCompound.getShort("xTile");
-        this.field_145792_e = par1NBTTagCompound.getShort("yTile");
-        this.field_145789_f = par1NBTTagCompound.getShort("zTile");
-        this.ticksInGround = par1NBTTagCompound.getShort("life");
-        this.field_145790_g = Block.getBlockById(par1NBTTagCompound.getByte("inTile") & 255);
-        this.inData = par1NBTTagCompound.getByte("inData") & 255;
-        this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
-        this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
-
-        if (par1NBTTagCompound.hasKey("damage", 99))
-        {
-            this.damage = par1NBTTagCompound.getDouble("damage");
-        }
-
-        if (par1NBTTagCompound.hasKey("pickup", 99))
-        {
-            this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
-        }
-        else if (par1NBTTagCompound.hasKey("player", 99))
-        {
-            this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
-        }
-    }
-
-    /**
-     * Called by a player entity when they collide with an entity
-     */
-    public void onCollideWithPlayer(EntityPlayer par1EntityPlayer)
-    {
-        if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0)
-        {
-            boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
-
-            if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.arrow, 1)))
-            {
-                flag = false;
-            }
-
-            if (flag)
-            {
-                this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-                par1EntityPlayer.onItemPickup(this, 1);
-                this.setDead();
-            }
-        }
-    }
-
-    /**
-     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
-    protected boolean canTriggerWalking()
-    {
-        return false;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public float getShadowSize()
-    {
-        return 0.0F;
-    }
-
-    public void setDamage(double par1)
-    {
-        this.damage = par1;
-    }
-
-    public double getDamage()
-    {
-        return this.damage;
-    }
-
-    /**
-     * Sets the amount of knockback the arrow applies when it hits a mob.
-     */
-    public void setKnockbackStrength(int par1)
-    {
-        this.knockbackStrength = par1;
-    }
-
-    /**
-     * If returns false, the item will not inflict any damage against entities.
-     */
-    public boolean canAttackWithItem()
-    {
-        return false;
-    }
-
-    /**
-     * Whether the arrow has a stream of critical hit particles flying behind it.
-     */
-    public void setIsCritical(boolean par1)
-    {
-        byte b0 = this.dataWatcher.getWatchableObjectByte(16);
-
-        if (par1)
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 1)));
-        }
-        else
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -2)));
-        }
-    }
-
-    /**
-     * Whether the arrow has a stream of critical hit particles flying behind it.
-     */
-    public boolean getIsCritical()
-    {
-        byte b0 = this.dataWatcher.getWatchableObjectByte(16);
-        return (b0 & 1) != 0;
     }
 }

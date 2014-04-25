@@ -37,12 +37,14 @@ public class EntitySavannahTNTPrimed extends EntityTNTPrimed
         this.tntPlacedBy = entityLivingBase;
     }
 
+    @Override
     protected void entityInit() {}
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
      */
+    @Override
     protected boolean canTriggerWalking()
     {
         return false;
@@ -51,6 +53,7 @@ public class EntitySavannahTNTPrimed extends EntityTNTPrimed
     /**
      * Returns true if other Entities should be prevented from moving through this Entity.
      */
+    @Override
     public boolean canBeCollidedWith()
     {
         return !this.isDead;
@@ -59,6 +62,7 @@ public class EntitySavannahTNTPrimed extends EntityTNTPrimed
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
         this.prevPosX = this.posX;
@@ -101,6 +105,7 @@ public class EntitySavannahTNTPrimed extends EntityTNTPrimed
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         par1NBTTagCompound.setByte("Fuse", (byte)this.fuse);
@@ -109,17 +114,20 @@ public class EntitySavannahTNTPrimed extends EntityTNTPrimed
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         this.fuse = par1NBTTagCompound.getByte("Fuse");
     }
 
     @SideOnly(Side.CLIENT)
+    @Override
     public float getShadowSize()
     {
         return 0.0F;
     }
 
+    @Override
     public EntityLivingBase getTntPlacedBy()
     {
         return this.tntPlacedBy;

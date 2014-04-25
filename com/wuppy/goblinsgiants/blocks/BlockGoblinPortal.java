@@ -1,39 +1,42 @@
 package com.wuppy.goblinsgiants.blocks;
 
-
 import java.util.Random;
-
-import com.wuppy.goblinsgiants.GoblinGiant;
-import com.wuppy.goblinsgiants.dimension.savannah.TeleporterGoblinsGiantsSavannah;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
+import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.dimension.savannah.TeleporterGoblinsGiantsSavannah;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
+import com.wuppy.goblinsgiants.worldgen.ModGeneration;
+
 public class BlockGoblinPortal extends BlockPortal
 {
 	public BlockGoblinPortal()
 	{
 		super();
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ModTabs.ggBlocksTab);
 	}
 
+	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(GoblinGiant.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
 
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
 
 	}
 
+	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
 	{
 		if ((par5Entity.ridingEntity == null) && (par5Entity.riddenByEntity == null) && ((par5Entity instanceof EntityPlayerMP)))
@@ -46,11 +49,11 @@ public class BlockGoblinPortal extends BlockPortal
 			{
 				player.timeUntilPortal = 10;
 			}
-			else if (player.dimension != GoblinGiant.dimension)
+			else if (player.dimension != ModGeneration.dimension)
 			{
 				player.timeUntilPortal = 10;
 
-				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, GoblinGiant.dimension, new TeleporterGoblinsGiantsSavannah(mServer.worldServerForDimension(GoblinGiant.dimension)));
+				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, ModGeneration.dimension, new TeleporterGoblinsGiantsSavannah(mServer.worldServerForDimension(ModGeneration.dimension)));
 			}
 			else
 			{
@@ -60,6 +63,7 @@ public class BlockGoblinPortal extends BlockPortal
 		}
 	}
 
+	@Override
 	public boolean func_150000_e(World par1World, int par2, int par3, int par4)
 	{
 		byte var5 = 0;
@@ -127,13 +131,15 @@ public class BlockGoblinPortal extends BlockPortal
 		}
 	}
 
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5)
 	{
 
 	}
 
-	public int quantityDropped(Random par1Random)
+	@Override
+	public int quantityDropped(Random p_149745_1_)
 	{
-		return 1;
+		return 0;
 	}
 }

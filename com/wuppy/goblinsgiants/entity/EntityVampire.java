@@ -1,7 +1,5 @@
 package com.wuppy.goblinsgiants.entity;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -23,6 +21,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.wuppy.goblinsgiants.items.ModItems;
+
 public class EntityVampire extends EntityMob
 {
     public EntityVampire(World par1World)
@@ -43,6 +43,7 @@ public class EntityVampire extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
     }
     
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -53,6 +54,7 @@ public class EntityVampire extends EntityMob
     /**
      * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
      */
+    @Override
     public int getTotalArmorValue()
     {
         return 2;
@@ -61,6 +63,7 @@ public class EntityVampire extends EntityMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     protected boolean isAIEnabled()
     {
         return true;
@@ -70,6 +73,7 @@ public class EntityVampire extends EntityMob
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
      */
+    @Override
     public void onLivingUpdate()
     {
         if (this.worldObj.isDaytime() && !this.worldObj.isRemote)
@@ -85,6 +89,7 @@ public class EntityVampire extends EntityMob
         super.onLivingUpdate();
     }
 
+    @Override
     public void setDead()
     {
         if (!this.worldObj.isRemote && this.getHealth() <= 0)
@@ -103,6 +108,7 @@ public class EntityVampire extends EntityMob
     /**
      * Returns the sound this mob makes while it's alive.
      */
+    @Override
     protected String getLivingSound()
     {
         return null;
@@ -111,6 +117,7 @@ public class EntityVampire extends EntityMob
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return null;
@@ -119,6 +126,7 @@ public class EntityVampire extends EntityMob
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return null;
@@ -127,19 +135,22 @@ public class EntityVampire extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
-        this.entityDropItem(new ItemStack(GoblinGiant.component, 1, 0), 0.0F);
+        this.entityDropItem(new ItemStack(ModItems.component, 1, 0), 0.0F);
     }
 
     /**
      * Get this Entity's EnumCreatureAttribute
      */
+    @Override
     public EnumCreatureAttribute getCreatureAttribute()
     {
         return EnumCreatureAttribute.UNDEAD;
     }
 
+    @Override
     protected void dropRareDrop(int par1)
     {
         switch (this.rand.nextInt(4))

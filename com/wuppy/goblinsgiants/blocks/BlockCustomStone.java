@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,10 +26,11 @@ public class BlockCustomStone extends Block
 	public BlockCustomStone()
 	{
 		super(Material.rock);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ModTabs.ggBlocksTab);
 		this.setHarvestLevel("pickaxe", 2);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
@@ -40,6 +42,8 @@ public class BlockCustomStone extends Block
 		}
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2)
 	{
 		switch (par2)
@@ -91,7 +95,8 @@ public class BlockCustomStone extends Block
 		}
 	}
 
-	public Item getItemDropped(int par1, Random rand_, int par3)
+	@Override
+	public Item getItemDropped(int par1, Random rand, int par3)
 	{
 		switch(par1)
 		{
@@ -112,6 +117,7 @@ public class BlockCustomStone extends Block
 		}
 	}
 	
+	@Override
 	public int damageDropped(int par1)
 	{
 		if(par1 == 0)
@@ -124,6 +130,7 @@ public class BlockCustomStone extends Block
 		return par1;
 	}
 	
+	@Override
 	public int quantityDropped(int par1, int par2, Random rand)
 	{
 		switch(par1)
@@ -137,6 +144,7 @@ public class BlockCustomStone extends Block
 		}
 	}
 
+	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)

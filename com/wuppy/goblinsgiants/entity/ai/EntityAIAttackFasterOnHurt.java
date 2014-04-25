@@ -1,4 +1,4 @@
-package com.wuppy.goblinsgiants.entity;
+package com.wuppy.goblinsgiants.entity.ai;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,7 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 @SuppressWarnings("rawtypes")
-public class EntityAIAttackFireOnCollide extends EntityAIBase
+public class EntityAIAttackFasterOnHurt extends EntityAIBase
 {
     World worldObj;
     EntityCreature attacker;
@@ -34,13 +34,13 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
 
     private int failedPathFindingPenalty;
 
-    public EntityAIAttackFireOnCollide(EntityCreature par1EntityCreature, Class par2Class, double par3, boolean par5)
+    public EntityAIAttackFasterOnHurt(EntityCreature par1EntityCreature, Class par2Class, double par3, boolean par5)
     {
         this(par1EntityCreature, par3, par5);
         this.classTarget = par2Class;
     }
 
-    public EntityAIAttackFireOnCollide(EntityCreature par1EntityCreature, double par2, boolean par4)
+    public EntityAIAttackFasterOnHurt(EntityCreature par1EntityCreature, double par2, boolean par4)
     {
         this.attacker = par1EntityCreature;
         this.worldObj = par1EntityCreature.worldObj;
@@ -53,6 +53,7 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
      * Returns whether the EntityAIBase should begin execution.
      */
     @SuppressWarnings("unchecked")
+    @Override
 	public boolean shouldExecute()
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -64,6 +65,10 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
         else if (!entitylivingbase.isEntityAlive())
         {
             return false;
+        }
+        else if(attacker.getHealth() > 20F)
+        {
+        	return false;
         }
         else if (this.classTarget != null && !this.classTarget.isAssignableFrom(entitylivingbase.getClass()))
         {
@@ -87,6 +92,7 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
     /**
      * Returns whether an in-progress EntityAIBase should continue executing
      */
+    @Override
     public boolean continueExecuting()
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -96,6 +102,7 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
     /**
      * Execute a one shot task or start executing a continuous task
      */
+    @Override
     public void startExecuting()
     {
         this.attacker.getNavigator().setPath(this.entityPathEntity, this.speedTowardsTarget);
@@ -105,6 +112,7 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
     /**
      * Resets the task
      */
+    @Override
     public void resetTask()
     {
         this.attacker.getNavigator().clearPathEntity();
@@ -113,6 +121,7 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
     /**
      * Updates the task
      */
+    @Override
     public void updateTask()
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -155,7 +164,6 @@ public class EntityAIAttackFireOnCollide extends EntityAIBase
                 }
 
                 this.attacker.attackEntityAsMob(entitylivingbase);
-                entitylivingbase.setFire(6);
             }
         }
     }

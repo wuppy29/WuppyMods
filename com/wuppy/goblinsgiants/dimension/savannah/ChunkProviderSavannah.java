@@ -30,7 +30,7 @@ import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 import com.wuppy.goblinsgiants.worldgen.WorldGenLavaTrap;
 import com.wuppy.goblinsgiants.worldgen.WorldGenMinableSandstone;
 import com.wuppy.goblinsgiants.worldgen.WorldGenRedCactus;
@@ -449,7 +449,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(64);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 2, 22)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 2, 22)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 8; k++)
@@ -457,7 +457,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(64);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 1, 14)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 1, 14)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 2; k++)
@@ -465,7 +465,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(32);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 0, 8)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 0, 8)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 8; k++)
@@ -473,7 +473,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(25);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 4, 8)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 4, 8)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 1; k++)
@@ -481,7 +481,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(16);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 3, 6)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 3, 6)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 1; k++)
@@ -489,7 +489,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(25);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.customstone, 5, 6)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.customstone, 5, 6)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 1; k++)
@@ -497,7 +497,7 @@ public class ChunkProviderSavannah implements IChunkProvider
 			int RandPosX = var4 + rand.nextInt(16);
 			int RandPosY = rand.nextInt(25);
 			int RandPosZ = var5 + rand.nextInt(16);
-			(new WorldGenMinableSandstone(GoblinGiant.oreblock, 1, 1)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
+			(new WorldGenMinableSandstone(ModBlocks.oreblock, 1, 1)).generate(worldObj, rand, RandPosX, RandPosY, RandPosZ);
 		}
 
 		for (int k = 0; k < 1; k++)

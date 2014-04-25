@@ -1,4 +1,4 @@
-package com.wuppy.goblinsgiants.entity;
+package com.wuppy.goblinsgiants.entity.ai;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;

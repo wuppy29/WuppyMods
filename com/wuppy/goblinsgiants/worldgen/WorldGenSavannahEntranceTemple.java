@@ -4,8 +4,6 @@ package com.wuppy.goblinsgiants.worldgen;
 
 import java.util.Random;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityMobSpawner;
@@ -14,6 +12,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ChestGenHooks;
+
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 
 public class WorldGenSavannahEntranceTemple extends WorldGenerator
 {
@@ -31,7 +31,6 @@ public class WorldGenSavannahEntranceTemple extends WorldGenerator
 		if(y < 50 || y > 80 || world.getBlock(x + 10, y + 15, z + 20) != Blocks.sand || world.getBlock(x + 10, y + 16, z + 20) != Blocks.air)
 			return false;
 		
-		//TODO fill chests 2 towers, above middle
 		world.setBlock(x + 0, y + 0, z + 0, Blocks.sandstone);
 		world.setBlock(x + 0, y + 0, z + 1, Blocks.sandstone);
 		world.setBlock(x + 0, y + 0, z + 2, Blocks.sandstone);
@@ -2108,8 +2107,8 @@ public class WorldGenSavannahEntranceTemple extends WorldGenerator
 		world.setBlock(x + 4, y + 1, z + 19, Blocks.sandstone);
 		world.setBlock(x + 4, y + 1, z + 20, Blocks.sandstone);
 		world.setBlock(x + 4, y + 2, z + 0, Blocks.sandstone);
-		world.setBlock(x + 4, y + 2, z + 1, GoblinGiant.goblinportal);
-		world.setBlock(x + 4, y + 2, z + 2, GoblinGiant.goblinportal);
+		world.setBlock(x + 4, y + 2, z + 1, ModBlocks.goblinportal);
+		world.setBlock(x + 4, y + 2, z + 2, ModBlocks.goblinportal);
 		world.setBlock(x + 4, y + 2, z + 3, Blocks.sandstone);
 		world.setBlock(x + 4, y + 2, z + 4, Blocks.sandstone);
 		world.setBlock(x + 4, y + 2, z + 5, Blocks.sandstone);
@@ -2129,8 +2128,8 @@ public class WorldGenSavannahEntranceTemple extends WorldGenerator
 		world.setBlock(x + 4, y + 2, z + 19, Blocks.sandstone);
 		world.setBlock(x + 4, y + 2, z + 20, Blocks.sandstone);
 		world.setBlock(x + 4, y + 3, z + 0, Blocks.sandstone);
-		world.setBlock(x + 4, y + 3, z + 1, GoblinGiant.goblinportal);
-		world.setBlock(x + 4, y + 3, z + 2, GoblinGiant.goblinportal);
+		world.setBlock(x + 4, y + 3, z + 1, ModBlocks.goblinportal);
+		world.setBlock(x + 4, y + 3, z + 2, ModBlocks.goblinportal);
 		world.setBlock(x + 4, y + 3, z + 3, Blocks.sandstone);
 		world.setBlock(x + 4, y + 3, z + 4, Blocks.sandstone);
 		world.setBlock(x + 4, y + 3, z + 5, Blocks.sandstone);
@@ -2150,8 +2149,8 @@ public class WorldGenSavannahEntranceTemple extends WorldGenerator
 		world.setBlock(x + 4, y + 3, z + 19, Blocks.sandstone);
 		world.setBlock(x + 4, y + 3, z + 20, Blocks.sandstone);
 		world.setBlock(x + 4, y + 4, z + 0, Blocks.sandstone);
-		world.setBlock(x + 4, y + 4, z + 1, GoblinGiant.goblinportal);
-		world.setBlock(x + 4, y + 4, z + 2, GoblinGiant.goblinportal);
+		world.setBlock(x + 4, y + 4, z + 1, ModBlocks.goblinportal);
+		world.setBlock(x + 4, y + 4, z + 2, ModBlocks.goblinportal);
 		world.setBlock(x + 4, y + 4, z + 3, Blocks.sandstone);
 		world.setBlock(x + 4, y + 4, z + 4, Blocks.sandstone);
 		world.setBlock(x + 4, y + 4, z + 5, Blocks.sandstone);

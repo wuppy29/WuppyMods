@@ -8,7 +8,7 @@ import net.minecraft.init.Blocks;
 
 import org.lwjgl.opengl.GL11;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -51,7 +51,7 @@ public class RenderSavannahTNTPrimed extends RenderTNTPrimed
 
         f2 = (1.0F - ((float)par1EntityTNTPrimed.fuse - par9 + 1.0F) / 100.0F) * 0.8F;
         this.bindEntityTexture(par1EntityTNTPrimed);
-        this.blockRenderer.renderBlockAsItem(GoblinGiant.savannahtnt, 0, par1EntityTNTPrimed.getBrightness(par9));
+        this.blockRenderer.renderBlockAsItem(ModBlocks.savannahtnt, 0, par1EntityTNTPrimed.getBrightness(par9));
 
         if (par1EntityTNTPrimed.fuse / 5 % 2 == 0)
         {

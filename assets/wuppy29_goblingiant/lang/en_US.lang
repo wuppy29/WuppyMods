@@ -26,7 +26,7 @@ item.wood poison.name=Wooden Poison Sword
 item.stone poison.name=Stone Poison Sword
 item.iron poison.name=Iron Poison Sword
 item.gold poison.name=Gold Poison Sword
-item.diamon poison.name=Diamond Poison Sword
+item.diamond poison.name=Diamond Poison Sword
 item.redcactusfood.name=Cooked Red Cactus
 item.waterhoe.name=Hoe Of Watering
 item.explosivebow.name=Creepers' Soul Bow
@@ -67,4 +67,9 @@ entity.wuppy29_goblingiant.giant.name=Giant
 entity.wuppy29_goblingiant.orc.name=Orc
 entity.wuppy29_goblingiant.redcreeper.name=Red Creeper
 
+
+itemGroup.gg_weapons=Goblins and Giants Weapons
+itemGroup.gg_blocks=Goblins and Giants Blocks
+itemGroup.gg_materials=Goblins and Giants Materials
+itemGroup.gg_misc=Goblins and Giants Miscellaneous
 

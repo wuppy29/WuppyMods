@@ -12,6 +12,7 @@ public class ItemCustomStone extends ItemBlock
 		setHasSubtypes(true);
 	}
 
+	@Override
 	public String getUnlocalizedName(ItemStack itemstack)
 	{
 		String name = "";
@@ -52,6 +53,7 @@ public class ItemCustomStone extends ItemBlock
 		return getUnlocalizedName() + "." + name;
 	}
 
+	@Override
 	public int getMetadata(int par1)
     {
         return par1;

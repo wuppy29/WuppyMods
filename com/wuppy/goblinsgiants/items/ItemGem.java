@@ -1,10 +1,9 @@
 package com.wuppy.goblinsgiants.items;
 
-
-
 import java.util.List;
 
 import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,48 +16,52 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGem extends Item
 {
-	public static final String[] names = new String[] {"yellow", "blue", "white", "grey", "cyan", "brown", "red"};
+	public static final String[] names = new String[] { "yellow", "blue", "white", "grey", "cyan", "brown", "red" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
-    public ItemGem()
-    {
-    	super();
-        this.setHasSubtypes(true);
-        maxStackSize = 64;
-        this.setCreativeTab(CreativeTabs.tabMaterials);
-    }
+	public ItemGem()
+	{
+		super();
+		this.setHasSubtypes(true);
+		maxStackSize = 64;
+		this.setCreativeTab(ModTabs.ggMaterialTab);
+	}
 
-    public String getUnlocalizedName(ItemStack par1ItemStack)
-    {
-        int var2 = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 15);
-        return super.getUnlocalizedName() + "." + names[var2];
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister)
-    {
+	@Override
+	public String getUnlocalizedName(ItemStack par1ItemStack)
+	{
+		int var2 = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 15);
+		return super.getUnlocalizedName() + "." + names[var2];
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
 		icons = new IIcon[names.length];
-		
-		for(int i = 0; i < icons.length; i++)
+
+		for (int i = 0; i < icons.length; i++)
 		{
 			icons[i] = par1IconRegister.registerIcon(GoblinGiant.modid + ":" + (this.getUnlocalizedName().substring(5)) + " " + names[i]);
 		}
-    }
-    
-    public IIcon getIconFromDamage(int par1)
-    {
-    	return icons[par1];
-    }
+	}
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public IIcon getIconFromDamage(int par1)
+	{
+		return icons[par1];
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@SideOnly(Side.CLIENT)
-    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-    	for (int x = 0; x < 7; x++)
-        {
-            par3List.add(new ItemStack(this, 1, x));
-        }
-    }
+	@Override
+	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+	{
+		for (int x = 0; x < 7; x++)
+		{
+			par3List.add(new ItemStack(this, 1, x));
+		}
+	}
 }

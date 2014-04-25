@@ -8,7 +8,7 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -37,7 +37,7 @@ public class RenderCustomWood implements ISimpleBlockRenderingHandler
 			renderer.renderStandardBlock(block, x, y, z);
 			
 			//top
-			if(world.getBlock(x, y + 1, z) == GoblinGiant.customWood)
+			if(world.getBlock(x, y + 1, z) == ModBlocks.customWood)
 			{
 				renderer.setRenderBounds(0.33f, 0.66f, 0.33f, 0.66f, 1f, 0.66f);
 				renderer.renderStandardBlock(block, x, y, z);
@@ -57,7 +57,7 @@ public class RenderCustomWood implements ISimpleBlockRenderingHandler
 			}
 			
 			//left
-			if(world.getBlock(x + 1, y, z) == GoblinGiant.customWood)
+			if(world.getBlock(x + 1, y, z) == ModBlocks.customWood)
 			{
 				renderer.setRenderBounds(0.33f, 0.33f, 0.33f, 1f, 0.66f, 0.66f);
 				renderer.renderStandardBlock(block, x, y, z);
@@ -70,7 +70,7 @@ public class RenderCustomWood implements ISimpleBlockRenderingHandler
 			}
 			
 			//right
-			if(world.getBlock(x - 1, y, z) == GoblinGiant.customWood)
+			if(world.getBlock(x - 1, y, z) == ModBlocks.customWood)
 			{
 				renderer.setRenderBounds(0f, 0.33f, 0.33f, 0.33f, 0.66f, 0.66f);
 				renderer.renderStandardBlock(block, x, y, z);
@@ -83,7 +83,7 @@ public class RenderCustomWood implements ISimpleBlockRenderingHandler
 			}
 			
 			//front
-			if(world.getBlock(x, y, z + 1) == GoblinGiant.customWood)
+			if(world.getBlock(x, y, z + 1) == ModBlocks.customWood)
 			{
 				renderer.setRenderBounds(0.33f, 0.33f, 0.33f, 0.66f, 0.66f, 1f);
 				renderer.renderStandardBlock(block, x, y, z);
@@ -96,7 +96,7 @@ public class RenderCustomWood implements ISimpleBlockRenderingHandler
 			}
 			
 			//behind
-			if(world.getBlock(x, y, z - 1) == GoblinGiant.customWood)
+			if(world.getBlock(x, y, z - 1) == ModBlocks.customWood)
 			{
 				renderer.setRenderBounds(0.33f, 0.33f, 0f, 0.66f, 0.66f, 0.33f);
 				renderer.renderStandardBlock(block, x, y, z);

@@ -1,10 +1,6 @@
 package com.wuppy.goblinsgiants.items;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-import com.wuppy.goblinsgiants.entity.EntityBoneSpear;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +11,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+
+import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.entity.EntityBoneSpear;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,18 +25,26 @@ public class ItemBoneSpear extends Item
 	{
 		super();
 		this.maxStackSize = 64;
-		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.setCreativeTab(ModTabs.ggWeaponsTab);
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(GoblinGiant.modid + ":" + (this.getUnlocalizedName().substring(5)));
 	}
+	
+	@Override
+	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    {
+        return par1ItemStack;
+    }
 
 	/**
 	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
 	 */
+	@Override
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
 	{
 		int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
@@ -50,7 +59,7 @@ public class ItemBoneSpear extends Item
 
 		boolean var5 = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-		if (var5 || par3EntityPlayer.inventory.hasItem(GoblinGiant.bonespear))
+		if (var5 || par3EntityPlayer.inventory.hasItem(ModItems.bonespear))
 		{
 			float var7 = (float) var6 / 20.0F;
 			var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
@@ -99,7 +108,7 @@ public class ItemBoneSpear extends Item
 				var8.canBePickedUp = 2;
 			} else
 			{
-				par3EntityPlayer.inventory.consumeInventoryItem(GoblinGiant.bonespear);
+				par3EntityPlayer.inventory.consumeInventoryItem(ModItems.bonespear);
 			}
 
 			if (!par2World.isRemote)
@@ -109,14 +118,10 @@ public class ItemBoneSpear extends Item
 		}
 	}
 
-	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	{
-		return par1ItemStack;
-	}
-
 	/**
 	 * How long it takes to use or consume an item
 	 */
+	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack)
 	{
 		return 72000;
@@ -125,6 +130,7 @@ public class ItemBoneSpear extends Item
 	/**
 	 * returns the action that specifies what animation to play when the items is being used
 	 */
+	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack)
 	{
 		return EnumAction.bow;
@@ -133,6 +139,7 @@ public class ItemBoneSpear extends Item
 	/**
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
 	 */
+	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
 		ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
@@ -142,7 +149,7 @@ public class ItemBoneSpear extends Item
 			return event.result;
 		}
 
-		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(GoblinGiant.bonespear))
+		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(ModItems.bonespear))
 		{
 			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}
@@ -153,6 +160,7 @@ public class ItemBoneSpear extends Item
 	/**
 	 * Return the enchantability factor of the item, most of the time is based on material.
 	 */
+	@Override
 	public int getItemEnchantability()
 	{
 		return 1;

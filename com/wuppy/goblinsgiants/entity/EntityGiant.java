@@ -1,8 +1,5 @@
 package com.wuppy.goblinsgiants.entity;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -17,12 +14,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.wuppy.goblinsgiants.entity.ai.EntityAIAttackFasterOnHurt;
+import com.wuppy.goblinsgiants.entity.ai.EntityAIAttackOnCollideNight;
+import com.wuppy.goblinsgiants.items.ModItems;
+
 public class EntityGiant extends EntityMob
 {
 	public EntityGiant(World par1World)
     {
         super(par1World);
-        this.setSize(2F, 4F);
+        this.setSize(1F, 4F);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAttackFasterOnHurt(this, EntityPlayer.class, 1.2D, false));
@@ -36,6 +37,7 @@ public class EntityGiant extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
     }
     
+	@Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -47,6 +49,7 @@ public class EntityGiant extends EntityMob
     /**
      * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
      */
+	@Override
     public int getTotalArmorValue()
     {
         return 4;
@@ -55,6 +58,7 @@ public class EntityGiant extends EntityMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
+	@Override
     protected boolean isAIEnabled()
     {
         return true;
@@ -63,6 +67,7 @@ public class EntityGiant extends EntityMob
     /**
      * Returns the sound this mob makes while it's alive.
      */
+	@Override
     protected String getLivingSound()
     {
         return null;
@@ -71,6 +76,7 @@ public class EntityGiant extends EntityMob
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+	@Override
     protected String getHurtSound()
     {
         return null;
@@ -79,21 +85,15 @@ public class EntityGiant extends EntityMob
     /**
      * Returns the sound this mob makes on death.
      */
+	@Override
     protected String getDeathSound()
     {
         return null;
     }
 
+	@Override
     protected void dropFewItems(boolean par1, int par2)
     {
-        this.entityDropItem(new ItemStack(GoblinGiant.component, 1, 2), 0.0F);
-    }
-
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
+        this.entityDropItem(new ItemStack(ModItems.component, 1, 2), 0.0F);
     }
 }

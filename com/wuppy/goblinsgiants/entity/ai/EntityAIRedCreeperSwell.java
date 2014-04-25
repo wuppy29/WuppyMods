@@ -1,4 +1,6 @@
-package com.wuppy.goblinsgiants.entity;
+package com.wuppy.goblinsgiants.entity.ai;
+
+import com.wuppy.goblinsgiants.entity.EntityRedCreeper;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;

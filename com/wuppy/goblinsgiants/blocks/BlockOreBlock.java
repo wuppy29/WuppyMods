@@ -3,8 +3,6 @@ package com.wuppy.goblinsgiants.blocks;
 import java.util.List;
 import java.util.Random;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,6 +10,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+
+import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.items.ModItems;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,11 +26,12 @@ public class BlockOreBlock extends Block
 	public BlockOreBlock()
 	{
 		super(Material.rock);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ModTabs.ggBlocksTab);
 		this.setHarvestLevel("pickaxe", 2);
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void registerBlockIcons(IIconRegister par1IIconRegister)
 	{
 		icons = new IIcon[9];
@@ -39,6 +43,7 @@ public class BlockOreBlock extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public IIcon getIcon(int par1, int par2)
 	{
 		switch (par2)
@@ -67,23 +72,21 @@ public class BlockOreBlock extends Block
 		}
 	}
 
+	@Override
 	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
-		return GoblinGiant.gem;
+		return ModItems.gem;
 	}
 
+	@Override
 	public int damageDropped(int par1)
 	{
 		return par1;
 	}
 
-	public int quantityDropped(Random par1Random)
-	{
-		return 1;
-	}
-
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
 		for (int var4 = 0; var4 < 7; ++var4)

@@ -1,7 +1,5 @@
 package com.wuppy.goblinsgiants.entity;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -18,9 +16,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.wuppy.goblinsgiants.entity.ai.EntityAIFleeOnHurt;
+import com.wuppy.goblinsgiants.items.ModItems;
+
 public class EntityGoblin extends EntityMob
 {
-	private static final ItemStack defaultHeldItem = new ItemStack(GoblinGiant.dagger, 1);
+	private static final ItemStack defaultHeldItem = new ItemStack(ModItems.dagger, 1);
 	
 	public EntityGoblin(World par1World)
     {
@@ -41,6 +42,7 @@ public class EntityGoblin extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
     }
     
+	@Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -51,11 +53,13 @@ public class EntityGoblin extends EntityMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
+	@Override
     protected boolean isAIEnabled()
     {
         return true;
     }
 
+	@Override
     public ItemStack getHeldItem()
     {
         return defaultHeldItem;
@@ -64,6 +68,7 @@ public class EntityGoblin extends EntityMob
     /**
      * Returns the sound this mob makes while it's alive.
      */
+	@Override
     protected String getLivingSound()
     {
         return null;
@@ -72,6 +77,7 @@ public class EntityGoblin extends EntityMob
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+	@Override
     protected String getHurtSound()
     {
         return null;
@@ -80,24 +86,27 @@ public class EntityGoblin extends EntityMob
     /**
      * Returns the sound this mob makes on death.
      */
+	@Override
     protected String getDeathSound()
     {
         return null;
     }
 
+	@Override
     protected void dropFewItems(boolean par1, int par2)
     {
-        this.entityDropItem(new ItemStack(GoblinGiant.component, 1, 1), 0.0F);
+        this.entityDropItem(new ItemStack(ModItems.component, 1, 1), 0.0F);
         
         if(rand.nextInt(5) == 0)
         {
-        	this.entityDropItem(new ItemStack(GoblinGiant.dagger), 0.0F);
+        	this.entityDropItem(new ItemStack(ModItems.dagger), 0.0F);
         }
     }
 
     /**
      * Get this Entity's EnumCreatureAttribute
      */
+	@Override
     public EnumCreatureAttribute getCreatureAttribute()
     {
         return EnumCreatureAttribute.UNDEAD;

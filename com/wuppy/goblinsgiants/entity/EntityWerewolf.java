@@ -40,6 +40,7 @@ public class EntityWerewolf extends EntityMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVampire.class, 0, false));
 	}
 	
+	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
@@ -50,6 +51,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
 	 */
+	@Override
 	public int getTotalArmorValue()
 	{
 		return 2;
@@ -58,6 +60,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns true if the newer Entity AI code should be run
 	 */
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
@@ -66,11 +69,13 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns the sound this mob makes while it's alive.
 	 */
+	@Override
 	protected String getLivingSound()
 	{
 		return "mob.wolf.growl";
 	}
 	
+	@Override
 	public void onLivingUpdate()
 	{
 		if (this.worldObj.isDaytime() && !this.worldObj.isRemote)
@@ -91,6 +96,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns the sound this mob makes when it is hurt.
 	 */
+	@Override
 	protected String getHurtSound()
 	{
 		return "mob.wolf.growl";
@@ -99,6 +105,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns the sound this mob makes on death.
 	 */
+	@Override
 	protected String getDeathSound()
 	{
 		return "mob.wolf.growl";
@@ -107,6 +114,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Returns the item ID for the item the mob drops on death.
 	 */
+	@Override
 	protected Item getDropItem()
 	{
 		return Items.porkchop;
@@ -115,6 +123,7 @@ public class EntityWerewolf extends EntityMob
 	/**
 	 * Get this Entity's EnumCreatureAttribute
 	 */
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.UNDEAD;

@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
@@ -16,6 +14,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
+
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 
 public class TeleporterGoblinsGiantsSavannah extends Teleporter
 {
@@ -115,9 +115,9 @@ public class TeleporterGoblinsGiantsSavannah extends Teleporter
 
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
-						if (this.worldServerInstance.getBlock(k1, i2, l1) == GoblinGiant.goblinportal)
+						if (this.worldServerInstance.getBlock(k1, i2, l1) == ModBlocks.goblinportal)
 						{
-							while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == GoblinGiant.goblinportal)
+							while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == ModBlocks.goblinportal)
 							{
 								--i2;
 							}
@@ -142,7 +142,6 @@ public class TeleporterGoblinsGiantsSavannah extends Teleporter
 		{
 			if (flag)
 			{
-				//TODO ERROR?
 				this.field_85191_c.add(j1, new PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
 				this.field_85190_d.add(Long.valueOf(j1));
 			}
@@ -152,22 +151,22 @@ public class TeleporterGoblinsGiantsSavannah extends Teleporter
 			d4 = (double) k + 0.5D;
 			int j2 = -1;
 
-			if (this.worldServerInstance.getBlock(i - 1, j, k) == GoblinGiant.goblinportal)
+			if (this.worldServerInstance.getBlock(i - 1, j, k) == ModBlocks.goblinportal)
 			{
 				j2 = 2;
 			}
 
-			if (this.worldServerInstance.getBlock(i + 1, j, k) == GoblinGiant.goblinportal)
+			if (this.worldServerInstance.getBlock(i + 1, j, k) == ModBlocks.goblinportal)
 			{
 				j2 = 0;
 			}
 
-			if (this.worldServerInstance.getBlock(i, j, k - 1) == GoblinGiant.goblinportal)
+			if (this.worldServerInstance.getBlock(i, j, k - 1) == ModBlocks.goblinportal)
 			{
 				j2 = 3;
 			}
 
-			if (this.worldServerInstance.getBlock(i, j, k + 1) == GoblinGiant.goblinportal)
+			if (this.worldServerInstance.getBlock(i, j, k + 1) == ModBlocks.goblinportal)
 			{
 				j2 = 1;
 			}
@@ -468,7 +467,7 @@ public class TeleporterGoblinsGiantsSavannah extends Teleporter
 					j3 = j5 + l2;
 					i4 = j2 + (i3 - 1) * l5;
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : GoblinGiant.goblinportal, 0, 2);
+					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : ModBlocks.goblinportal, 0, 2);
 				}
 			}
 

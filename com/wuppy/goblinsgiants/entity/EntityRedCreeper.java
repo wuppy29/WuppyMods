@@ -1,7 +1,5 @@
 package com.wuppy.goblinsgiants.entity;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -22,6 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+
+import com.wuppy.goblinsgiants.entity.ai.EntityAIRedCreeperSwell;
+import com.wuppy.goblinsgiants.items.ModItems;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -56,6 +58,7 @@ public class EntityRedCreeper extends EntityMob
         this.isImmuneToFire = true;
     }
 
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -65,11 +68,13 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     public boolean isAIEnabled()
     {
         return true;
     }
 
+    @Override
     public int getMaxSafePointTries()
     {
         return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
@@ -78,6 +83,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Called when the mob is falling. Calculates and applies fall damage.
      */
+    @Override
     protected void fall(float par1)
     {
         super.fall(par1);
@@ -89,6 +95,7 @@ public class EntityRedCreeper extends EntityMob
         }
     }
 
+    @Override
     public void onLivingUpdate()
     {
     	if(worldObj.isRemote)
@@ -101,6 +108,7 @@ public class EntityRedCreeper extends EntityMob
         super.onLivingUpdate();
     }
 
+    @Override
     protected void entityInit()
     {
         super.entityInit();
@@ -111,6 +119,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeEntityToNBT(par1NBTTagCompound);
@@ -127,6 +136,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readEntityFromNBT(par1NBTTagCompound);
@@ -146,6 +156,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
         if (this.isEntityAlive())
@@ -194,6 +205,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Returns the sound this mob makes when it is hurt.
      */
+    @Override
     protected String getHurtSound()
     {
         return "mob.creeper.say";
@@ -202,6 +214,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Returns the sound this mob makes on death.
      */
+    @Override
     protected String getDeathSound()
     {
         return "mob.creeper.death";
@@ -210,6 +223,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Called when the mob's health reaches 0.
      */
+    @Override
     public void onDeath(DamageSource par1DamageSource)
     {
         super.onDeath(par1DamageSource);
@@ -221,6 +235,7 @@ public class EntityRedCreeper extends EntityMob
         }
     }
 
+    @Override
     public boolean attackEntityAsMob(Entity par1Entity)
     {
         return true;
@@ -247,9 +262,10 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
-        this.entityDropItem(new ItemStack(GoblinGiant.component, this.rand.nextInt(2) + 1, 5), 0.0F);
+        this.entityDropItem(new ItemStack(ModItems.component, this.rand.nextInt(2) + 1, 5), 0.0F);
     }
 
     /**
@@ -271,6 +287,7 @@ public class EntityRedCreeper extends EntityMob
     /**
      * Called when a lightning bolt hits the entity.
      */
+    @Override
     public void onStruckByLightning(EntityLightningBolt par1EntityLightningBolt)
     {
         super.onStruckByLightning(par1EntityLightningBolt);

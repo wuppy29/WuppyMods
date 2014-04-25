@@ -1,12 +1,11 @@
 package com.wuppy.goblinsgiants.worldgen;
 
-
 import java.util.Random;
-
-import com.wuppy.goblinsgiants.GoblinGiant;
 
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
 
 public class WorldGenRedCactus extends WorldGenerator
 {
@@ -24,9 +23,9 @@ public class WorldGenRedCactus extends WorldGenerator
 
                 for (int i2 = 0; i2 < l1; ++i2)
                 {
-                    if (GoblinGiant.redcactus.canBlockStay(par1World, i1, j1 + i2, k1))
+                    if (ModBlocks.redcactus.canBlockStay(par1World, i1, j1 + i2, k1))
                     {
-                        par1World.setBlock(i1, j1 + i2, k1, GoblinGiant.redcactus, 0, 2);
+                        par1World.setBlock(i1, j1 + i2, k1, ModBlocks.redcactus, 0, 2);
                     }
                 }
             }

@@ -1,20 +1,18 @@
 package com.wuppy.goblinsgiants.worldgen.savannah;
 
-
-
 import java.util.Random;
-
-import com.wuppy.goblinsgiants.GoblinGiant;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
+import com.wuppy.goblinsgiants.blocks.ModBlocks;
+
 public class WorldGenSavannahTree extends WorldGenerator
 {
 	int height;
-	Block wood = GoblinGiant.customWood;
+	Block wood = ModBlocks.customWood;
 	Block leaf = Blocks.leaves;
 
 	public boolean generate(World world, Random random, int x, int y, int z)

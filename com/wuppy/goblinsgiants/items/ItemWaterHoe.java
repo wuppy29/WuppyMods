@@ -1,40 +1,40 @@
 package com.wuppy.goblinsgiants.items;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+
+import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.tabs.ModTabs;
+
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemWaterHoe extends Item
+public class ItemWaterHoe extends ItemHoe
 {
-    protected ToolMaterial field_77843_a;
-
-    public ItemWaterHoe(ToolMaterial par2EnumToolMaterial)
+    public ItemWaterHoe(ToolMaterial enumToolMaterial)
     {
-        super();
-        this.field_77843_a = par2EnumToolMaterial;
+        super(enumToolMaterial);
         this.maxStackSize = 1;
-        this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
-        this.setCreativeTab(CreativeTabs.tabTools);
+        this.setMaxDamage(enumToolMaterial.getMaxUses());
+        this.setCreativeTab(ModTabs.ggMiscTab);
     }
 
     @SideOnly(Side.CLIENT)
+    @Override
     public void registerIcons(IIconRegister par1IconRegister)
     {
         this.itemIcon = par1IconRegister.registerIcon(GoblinGiant.modid + ":" + (this.getUnlocalizedName().substring(5)));
     }
 
+    @Override
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
         if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
@@ -80,20 +80,5 @@ public class ItemWaterHoe extends Item
                 }
             }
         }
-    }
-
-    @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns True is the item is renderer in full 3D when hold.
-     */
-    public boolean isFull3D()
-    {
-        return true;
-    }
-
-    public String func_77842_f()
-    {
-        return this.field_77843_a.toString();
     }
 }

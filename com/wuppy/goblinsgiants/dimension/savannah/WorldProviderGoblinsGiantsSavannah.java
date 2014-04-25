@@ -6,14 +6,14 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import com.wuppy.goblinsgiants.GoblinGiant;
+import com.wuppy.goblinsgiants.worldgen.ModGeneration;
 
 public class WorldProviderGoblinsGiantsSavannah extends WorldProvider
 {
 	public void registerWorldChunkManager()
 	{
-		this.worldChunkMgr = new WorldChunkManagerHell(GoblinGiant.savannah, 0.1F);
-		this.dimensionId = GoblinGiant.dimension;
+		this.worldChunkMgr = new WorldChunkManagerHell(ModGeneration.savannah, 0.1F);
+		this.dimensionId = ModGeneration.dimension;
 	}
 
 	public String getSaveFolder()

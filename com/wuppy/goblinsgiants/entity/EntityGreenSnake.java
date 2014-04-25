@@ -1,4 +1,4 @@
-package com.wuppy.goblinsgiants;
+package com.wuppy.goblinsgiants.entity;
 
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.world.World;

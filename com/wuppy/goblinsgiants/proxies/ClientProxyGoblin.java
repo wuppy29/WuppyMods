@@ -1,4 +1,4 @@
-package com.wuppy.goblinsgiants;
+package com.wuppy.goblinsgiants.proxies;
 
 import com.wuppy.goblinsgiants.entity.EntityBoneSpear;
 import com.wuppy.goblinsgiants.entity.EntityDwarf;
@@ -30,7 +30,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class ClientProxyGoblin extends CommonProxyGoblin
 {
 	@Override
-    public void registerRenderThings()
+    public void registerEntityRenders()
     {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoneSpear.class, new RenderBoneSpear());
 		RenderingRegistry.registerEntityRenderingHandler(EntityExplosiveArrow.class, new RenderExplosiveArrow());
@@ -44,7 +44,11 @@ public class ClientProxyGoblin extends CommonProxyGoblin
 		RenderingRegistry.registerEntityRenderingHandler(EntityGiant.class, new RenderGGMob(new ModelGiant(), 0.5F, "textures/models/giant.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityUruk.class, new RenderOrc(new ModelBiped(), 0.5F, "textures/models/orc.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRedCreeper.class, new RenderRedCreeper());
-		
+    }
+	
+	@Override
+	public void registerBlockRenders()
+    {
 		RenderingRegistry.registerBlockHandler(new RenderCustomWood());
     }
 }
