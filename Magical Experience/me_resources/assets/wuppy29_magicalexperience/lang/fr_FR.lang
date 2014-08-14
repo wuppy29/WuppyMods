@@ -1,0 +1,40 @@
+tile.expore.expore.name=Minerai d'expérience
+tile.expore.cobbleexpore.name=Minerai de pierres d'expérience
+
+tile.spell.thunder.name=Sort de tonerre
+tile.spell.explosion.name=Sort d'explosion
+tile.spell.fire.name=Sort de feu
+tile.spell.water.name=Sort d'eau
+tile.spell.lava.name=Sort de lave
+
+item.components.magicpowder.name=Poudre magique
+item.components.expiron.name=Experion
+item.components.magicstick.name=Bâton magique
+item.components.magicdirtstick.name=Bâton magique en terre
+item.components.ironnugget.name=Pépite de fer
+
+item.xpbottlexl.name=Grande bouteille d'expérience
+item.thunderbottle.name=Bouteille d'orage
+item.tntbottle.name=Bouteille de TNT
+item.fuelbottle.name=Bouteille d'essence
+item.exppick.name=Pioche d'Experion
+item.expaxe.name=Hache d'Experion
+item.expshovel.name=Pelle d'Experion
+item.expsword.name=Épée d'Experion
+item.exphoe.name=Houe d'Experion
+item.clusterbottle.name=Groupe de bouteilles
+item.thunderstaff.name=Bâton d'orage
+item.firestaff.name=Bâton de feu
+item.firebottle.name=Bouteille de feu
+item.dirtbottle.name=Bouteille de terre
+item.bonebottle.name=Bouteille de farine d'os
+item.airbottle.name=Bouteille d'air
+
+entity.expbottlexl.name=Grande bouteille d'expérience
+entity.thunderbottle.name=Bouteille d'orage
+entity.tntbottle.name=Bouteille de TNT
+entity.clusterbottle.name=Groupe de bouteilles
+entity.magicthunder.name=Orage magique
+entity.firebottle.name=Bouteille de feu
+entity.dirtbottle.name=Bouteille de terre
+entity.bonemealbottle.name=Bouteille de farine d'os

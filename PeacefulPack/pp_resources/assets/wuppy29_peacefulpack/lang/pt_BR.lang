@@ -1,0 +1,26 @@
+tile.flax.name=Linho
+tile.rottenplant.name=Planta Podre
+tile.blazelog.name=Tora de Blaze
+tile.blazeleaves.name=Folhas de Blaze
+tile.ghastore.name=Minério de Ghast
+tile.enderclam.name=Molusco de Ender
+tile.blazeSapling.name=Muda de Blaze
+tile.oreblock.sulphur.name=Minério de Enxofre
+tile.oreblock.niter.name=Minério de Nitro
+tile.oreblock.fossil.name=Foceis
+tile.remains.name=Restos Enterrados
+tile.slime.name=Gosma
+
+item.sulphdust.name=Cristal de Enxofre
+item.niterdust.name=Cristal de Nitro
+item.flaxfibre.name=Fibra de Linho
+item.cloth.name=Tecido
+item.flaxseed.name=Semente de Linho
+item.cookedflesh.name=Carne Cosida
+item.chain.name=Material de Malha
+item.rottenseed.name=Semente Podre
+
+
+itemGroup.pp_blocks=Blocos de Peacefulpack
+itemGroup.pp_materials=Materiais de Peacefulpack
+

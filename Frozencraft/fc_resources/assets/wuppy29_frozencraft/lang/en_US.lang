@@ -1,0 +1,43 @@
+tile.iceVine.name=Ice Vine
+tile.hardIce.name=Hard Ice
+tile.obsidian.name=Obsidian
+
+
+item.frozenHeart.name=Frozen Heart
+item.iceSaw.name=Ice Saw
+item.elsaGlove.name=Elsa's Glove
+item.hansSword.name=Hans' Sword
+item.kristoffPickaxe.name=Kristoff's Picaxe
+
+item.elsaTiara.name=Elsa's Tiara
+item.elsaBodice.name=Elsa's Bodice
+item.elsaSkirt.name=Elsa's Skirt
+item.elsaHeels.name=Ice Heels
+
+item.annaCap.name=Anna's Cap
+item.annaBodice.name=Anna's Bodice
+item.annaSkirt.name=Anna's Skirt
+item.annaBoots.name=Anna's Boots
+
+item.kristoffCap.name=Kristoff's Cap
+item.kristoffJacket.name=Kristoff's Jacket
+item.kristoffPants.name=Kristoff's Pants
+item.kristoffBoots.name=Kristoff's Boots
+
+item.hansHair.name=Hans' Hair
+item.hansTop.name=Hans' Top
+item.hansPants.name=Hans' Pants
+item.hansBoots.name=Hans' Boots
+
+
+entity.wuppy29_frozencraft.iceboltfailed.name=Ice Bolt
+entity.wuppy29_frozencraft.iceboltplayer.name=Ice Bolt
+entity.wuppy29_frozencraft.elsa.name=Elsa
+entity.wuppy29_frozencraft.anna.name=Anna
+entity.wuppy29_frozencraft.kristoff.name=Kristoff
+entity.wuppy29_frozencraft.hans.name=Hans
+entity.wuppy29_frozencraft.duke.name=The Duke of Weselton
+entity.wuppy29_frozencraft.thug.name=The Duke's Thug
+
+
+itemGroup.fc_armor=FrozenCraft Armor

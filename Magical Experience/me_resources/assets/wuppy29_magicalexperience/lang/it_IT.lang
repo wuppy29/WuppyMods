@@ -1,0 +1,40 @@
+tile.expore.expore.name=Minerale dell'esperienza
+tile.expore.cobbleexpore.name=Pietrisco del minerale dell'esperienza
+
+tile.spell.thunder.name=Incantesimo del tuono
+tile.spell.explosion.name=Incantesimo dell'esplosione
+tile.spell.fire.name=Incantesimo del fuoco
+tile.spell.water.name=Incantesimo dell'acqua
+tile.spell.lava.name=Incantesimo della lava
+
+item.components.magicpowder.name=Polvere magica
+item.components.expiron.name=Experion
+item.components.magicstick.name=Bastoncino magico
+item.components.magicdirtstick.name=Bastoncino magico di terra
+item.components.ironnugget.name=Pepita di ferro
+
+item.xpbottlexl.name=Grande bottiglia dell'esperienza
+item.thunderbottle.name=Bottiglia del tuono
+item.tntbottle.name=Bottiglia della TNT
+item.fuelbottle.name=Bottiglia del carburante
+item.exppick.name=Piccone di experion
+item.expaxe.name=Ascia di experion
+item.expshovel.name=Pala di experion
+item.expsword.name=Spada di experion
+item.exphoe.name=Zappa di experion
+item.clusterbottle.name=Ammasso di bottigle
+item.thunderstaff.name=Verga del tuono
+item.firestaff.name=Verga del fuoco
+item.firebottle.name=Bottiglia del fuoco
+item.dirtbottle.name=Bottiglia della terra
+item.bonebottle.name=Bottiglia di farina ossea
+item.airbottle.name=Bottiglia di aria
+
+entity.expbottlexl.name=Grande bottiglia dell'esperienza
+entity.thunderbottle.name=Bottiglia del tuono
+entity.tntbottle.name=Bottiglia della TNT
+entity.clusterbottle.name=Ammasso di bottiglie
+entity.magicthunder.name=Tuono magico
+entity.firebottle.name=Bottiglia del fuoco
+entity.dirtbottle.name=Bottiglia della terra
+entity.bonemealbottle.name=Bottiglia di farina ossea

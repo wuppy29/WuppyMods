@@ -1,0 +1,18 @@
+[
+{
+  "modid" : "Wuppy29_Peacefulpack",
+  "name" : "The Peacefulpack",
+  "version" : "1.1.6.1",
+  "url" : "http://www.minecraftforum.net/topic/1094417-",
+  "credits" : "HogOfWar (Original Peacefulpack), Rhodox (Textures), TM13 (Textures)",
+  "authors": [
+    "Wuppy29"
+  ],
+  "description": "The Peacefulpack makes Minecraft easier to play by adding new ores, items crops and more. These new things can be used to get all the mob drops without fighting.",
+  "logoFile" : "",
+  "updateUrl" : "",
+  "parent" : "",
+  "screenshots": [
+  ]
+}
+]

@@ -1,0 +1,43 @@
+package com.wuppy.magicalexp.items;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+import com.wuppy.magicalexp.MagicalExperience;
+import com.wuppy.magicalexp.entity.EntityExpBottlexl;
+
+public class ItemXPbottlexl extends Item
+{
+    public ItemXPbottlexl()
+    {
+        super();
+        this.setCreativeTab(MagicalExperience.meUsables);
+    }
+
+    /**
+     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+     */
+    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
+    {
+        if (!entityplayer.capabilities.isCreativeMode)
+        {
+            itemstack.stackSize--;
+        }
+
+        world.playSoundAtEntity(entityplayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+        if (!world.isRemote)
+        {
+            world.spawnEntityInWorld(new EntityExpBottlexl(world, entityplayer));
+        }
+
+        return itemstack;
+    }
+    
+    public boolean hasEffect(ItemStack itemstack)
+    {
+        return true;
+    }
+}

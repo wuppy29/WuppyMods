@@ -1,0 +1,75 @@
+tile.savportal.name=Savannen Portal
+tile.red cactus.name=Roter Kaktus
+tile.savannahtnt.name=Savannen TNT
+tile.customwood.name=Wurst Holtz
+
+tile.oreblock.yellow.name=Citrine Ertz
+tile.oreblock.blue.name=Kyanite Ertz
+tile.oreblock.white.name=Mondstein Ertz
+tile.oreblock.gray.name=Lepidolite Ertz
+tile.oreblock.light blue.name=Aquamarine Ertz
+tile.oreblock.brown.name=Hematite Ertz
+tile.oreblock.red.name=Rubin Ertz
+
+tile.customstone.gold.name=Sandstein Goldertz
+tile.customstone.iron.name=Eisensandstein Ertz
+tile.customstone.coal.name=Kohlesandsteinertz
+tile.customstone.diamond.name=Diamantsandsteinertz
+tile.customstone.redstone.name=Redstonesandsteinertz
+tile.customstone.lapis.name=Lapissandsteinertz
+
+
+
+item.bonespear.name=Knochenspeer
+item.uruksword.name=Uruk Hai Schwert
+item.wood poison.name=Holz Gift Schwert
+item.stone poison.name=Stein Gift Schwert
+item.iron poison.name=Eisen Gift Schwert
+item.gold poison.name=Güldenes Gift Schwert
+item.diamond poison.name=Diamant Gift Schwert
+item.redcactusfood.name=Gekochter Roterkaktus
+item.waterhoe.name=Wasserungs Hacke
+item.explosivebow.name=Bogen des Creepers
+item.portalPlacer.name=Portal Setzer
+item.dagger.name=Dolch
+
+item.component.vampireblood.name=Vampire Blut
+item.component.speartip.name=Speer Spitze
+item.component.giantbone.name=Riesiger Knochen
+item.component.redgiantbone.name=Blutiger Riesen Knochen
+item.component.poisonbottle.name=Gift Flasche
+item.component.savannahgunpowder.name=Savannen Sprengpulver
+
+item.key.yellow.name=Gelber Schlüssel
+item.key.blue.name=Blauer Schlüssel
+item.key.white.name=Weißer Schlüssel
+item.key.grey.name=Grauer Schlüssel
+item.key.cyan.name=Hellblauer Schlüssel
+item.key.brown.name=Brauner Schlüssel
+item.key.red.name=Roter Schlüssel
+
+item.gem.yellow.name=Citrine
+item.gem.blue.name=Kyanite
+item.gem.white.name=Mondstein
+item.gem.grey.name=Lepidolite
+item.gem.cyan.name=Aquamarine
+item.gem.brown.name=Hematite
+item.gem.red.name=Rubin
+
+
+
+entity.wuppy29_goblingiant.vampire.name=Vampire
+entity.wuppy29_goblingiant.dwarf.name=Zwerg
+entity.wuppy29_goblingiant.werewolf.name=Werwolf
+entity.wuppy29_goblingiant.pigman.name=Schweinemann
+entity.wuppy29_goblingiant.goblin.name=Goblin
+entity.wuppy29_goblingiant.giant.name=Rise
+entity.wuppy29_goblingiant.orc.name=Ork
+entity.wuppy29_goblingiant.redcreeper.name=Roter Creeper
+
+
+itemGroup.gg_weapons=Goblins und Riesen Waffen
+itemGroup.gg_blocks=Goblins und Riesen Blöcke
+itemGroup.gg_materials=Goblins und Riesen  Materialen
+itemGroup.gg_misc=Goblins und Riesen Gemischtes Zeug
+
