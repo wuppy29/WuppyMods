@@ -10,6 +10,7 @@ import com.wuppy.frozen.entities.EntityIceBoltElsa;
 import com.wuppy.frozen.entities.EntityIceBoltFailed;
 import com.wuppy.frozen.entities.EntityIceBoltPlayer;
 import com.wuppy.frozen.entities.EntityKristoff;
+import com.wuppy.frozen.entities.EntityOlaf;
 import com.wuppy.frozen.entities.EntityThug;
 import com.wuppy.frozen.entities.render.RenderBipedFrozenCraft;
 import com.wuppy.frozen.entities.render.RenderIceBolt;
@@ -32,5 +33,6 @@ public class ClientProxyFrozen extends CommonProxyFrozen
 		RenderingRegistry.registerEntityRenderingHandler(EntityHans.class, new RenderBipedFrozenCraft(new ModelBiped(), 0.5F, "textures/models/hans.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDuke.class, new RenderBipedFrozenCraft(new ModelBiped(), 0.5F, "textures/models/duke.png"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityThug.class, new RenderThug());
+		RenderingRegistry.registerEntityRenderingHandler(EntityOlaf.class, new RenderOlaf());
 	}
 }

@@ -41,6 +41,7 @@ public class EntityAnna extends EntityAnimal
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
     }
     
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -50,11 +51,13 @@ public class EntityAnna extends EntityAnimal
     /**
      * Returns true if the newer Entity AI code should be run
      */
+    @Override
     public boolean isAIEnabled()
     {
         return true;
     }
 
+    @Override
     public int getTotalArmorValue()
     {
         return 5;
@@ -69,6 +72,7 @@ public class EntityAnna extends EntityAnimal
 		dropItem(Item.getItemFromBlock(Blocks.red_flower), 3);
 	}
 
+    @Override
 	public EntityAgeable createChild(EntityAgeable var1)
 	{
 		return null;

@@ -2,15 +2,11 @@ NPC's:
 	-Olaf
 		-Always peaceful
 		-Will not retaliate if damaged
-		-When right clicked, he will say quotes (Said by himself) from the movie. {**Copyright?**}
-		-Can be tamed with snowballs
-		-Drops 10 snowballs when killed
 
 	-Sven
 		-Naturally peaceful
 		-If hit/damaged by player, he will become hostile towards that player
 		-Attacks by mele, just running into the player, like a zombie.
-		-Make sounds from the movie
 		-Can be tamed with carrots
 		-Drops 2 leather and 2 carrots when killed
 
@@ -22,17 +18,6 @@ NPC's:
 
 
 Quotes
--Olaf:
-      "Hi everyone! I'm Olaf and I like warm hugs"
-      "It's so cute! It's like a little baby unicorn!"
-      "I dont have a skull. Or bones"
-      "Oh look at that, I've been impaled"
-      "Some people are worth melting for"
-
--Sven:
-       "Give me a carrot" (Kristoff voice acting as Sven)
-       Possibly a noise he makes from the film. Cause he makes those weird snorting noises.
-
 -Marshmallow:
       "Don't come back!"
       Maybe use his scream he does when he becomes angry.

@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.TempCategory;
 
 import com.wuppy.frozen.FrozenCraft;
 
@@ -24,6 +25,7 @@ public class ModEntities
 		EntityRegistry.registerModEntity(EntityHans.class, "hans", 3, mod, 80, 3, true);
 		EntityRegistry.registerModEntity(EntityDuke.class, "duke", 4, mod, 80, 3, true);
 		EntityRegistry.registerModEntity(EntityThug.class, "thug", 5, mod, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityOlaf.class, "olaf", 6, mod, 80, 3, true);
 		
 		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++)
 		{
@@ -35,6 +37,11 @@ public class ModEntities
 				EntityRegistry.addSpawn(EntityHans.class, 10, 1, 1, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray()[i]);
 				EntityRegistry.addSpawn(EntityDuke.class, 10, 1, 1, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray()[i]);
 				EntityRegistry.addSpawn(EntityThug.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray()[i]);
+				
+				if(BiomeGenBase.getBiomeGenArray()[i].getTempCategory() == TempCategory.COLD)
+				{
+					EntityRegistry.addSpawn(EntityOlaf.class, 10, 1, 1, EnumCreatureType.creature, BiomeGenBase.getBiomeGenArray()[i]);
+				}
 			}
 		}
 		
@@ -44,6 +51,7 @@ public class ModEntities
 		registerEntityEgg(EntityHans.class, 0xffffff, 0xc05449);
 		registerEntityEgg(EntityDuke.class, 0x110e17, 0xe3e4e6);
 		registerEntityEgg(EntityThug.class, 0x400e0e, 0x2d201a);
+		registerEntityEgg(EntityOlaf.class, 0xf8fcec, 0xce5b1c);
 	}
 	
 	static int startEntityId = 40;
