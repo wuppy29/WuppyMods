@@ -1,4 +1,4 @@
-package com.wuppy.improvedmobspawn;
+package com.wuppy.improvedmobspawn.proxies;
 
 public class CommonProxyIMP
 {

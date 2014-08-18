@@ -1,4 +1,4 @@
-package com.wuppy.improvedmobspawn;
+package com.wuppy.improvedmobspawn.entity;
 
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.world.World;
@@ -13,7 +13,7 @@ public class EntityCaveSpiderCustom extends EntityCaveSpider
     @Override
 	public boolean getCanSpawnHere()
     {
-		if(this.posY < 40.0)
+		if(this.posY < 40.0 && worldObj.provider.dimensionId == 0)
 			return true;
 		else
 			return false;

@@ -1,4 +1,4 @@
-package com.wuppy.improvedmobspawn;
+package com.wuppy.improvedmobspawn.entity;
 
 import java.util.Calendar;
 

@@ -1,6 +1,8 @@
-package com.wuppy.improvedmobspawn;
+package com.wuppy.improvedmobspawn.entity;
 
 import java.util.Random;
+
+import com.wuppy.improvedmobspawn.Config;
 
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -22,7 +24,9 @@ public class EntitySpiderCustom extends EntitySpider
 	{
 		Object par1EntityLivingData1 = super.onSpawnWithEgg(par1EntityLivingData);
 
-		if (this.worldObj.rand.nextInt(20) == 0)
+		int chance = 100 / Config.spiderJockeySpawnChance;
+
+		if (this.worldObj.rand.nextInt(chance) == 0)
 		{
 			EntitySkeleton entityskeleton = new EntitySkeleton(this.worldObj);
 			entityskeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
