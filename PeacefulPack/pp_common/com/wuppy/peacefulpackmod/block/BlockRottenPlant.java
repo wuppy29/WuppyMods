@@ -72,7 +72,7 @@ public class BlockRottenPlant extends BlockMushroom implements IGrowable
 	{
 		super.updateTick(par1World, par2, par3, par4, par5Random);
 
-		if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 9)
+		if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 2)
 		{
 			int i = par1World.getBlockMetadata(par2, par3, par4);
 

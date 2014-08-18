@@ -1,0 +1,25 @@
+tile.flax.name=Lin
+tile.rottenplant.name=Plante pourrie
+tile.blazelog.name=Bûche de blaze
+tile.blazeleaves.name=Feuilles de blaze
+tile.ghastore.name=Minerai de ghast
+tile.enderclam.name=Palourde du néant
+tile.blazeSapling.name=Pousse de blaze
+tile.oreblock.sulphur.name=Minerai de sulphure
+tile.oreblock.niter.name=Minerai de nitrate
+tile.oreblock.fossil.name=Fossile
+tile.remains.name=Vestiges enfouis
+tile.slime.name=Goo
+
+item.sulphdust.name=Crystal de sulphure
+item.niterdust.name=Crystal de nitrate
+item.flaxfibre.name=Fibre de lin
+item.cloth.name=Habits
+item.flaxseed.name=Graine de lin
+item.cookedflesh.name=Chair cuite
+item.chain.name=Matériel en chaîne
+item.rottenseed.name=Graine pourries
+
+
+itemGroup.pp_blocks=Peacefulpack Blocs
+itemGroup.pp_materials=Peacefulpack Matériaux

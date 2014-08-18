@@ -1,0 +1,26 @@
+tile.flax.name=Lino
+tile.rottenplant.name=Pianta marcia
+tile.blazelog.name=Legno infuocato
+tile.blazeleaves.name=Foglie infuocate
+tile.ghastore.name=Minerale di ghast
+tile.enderclam.name=Mollusco dell'end
+tile.blazeSapling.name=Arberello infuocato
+tile.oreblock.sulphur.name=Minerale di zolfo
+tile.oreblock.niter.name=Minerale di nitro
+tile.oreblock.fossil.name=Fossili
+tile.remains.name=Resti sepolti
+tile.slime.name=Goo
+
+item.sulphdust.name=Cristallo di zolfo
+item.niterdust.name=Cristallo di nitro
+item.flaxfibre.name=Fibra di lino
+item.cloth.name=Vestito
+item.flaxseed.name=Seme di lino
+item.cookedflesh.name=Carne cotta
+item.chain.name=Materiale in catena
+item.rottenseed.name=Seme marcio
+
+
+itemGroup.pp_blocks=Blocchi della Peacefulpack
+itemGroup.pp_materials=Materiali della Peacefulpack
+

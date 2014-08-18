@@ -1,0 +1,26 @@
+tile.flax.name=Hør
+tile.rottenplant.name=Rådden Plante
+tile.blazelog.name=Blaze Stamme
+tile.blazeleaves.name=Blaze Blade
+tile.ghastore.name=Ghast-malm
+tile.enderclam.name=Ender Musling
+tile.blazeSapling.name=Ungt Blaze-træ
+tile.oreblock.sulphur.name=Svovlmalm
+tile.oreblock.niter.name=Nithermalm
+tile.oreblock.fossil.name=Fossiler
+tile.remains.name=Begravede Rester
+tile.slime.name=Slimet Substans
+
+item.sulphdust.name=Svovl Krystal
+item.niterdust.name=Nither Krystal
+item.flaxfibre.name=Hør Fiber
+item.cloth.name=Klud
+item.flaxseed.name=Hør Frø
+item.cookedflesh.name=Stægt Kød
+item.chain.name=Kæde Materialer
+item.rottenseed.name=Råddent Frø
+
+
+itemGroup.pp_blocks=Peacefulpack Blokke
+itemGroup.pp_materials=Peacefulpack Materialer
+

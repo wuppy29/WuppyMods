@@ -63,9 +63,11 @@ public class BlockGhastOre extends Block
 		{
 			if(lavaAround || !Config.lavaForGhastOres)
 			{
-				int i = world.rand.nextInt(fortune);
+				int i;
 				
-				if(i < 1)
+				if(fortune > 0)
+					i = world.rand.nextInt(fortune);
+				else
 					i = 0;
 				
 				ret.add(new ItemStack(Items.ghast_tear, 1 + i));
