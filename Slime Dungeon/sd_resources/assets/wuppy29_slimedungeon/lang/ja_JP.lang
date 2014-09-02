@@ -1,0 +1,4 @@
+tile.wuppy29_slimedungeon_slimecobble.name=スライムストーン
+tile.wuppy29_slimedungeon_slimeblock.name=スライムブロック
+
+entity.wuppy29_slimedungeon.SlimeZombie.name=スライムゾンビ

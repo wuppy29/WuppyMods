@@ -1,0 +1,74 @@
+﻿tile.savportal.name=Portail de la Savanne
+tile.red cactus.name=Cactus rouge
+tile.savannahtnt.name=TNT de la Savanne
+tile.customwood.name=Bois de saucisse
+
+tile.oreblock.yellow.name=Minerai de citrine
+tile.oreblock.blue.name=Minerai de disthène
+tile.oreblock.white.name=Minerai de pierre de Lune
+tile.oreblock.gray.name=Minerai de lépidolite
+tile.oreblock.light blue.name=Minerai d'eau marine
+tile.oreblock.brown.name=Minerai d'hématite
+tile.oreblock.red.name=Minerai de rubis
+
+tile.customstone.gold.name=Minerai d'or de grès
+tile.customstone.iron.name=Minerai de fer de grès
+tile.customstone.coal.name=Minerai de charbon de grès
+tile.customstone.diamond.name=Minerai de diamant de grès
+tile.customstone.redstone.name=Minerai de redstone de grès
+tile.customstone.lapis.name=Minerai de lapis-lazuli de grès
+
+
+
+item.bonespear.name=Lance en os
+item.uruksword.name=Épée d'Uruk Hai
+item.wood poison.name=Épée en bois empoisonée
+item.stone poison.name=Épée en pierre empoisonée
+item.iron poison.name=Épée en fer empoisonée
+item.gold poison.name=Épée en or empoisonée
+item.diamond poison.name=Épée en diamant empoisonée
+item.redcactusfood.name=Cactus rouge cuit
+item.waterhoe.name=Houe d'arrosage
+item.explosivebow.name=Arc de l'âme du Creeper
+item.portalPlacer.name=Placeur de Portail
+item.dagger.name=Poignard
+
+item.component.vampireblood.name=Sang de vampire
+item.component.speartip.name=Pointe de lance
+item.component.giantbone.name=Os de géant
+item.component.redgiantbone.name=Os de géant ensanglanté
+item.component.poisonbottle.name=Bouteille de poison
+item.component.savannahgunpowder.name=Poudre à canon de la savanne
+
+item.key.yellow.name=Clé jaune
+item.key.blue.name=Clé bleue
+item.key.white.name=Clé blanche
+item.key.grey.name=Clé grise
+item.key.cyan.name=Clé bleu clair
+item.key.brown.name=Clé marron
+item.key.red.name=Clé rouge
+
+item.gem.yellow.name=Citrine
+item.gem.blue.name=Disthène
+item.gem.white.name=Pierre de Lune
+item.gem.grey.name=Lépidolite
+item.gem.cyan.name=Eau marine
+item.gem.brown.name=Hématite
+item.gem.red.name=Rubis
+
+
+
+entity.wuppy29_goblingiant.vampire.name=Vampire
+entity.wuppy29_goblingiant.dwarf.name=Nain
+entity.wuppy29_goblingiant.werewolf.name=Loup-garou
+entity.wuppy29_goblingiant.pigman.name=Homme-cochon
+entity.wuppy29_goblingiant.goblin.name=Gobelin
+entity.wuppy29_goblingiant.giant.name=Géant
+entity.wuppy29_goblingiant.orc.name=Orque
+entity.wuppy29_goblingiant.redcreeper.name=Creeper rouge
+
+
+itemGroup.gg_weapons=Armes de gobelins et de géants
+itemGroup.gg_blocks=Blocs de gobelins et de géants
+itemGroup.gg_materials=matériels de gobelins et de géants
+itemGroup.gg_misc=Divers gobelins et géants"

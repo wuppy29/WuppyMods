@@ -1,7 +1,5 @@
 package com.wuppy.goblinsgiants.worldgen;
 
-
-
 import java.util.Random;
 
 import net.minecraft.init.Blocks;

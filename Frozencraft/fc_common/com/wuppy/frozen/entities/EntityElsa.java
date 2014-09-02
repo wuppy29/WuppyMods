@@ -36,8 +36,9 @@ public class EntityElsa extends EntityMob implements IRangedAttackMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2D);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30D);
 	}
 
 	@Override

@@ -45,7 +45,8 @@ public class EntityAnna extends EntityAnimal
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20D);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
     /**

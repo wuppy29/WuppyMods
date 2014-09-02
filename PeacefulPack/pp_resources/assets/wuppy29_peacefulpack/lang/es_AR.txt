@@ -1,0 +1,26 @@
+tile.flax.name=Lino
+tile.rottenplant.name=Planta Podrida
+tile.blazelog.name=Leño en llamas
+tile.blazeleaves.name=Hojas en llamas
+tile.ghastore.name=Mineral de Ghast 
+tile.enderclam.name=Almeja Ender 
+tile.blazeSapling.name=Retoño en llamas
+tile.oreblock.sulphur.name=Mineral de azufre
+tile.oreblock.niter.name=Mineral de nitro
+tile.oreblock.fossil.name=Fósiles
+tile.remains.name=restos enterrados
+tile.slime.name=Pegajosa
+
+item.sulphdust.name=Cristal de azufre
+item.niterdust.name=Cristal de nitro
+item.flaxfibre.name=Fibra de lino
+item.cloth.name=Cuero
+item.flaxseed.name=Semilla de lino
+item.cookedflesh.name=Carne cosida
+item.chain.name=Cadena
+item.rottenseed.name=Semillas podridas
+
+
+itemGroup.pp_blocks=Bloques Peacefulpack 
+itemGroup.pp_materials=Materiales Peacefulpack 
+

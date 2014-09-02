@@ -1,0 +1,74 @@
+﻿tile.savportal.name=Portal a Savannah
+tile.red cactus.name=Cactus Rojo
+tile.savannahtnt.name=TNT del Savannah
+tile.customwood.name=Madera de Sause
+
+tile.oreblock.yellow.name=Piedra falsa
+tile.oreblock.blue.name=Mineral de Kyanite
+tile.oreblock.white.name=Piedra de luna
+tile.oreblock.gray.name=Mineral de Lepidolita
+tile.oreblock.light blue.name=Mineral de Aguamarina
+tile.oreblock.brown.name=Mineral de Hematite
+tile.oreblock.red.name=Ruby
+
+tile.customstone.gold.name=Arenisca de oro
+tile.customstone.iron.name=Arenisca de Hierro
+tile.customstone.coal.name=Arenisca de Carbon
+tile.customstone.diamond.name=Arenisca de Diamante
+tile.customstone.redstone.name=Arenisca de PiedraRoja
+tile.customstone.lapis.name=Arenisca de Lapis Lazuli
+
+
+
+item.bonespear.name=Lanza de Hueso
+item.uruksword.name=Espada de Uruk Hai 
+item.wood poison.name=Espada de Madera Venenosa
+item.stone poison.name=Espada de piedra Venenosa
+item.iron poison.name=Espada de Hierro Venenosa
+item.gold poison.name=Espada de oro Venenosa
+item.diamond poison.name=Espada de Diamante Venenosa
+item.redcactusfood.name=Galletas de cactus rojo
+item.waterhoe.name=Riego de Hoe
+item.explosivebow.name=Arco de Creepers
+item.portalPlacer.name=Portal Al Fondo del mar
+item.dagger.name=Daga
+
+item.component.vampireblood.name=Sangre de Vampiro
+item.component.speartip.name=Lanza 
+item.component.giantbone.name=Hueso de Gigante
+item.component.redgiantbone.name=Hueso gigante ensangrado
+item.component.poisonbottle.name=Botella de veneno
+item.component.savannahgunpowder.name=Pólvora del Savannah 
+
+item.key.yellow.name=Llave amarilla
+item.key.blue.name=Llave azul
+item.key.white.name=Llave Blanca
+item.key.grey.name=Llave Verde
+item.key.cyan.name=Llave azul claro
+item.key.brown.name=Llave Marron
+item.key.red.name=Llave Roja
+
+item.gem.yellow.name=Citrina
+item.gem.blue.name=Kyanite
+item.gem.white.name=PiedraLunar
+item.gem.grey.name=Lepidolita
+item.gem.cyan.name=Aguamarina
+item.gem.brown.name=Hematite
+item.gem.red.name=Ruby
+
+
+
+entity.wuppy29_goblingiant.vampire.name=Vampiro
+entity.wuppy29_goblingiant.dwarf.name=Enano
+entity.wuppy29_goblingiant.werewolf.name=Hombre lobo
+entity.wuppy29_goblingiant.pigman.name=Hombre cerdo
+entity.wuppy29_goblingiant.goblin.name=Trasgo
+entity.wuppy29_goblingiant.giant.name=Gigante
+entity.wuppy29_goblingiant.orc.name=Orco
+entity.wuppy29_goblingiant.redcreeper.name=Creeper Rojo
+
+
+itemGroup.gg_weapons=Armas de Goblins & Giants
+itemGroup.gg_blocks=Bloques de Goblins & Giants
+itemGroup.gg_materials=Materiales de Goblins & Giants
+itemGroup.gg_misc=Miselaneas de Goblins & Giants

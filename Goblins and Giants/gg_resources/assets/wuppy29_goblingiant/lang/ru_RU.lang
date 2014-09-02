@@ -1,0 +1,74 @@
+tile.savportal.name=Портал cаванны
+tile.red cactus.name=Красный кактус
+tile.savannahtnt.name=ТНТ cаванны
+tile.customwood.name=Колбасная древесина
+
+tile.oreblock.yellow.name=Цитриновая руда
+tile.oreblock.blue.name=Кианитовая руда
+tile.oreblock.white.name=Руда лунного камня
+tile.oreblock.grey.name=Лепидолитовая руда
+tile.oreblock.light blue.name=Аквамариновая руда
+tile.oreblock.brown.name=Гематитовая руда
+tile.oreblock.red.name=Рубиновая руда
+
+tile.customstone.gold.name=Песчаная золотая руда
+tile.customstone.iron.name=Песчаная железная руда
+tile.customstone.coal.name=Песчаная угольная руда
+tile.customstone.diamond.name=Песчаная алмазная руда
+tile.customstone.redstone.name=Песчаная руда красной пыли
+tile.customstone.lapis.name=Песчаная лазуритовая руда
+
+
+
+item.bonespear.name=Костяное копьё
+item.uruksword.name=Меч Урук Хай
+item.wood poison.name=Деревянный отравленный меч
+item.stone poison.name=Каменный отравленный меч
+item.iron poison.name=Железный отравленный меч
+item.gold poison.name=Золотой отравленный меч
+item.diamond poison.name=Алмазный отравленный меч
+item.redcactusfood.name=Приготовленный красный кактус
+item.waterhoe.name=Мотыга увлажнения
+item.explosivebow.name=Лук души Крипера
+item.portalPlacer.name=Установщик порталов
+item.dagger.name=Кинжал
+
+item.component.vampireblood.name=Кровь вампира
+item.component.speartip.name=Наконечник копья
+item.component.giantbone.name=Гигантская кость
+item.component.redgiantbone.name=Окровавленная гигантская кость
+item.component.poisonbottle.name=Бутылка яда
+item.component.savannahgunpowder.name=Порох Саванны
+
+item.key.yellow.name=Жёлтый ключ
+item.key.blue.name=Синий ключ
+item.key.white.name=Белый ключ
+item.key.grey.name=Серый ключ
+item.key.cyan.name=Светло синий ключ
+item.key.brown.name=Коричневый ключ
+item.key.red.name=Красный ключ
+
+item.gem.yellow.name=Цитрин
+item.gem.blue.name=Кианит
+item.gem.white.name=Лунный камень
+item.gem.grey.name=Лепидолит
+item.gem.cyan.name=Аквамарин
+item.gem.brown.name=Гематит
+item.gem.red.name=Рубин
+
+
+
+entity.wuppy29_goblingiant.vampire.name=Вампир
+entity.wuppy29_goblingiant.dwarf.name=Гном
+entity.wuppy29_goblingiant.werewolf.name=Оборотень
+entity.wuppy29_goblingiant.pigman.name=Свиночеловек
+entity.wuppy29_goblingiant.goblin.name=Гоблин
+entity.wuppy29_goblingiant.giant.name=Гигант
+entity.wuppy29_goblingiant.orc.name=Орк
+entity.wuppy29_goblingiant.redcreeper.name=Красный крипер
+
+
+itemGroup.gg_weapons=Оружие гоблинов и гигантов
+itemGroup.gg_blocks=Блоки гоблинов и гигантов
+itemGroup.gg_materials=Материалы гоблинов и гигантов
+itemGroup.gg_misc=Всякие разности гоблинов и гигантов

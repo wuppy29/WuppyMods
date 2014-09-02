@@ -37,7 +37,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
     {
         super.updateTick(world, i, j, k, random);
         
-        if(world.getBlockLightValue(i, j + 1, k) >= 9 && random.nextInt(7) == 0)
+        if(world.getBlockLightValue(i, j + 1, k) >= 1 && random.nextInt(7) == 0)
         {
             int l = world.getBlockMetadata(i, j, k);
             if((l & 8) == 0)

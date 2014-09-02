@@ -16,12 +16,12 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = SlimeDungeon.MODID, name = "Slime Dungeons", version = "1.6.1")
+@Mod(modid = SlimeDungeon.MODID, name = "Slime Dungeons", version = "1.6.2")
 public class SlimeDungeon
 {
 	public static final String MODID = "wuppy29_slimedungeon";
 
-	public static final int VERSION = 3;
+	public static final int VERSION = 4;
 	public static String updates = "";
 	public static boolean outdated = false;
 

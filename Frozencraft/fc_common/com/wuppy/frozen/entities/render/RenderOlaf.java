@@ -1,4 +1,4 @@
-package com.wuppy.frozen.proxies;
+package com.wuppy.frozen.entities.render;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -12,16 +12,29 @@ import com.wuppy.frozen.entities.render.models.ModelOlaf;
 public class RenderOlaf extends Render
 {
 	ModelOlaf model = new ModelOlaf();
-	
+
 	@Override
-	public void doRender(Entity entity, double par2, double par3, double par4, float par5, float par6)
+	public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTickTime)
 	{
 		glPushMatrix();
+
+		// standing
+		glTranslated(x, y + 0.6D, z);
+		glRotatef(90F, 1F, 0F, 0F);
 		
+		//System.out.println(yaw);
+		
+		//looking
+		glRotatef(yaw, 0F, 0F, 1F);
+
+		// scale
+		float scale = 0.15F;
+		glScalef(scale, scale, scale);
+
+		// render
 		bindEntityTexture(entity);
-		
 		model.renderAll();
-		
+
 		glPopMatrix();
 	}
 

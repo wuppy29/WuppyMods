@@ -1,0 +1,74 @@
+tile.savportal.name=サバンナポータル
+tile.red cactus.name=赤いサボテン
+tile.savannahtnt.name=サバンナTNT
+tile.customwood.name=ソーセージの木
+
+tile.oreblock.yellow.name=クォーツ鉱石
+tile.oreblock.blue.name=カイアナイト鉱石
+tile.oreblock.white.name=ムーンストーン鉱石
+tile.oreblock.grey.name=レピドライト鉱石
+tile.oreblock.light blue.name=アクアマリン鉱石
+tile.oreblock.brown.name=赤鉄鉱
+tile.oreblock.red.name=ルビー鉱石
+
+tile.customstone.gold.name=砂岩の金鉱石
+tile.customstone.iron.name=砂岩の鉄鉱石
+tile.customstone.coal.name=砂岩の石炭鉱石
+tile.customstone.diamond.name=砂岩のダイヤモンド鉱石
+tile.customstone.redstone.name=砂岩のレッドストーン鉱石
+tile.customstone.lapis.name=砂岩のラピスラズリ鉱石
+
+
+
+item.bonespear.name=ボーンスピアー
+item.uruksword.name=ウルク＝ハイソード
+item.wood poison.name=ウッドポイズンソード
+item.stone poison.name=ストーンポイズンソード
+item.iron poison.name=アイアンポイズンソード
+item.gold poison.name=ゴールドポイズンソード
+item.diamond poison.name=ダイヤモンドポイズンソード
+item.redcactusfood.name=料理済みの赤いサボテン
+item.waterhoe.name=散水のホエ
+item.explosivebow.name=クリーパーズソウルボゥ
+item.portalPlacer.name=ポータルプラセール
+item.dagger.name=ダガー
+
+item.component.vampireblood.name=ヴァンパイアの血
+item.component.speartip.name=槍の金具
+item.component.giantbone.name=大きな骨
+item.component.redgiantbone.name=血に濡れた大きな骨
+item.component.poisonbottle.name=ポイズンボトル
+item.component.savannahgunpowder.name=サバンナの火薬
+
+item.key.yellow.name=黄色い鍵
+item.key.blue.name=青い鍵
+item.key.white.name=白い鍵
+item.key.grey.name=灰色の鍵
+item.key.cyan.name=水色の鍵
+item.key.brown.name=茶色の鍵
+item.key.red.name=赤い鍵
+
+item.gem.yellow.name=クォーツ
+item.gem.blue.name=カイアナイト
+item.gem.white.name=ムーンストーン
+item.gem.grey.name=レピドライト
+item.gem.cyan.name=アクアマリン
+item.gem.brown.name=赤鉄
+item.gem.red.name=ルビー
+
+
+
+entity.wuppy29_goblingiant.vampire.name=ヴァンパイア
+entity.wuppy29_goblingiant.dwarf.name=ドワーフ
+entity.wuppy29_goblingiant.werewolf.name=ウェアウルフ
+entity.wuppy29_goblingiant.pigman.name=ピッグマン
+entity.wuppy29_goblingiant.goblin.name=ゴブリン
+entity.wuppy29_goblingiant.giant.name=ジャイアント
+entity.wuppy29_goblingiant.orc.name=オーク
+entity.wuppy29_goblingiant.redcreeper.name=レッドクリーパー
+
+
+itemGroup.gg_weapons=武装したゴブリン
+itemGroup.gg_blocks=運び屋ゴブリン
+itemGroup.gg_materials=素材運びのゴブリン
+itemGroup.gg_misc=雑多な運び屋ゴブリン

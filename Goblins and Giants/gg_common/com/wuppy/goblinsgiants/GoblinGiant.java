@@ -19,9 +19,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.4.3")
+@Mod(modid = GoblinGiant.modid, name = "Goblins and Giants", version = "1.0.5.0")
 public class GoblinGiant
 {
+	/*
+	 * - Added translations for: all Spanish languages (5), French, Japanese and Russian. 
+	 */
+	
 	public static final int VERSION = 6;
 
 	public static final String modid = "wuppy29_goblingiant";

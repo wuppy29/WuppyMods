@@ -25,11 +25,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @Mod(modid = ImprovedMobs.modid, name = "Improved Mob Spawn", version = "1.5.3")
 public class ImprovedMobs
 {
-	/*
-	 * - Fixed Cave spiders spawning in the nether
-	 * - Made everything configurable
-	 */
-	
 	public static final String modid = "wuppy29_improvedmobspawn";
 
 	@SidedProxy(clientSide = "com.wuppy.improvedmobspawn.proxies.ClientProxyIMP", serverSide = "com.wuppy.improvedmobspawn.proxies.CommonProxyIMP")

@@ -1,0 +1,26 @@
+﻿tile.flax.name=Linho
+tile.rottenplant.name=Planta Murcha
+tile.blazelog.name=Tronco Ardentes
+tile.blazeleaves.name=Folhas Ardentes
+tile.ghastore.name=Minério de Ghast
+tile.enderclam.name=Mexilhão do Fim
+tile.blazeSapling.name=Rebento Ardente
+tile.oreblock.sulphur.name=Minério de Enxofre
+tile.oreblock.niter.name=Minério de Salitre
+tile.oreblock.fossil.name=Fósseis
+tile.remains.name=Restos Enterrados
+tile.slime.name=Visco
+
+item.sulphdust.name=Cristal de Enxofre
+item.niterdust.name=Cristal de Salitre
+item.flaxfibre.name=Fibra de Linho
+item.cloth.name=Tecido
+item.flaxseed.name=Semente de Linho
+item.cookedflesh.name=Carne Podre Cozinhada
+item.chain.name=Material de Malha
+item.rottenseed.name=Semente Podre
+
+
+itemGroup.pp_blocks=Blocos Pacíficos
+itemGroup.pp_materials=Materiais Pacíficos
+

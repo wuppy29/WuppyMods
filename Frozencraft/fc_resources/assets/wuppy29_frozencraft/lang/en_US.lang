@@ -38,6 +38,9 @@ entity.wuppy29_frozencraft.kristoff.name=Kristoff
 entity.wuppy29_frozencraft.hans.name=Hans
 entity.wuppy29_frozencraft.duke.name=The Duke of Weselton
 entity.wuppy29_frozencraft.thug.name=The Duke's Thug
+entity.wuppy29_frozencraft.olaf.name=Olaf
+entity.wuppy29_frozencraft.sven.name=Sven
+entity.wuppy29_frozencraft.marshmallow.name=Marshmallow
 
 
 itemGroup.fc_armor=FrozenCraft Armor
