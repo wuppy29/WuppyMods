@@ -22,11 +22,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.8.4")
 public class PeacefulPack
 {
-	/*
-	 * - Fixed blaze sapling planting issue
-	 * - Added 5 new spanish translations and the Portuguese translation
-	 */
-	
 	public static final String modid = "wuppy29_peacefulpack";
 
 	public static final int VERSION = 7;

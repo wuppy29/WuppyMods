@@ -15,12 +15,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-@Mod(modid = Koi.modid, name = "Koi", version = "1.11.1")
+@Mod(modid = Koi.modid, name = "Koi", version = "1.11.2")
 public class Koi
 {
 	public static final String modid = "wuppy29_koi";
 	
-	public static final int VERSION = 2;
+	public static final int VERSION = 3;
 	public static String updates = "";
 	public static boolean outdated = false;
 	

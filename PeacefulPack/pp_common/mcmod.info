@@ -2,7 +2,7 @@
 {
   "modid" : "Wuppy29_Peacefulpack",
   "name" : "The Peacefulpack",
-  "version" : "1.1.6.1",
+  "version" : "${version}",
   "url" : "http://www.minecraftforum.net/topic/1094417-",
   "credits" : "HogOfWar (Original Peacefulpack), Rhodox (Textures), TM13 (Textures)",
   "authors": [

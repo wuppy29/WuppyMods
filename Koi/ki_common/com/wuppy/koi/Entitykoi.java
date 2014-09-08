@@ -12,7 +12,6 @@ public class Entitykoi extends EntityWaterMob
     public Entitykoi(World par1World)
     {
     	super(par1World);
-    	tasks.addTask(0, new EntityAIMoveToWater(this, this.worldObj));
     	tasks.addTask(1, new EntityAISwimmingFish(this));
     	tasks.addTask(2, new EntityAIPanicKoi(this, 0.38F));
     	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F));
