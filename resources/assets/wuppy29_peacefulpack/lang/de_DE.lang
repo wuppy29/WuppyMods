@@ -1,0 +1,25 @@
+tile.flax.name=Flachs
+tile.rottenplant.name=Verrottete Pflanze
+tile.blazelog.name=Lohestamm
+tile.blazeleaves.name=Loheblätter
+tile.ghastore.name=Ghasterz
+tile.enderclam.name=Enderperlenmuschel
+tile.blazeSapling.name=Lohesamen
+tile.oreblock.sulphur.name=Salpetererz
+tile.oreblock.niter.name=Nitrokaliterz
+tile.oreblock.fossil.name=Fossil
+tile.remains.name=Rückstände
+tile.slime.name=Goo
+
+item.sulphdust.name=Salpeterkristal
+item.niterdust.name=Nitrokalitkristal
+item.flaxfibre.name=Flachsgewebe
+item.cloth.name=Stoff
+item.flaxseed.name=Flachssamen
+item.cookedflesh.name=Gekochtes Fleisch
+item.chain.name=Kettenglieder
+item.rottenseed.name=Verottete Samen
+
+
+itemGroup.pp_blocks=Peacefulpack Blöcke
+itemGroup.pp_materials=Peacefulpack Materialen

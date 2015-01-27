@@ -1,0 +1,46 @@
+tile.wuppy29_frozencraft_iceVine.name=Ice Vine
+tile.wuppy29_frozencraft_hardIce.name=Hard Ice
+tile.wuppy29_frozencraft_obsidian.name=Obsidian
+
+
+item.wuppy29_frozencraft_frozenHeart.name=Frozen Heart
+item.wuppy29_frozencraft_iceSaw.name=Ice Saw
+item.wuppy29_frozencraft_elsaGlove.name=Elsa's Glove
+item.wuppy29_frozencraft_hansSword.name=Hans' Sword
+item.wuppy29_frozencraft_kristoffPickaxe.name=Kristoffs Picaxe
+
+item.wuppy29_frozencraft_elsaTiara.name=Elsa's Tiara
+item.wuppy29_frozencraft_elsaBodice.name=Elsa's Bodice
+item.wuppy29_frozencraft_elsaSkirt.name=Elsa's Skirt
+item.wuppy29_frozencraft_elsaHeels.name=Ice Heels
+
+item.wuppy29_frozencraft_annaCap.name=Anna's Cap
+item.wuppy29_frozencraft_annaBodice.name=Anna's Bodice
+item.wuppy29_frozencraft_annaSkirt.name=Anna's Skirt
+item.wuppy29_frozencraft_annaBoots.name=Anna's Boots
+
+item.wuppy29_frozencraft_kristoffCap.name=Kristoff's Cap
+item.wuppy29_frozencraft_kristoffJacket.name=Kristoff's Jacket
+item.wuppy29_frozencraft_kristoffPants.name=Kristoff's Pants
+item.wuppy29_frozencraft_kristoffBoots.name=Kristoff's Boots
+
+item.wuppy29_frozencraft_hansHair.name=Hans' Hair
+item.wuppy29_frozencraft_hansTop.name=Hans' Top
+item.wuppy29_frozencraft_hansPants.name=Hans' Pants
+item.wuppy29_frozencraft_hansBoots.name=Hans' Boots
+
+
+entity.wuppy29_frozencraft.iceboltfailed.name=Ice Bolt
+entity.wuppy29_frozencraft.iceboltplayer.name=Ice Bolt
+entity.wuppy29_frozencraft.elsa.name=Elsa
+entity.wuppy29_frozencraft.anna.name=Anna
+entity.wuppy29_frozencraft.kristoff.name=Kristoff
+entity.wuppy29_frozencraft.hans.name=Hans
+entity.wuppy29_frozencraft.duke.name=The Duke of Weselton
+entity.wuppy29_frozencraft.thug.name=The Duke's Thug
+entity.wuppy29_frozencraft.olaf.name=Olaf
+entity.wuppy29_frozencraft.sven.name=Sven
+entity.wuppy29_frozencraft.marshmallow.name=Marshmallow
+
+
+itemGroup.fc_armor=FrozenCraft Armor

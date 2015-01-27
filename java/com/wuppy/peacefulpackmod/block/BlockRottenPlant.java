@@ -1,0 +1,219 @@
+package com.wuppy.peacefulpackmod.block;
+
+import java.util.List;
+import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockMushroom;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ModItems;
+
+public class BlockRottenPlant extends BlockMushroom implements IGrowable
+{
+	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 1);
+	
+	private final String name = "rottenPlant";
+	
+	public BlockRottenPlant()
+	{
+		GameRegistry.registerBlock(this, name);
+		setUnlocalizedName(PeacefulPack.modid + "_" + name);
+		
+		setStepSound(soundTypeGrass);
+		setBlockBounds(0F, 0.0F, 0F, 1F, 0.25F, 1F);
+		setHardness(0.0F);
+		disableStats();
+		
+		setCreativeTab((CreativeTabs) null);
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+
+	/*
+	@SideOnly(Side.CLIENT)
+	private IIcon[] iconArray;
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerBlockIcons(IIconRegister par1IconRegister)
+	{
+		iconArray = new IIcon[2];
+		for (int i = 0; i < this.iconArray.length; ++i)
+		{
+			this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return iconArray[par2];
+	}*/
+
+	@Override
+	public boolean canPlaceBlockOn(Block ground)
+	{
+		if (ground == Blocks.netherrack)
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * Ticks the block if it's been scheduled
+	 */
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(worldIn, pos, state, rand);
+
+        if (worldIn.getLightFromNeighbors(pos.up()) < 4)
+        {
+            int i = ((Integer)state.getValue(AGE)).intValue();
+
+            if (i < 1)
+            {
+                float f = getGrowthChance(this, worldIn, pos);
+
+                if (rand.nextInt((int)(25.0F / f) + 1) == 0)
+                {
+                    worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+                }
+            }
+        }
+    }
+
+	protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos)
+    {
+        float f = 1.0F;
+        BlockPos blockpos1 = pos.down();
+
+        for (int i = -1; i <= 1; ++i)
+        {
+            for (int j = -1; j <= 1; ++j)
+            {
+                float f1 = 0.0F;
+                IBlockState iblockstate = worldIn.getBlockState(blockpos1.add(i, 0, j));
+
+                if (iblockstate.getBlock().canSustainPlant(worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable)blockIn))
+                {
+                    f1 = 1.0F;
+
+                    if (iblockstate.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j)))
+                    {
+                        f1 = 3.0F;
+                    }
+                }
+
+                if (i != 0 || j != 0)
+                {
+                    f1 /= 4.0F;
+                }
+
+                f += f1;
+            }
+        }
+
+        BlockPos blockpos2 = pos.north();
+        BlockPos blockpos3 = pos.south();
+        BlockPos blockpos4 = pos.west();
+        BlockPos blockpos5 = pos.east();
+        boolean flag = blockIn == worldIn.getBlockState(blockpos4).getBlock() || blockIn == worldIn.getBlockState(blockpos5).getBlock();
+        boolean flag1 = blockIn == worldIn.getBlockState(blockpos2).getBlock() || blockIn == worldIn.getBlockState(blockpos3).getBlock();
+
+        if (flag && flag1)
+        {
+            f /= 2.0F;
+        }
+        else
+        {
+            boolean flag2 = blockIn == worldIn.getBlockState(blockpos4.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos5.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos5.south()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.south()).getBlock();
+
+            if (flag2)
+            {
+                f /= 2.0F;
+            }
+        }
+
+        return f;
+    }
+
+	/**
+	 * The type of render function that is called for this block
+	 */
+
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube()
+	{
+		return false;
+	}
+	
+	@Override
+	public int getRenderType()
+	{
+		return 6;
+	}
+
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	{
+		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		
+		int age = ((Integer)state.getValue(AGE)).intValue();
+		Random rand = world instanceof World ? ((World)world).rand : new Random();
+
+		if (age > 0)
+		{
+			ret.add(new ItemStack(Items.rotten_flesh));
+		}
+		if (rand.nextInt(2) == 0)
+		{
+			ret.add(new ItemStack(ModItems.rottenSeed));
+		}
+
+		return ret;
+	}
+	
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) 
+	{
+		if(((Integer)state.getValue(AGE)).intValue() < 2)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) 
+	{
+		return true;
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) 
+	{
+		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(1)), 2);
+	}
+}

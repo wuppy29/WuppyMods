@@ -1,0 +1,26 @@
+tile.wuppy29_peacefulpack_flax.name=Flax
+tile.wuppy29_peacefulpack_rottenPlant.name=Rotten Plant
+tile.wuppy29_peacefulpack_blazeLog.name=Blaze Log
+tile.wuppy29_peacefulpack_blazeLeaves.name=Blaze Leaves
+tile.wuppy29_peacefulpack_ghastOre.name=Ghast Ore
+tile.wuppy29_peacefulpack_enderclam.name=Ender Clam
+tile.wuppy29_peacefulpack_blazeSapling.name=Blaze Sapling
+tile.wuppy29_peacefulpack_oreBlock.sulphur.name=Sulphur Ore
+tile.wuppy29_peacefulpack_oreBlock.niter.name=Niter Ore
+tile.wuppy29_peacefulpack_oreBlock.fossil.name=Fossils
+tile.wuppy29_peacefulpack_remains.name=Buried Remains
+tile.wuppy29_peacefulpack_slimeSlab.name=Goo
+
+item.wuppy29_peacefulpack_peacefulMaterial.sulphdust.name=Sulphur Crystal
+item.wuppy29_peacefulpack_peacefulMaterial.niterdust.name=Niter Crystal
+item.wuppy29_peacefulpack_peacefulMaterial.flaxfibre.name=Flax Fibre
+item.wuppy29_peacefulpack_peacefulMaterial.cloth.name=Cloth
+item.wuppy29_peacefulpack_flaxseed.name=Flax Seed
+item.wuppy29_peacefulpack_cookedFlesh.name=Cooked Flesh
+item.wuppy29_peacefulpack_peacefulMaterial.chain.name=Chain Material
+item.wuppy29_peacefulpack_rottenseed.name=Rotten Seed
+
+
+itemGroup.pp_blocks=Peacefulpack Blocks
+itemGroup.pp_materials=Peacefulpack Materials
+
