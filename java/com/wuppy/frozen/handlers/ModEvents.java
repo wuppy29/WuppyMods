@@ -25,10 +25,8 @@ public class ModEvents
 	@SubscribeEvent
 	public void shootIceBolt(PlayerInteractEvent event)
 	{
-		System.out.println("yes");
 		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
 		{
-			System.out.println("yup");
 			if (event.entityPlayer.getCurrentEquippedItem() == null)
 			{
 				System.out.println("si");

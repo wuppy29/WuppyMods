@@ -45,13 +45,6 @@ public class ItemPeacefulSeed extends Item implements IPlantable
     	return name;
     }
     
-    /*@SideOnly(Side.CLIENT)
-    @Override
-    public void registerIcons(IIconRegister par1IconRegister)
-    {
-        this.itemIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }*/
-    
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
     {
@@ -63,7 +56,7 @@ public class ItemPeacefulSeed extends Item implements IPlantable
         {
             return false;
         }
-        else if (worldIn.getBlockState(pos).getBlock().canSustainPlant(worldIn, pos, EnumFacing.UP, this) && worldIn.isAirBlock(pos.up()))
+        else if (worldIn.getBlockState(pos).getBlock() == soilBlock && worldIn.isAirBlock(pos.up()))
         {
             worldIn.setBlockState(pos.up(), this.blockType.getDefaultState());
             --stack.stackSize;

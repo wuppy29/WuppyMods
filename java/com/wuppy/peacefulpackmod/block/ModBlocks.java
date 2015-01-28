@@ -3,6 +3,7 @@ package com.wuppy.peacefulpackmod.block;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -32,7 +33,7 @@ public class ModBlocks
 		flax = new BlockFlax();
 		slimeSlab = new BlockSlimeSlab();
 		rottenPlant = new BlockRottenPlant();
-		blazeLog = new BlockBlazeLog();
+		blazeLog = new BlockBlazeLog();//TODO
 		blazeLeaves = new BlockBlazeLeaves();
 		ghastOre = new BlockGhastOre();
 		enderClam = new BlockEnderclam();
@@ -54,6 +55,7 @@ public class ModBlocks
 		    BlockPeacefulOres.OreType.registerRenders();
 		    
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(flax), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockFlax) flax).getName(), "inventory"));
+		    
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(slimeSlab), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockSlimeSlab) slimeSlab).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(rottenPlant), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRottenPlant) rottenPlant).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLog), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLog) blazeLog).getName(), "inventory"));

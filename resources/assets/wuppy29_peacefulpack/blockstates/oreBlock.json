@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "variant=sulphur": { "model": "wuppy29_peacefulpack:sulphur" },
+        "variant=niter": { "model": "wuppy29_peacefulpack:niter" },
+        "variant=fossil1": { "model": "wuppy29_peacefulpack:fossil1" },
+        "variant=fossil2": { "model": "wuppy29_peacefulpack:fossil2" },
+        "variant=fossil3": { "model": "wuppy29_peacefulpack:fossil3" }
+    }
+}

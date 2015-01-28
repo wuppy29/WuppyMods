@@ -1,0 +1,7 @@
+{
+    "parent": "block/column_side",
+    "textures": {
+       "end": "wuppy29_peacefulpack:blocks/blazelog1",
+       "side": "wuppy29_peacefulpack:blocks/blazelog0"
+    }
+}

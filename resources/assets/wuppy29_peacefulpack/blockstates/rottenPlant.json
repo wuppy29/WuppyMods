@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "age=0": { "model": "wuppy29_peacefulpack:rottenPlant_stage0" },
+        "age=1": { "model": "wuppy29_peacefulpack:rottenPlant_stage1" }
+    }
+}

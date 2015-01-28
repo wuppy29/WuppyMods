@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "wuppy29_peacefulpack:blocks/flax1"
+    }
+}

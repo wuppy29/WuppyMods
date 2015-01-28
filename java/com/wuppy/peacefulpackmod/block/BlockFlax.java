@@ -48,16 +48,19 @@ public class BlockFlax extends BlockBush implements IGrowable
 		return name;
 	}
 
+	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
     }
 
+	@Override
     public int getMetaFromState(IBlockState state)
     {
         return ((Integer)state.getValue(AGE)).intValue();
     }
 
+	@Override
     protected BlockState createBlockState()
     {
         return new BlockState(this, new IProperty[] {AGE});
@@ -150,7 +153,7 @@ public class BlockFlax extends BlockBush implements IGrowable
 	
 	public void grow(World worldIn, BlockPos pos, IBlockState state)
     {
-        int newAge = ((Integer)state.getValue(AGE)).intValue() + MathHelper.getRandomIntegerInRange(worldIn.rand, 2, 5);
+        int newAge = ((Integer)state.getValue(AGE)).intValue() + 1;
 
         if (newAge > 2)
         {
@@ -159,15 +162,6 @@ public class BlockFlax extends BlockBush implements IGrowable
 
         worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(newAge)), 2);
     }
-
-	/**
-	 * The type of render function that is called for this block
-	 */
-	@Override
-	public int getRenderType()
-	{
-		return 6;
-	}
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)

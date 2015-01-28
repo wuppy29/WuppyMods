@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockMushroom;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -20,7 +22,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.wuppy.peacefulpackmod.PeacefulPack;
 import com.wuppy.peacefulpackmod.item.ModItems;
 
-public class BlockRottenPlant extends BlockMushroom implements IGrowable
+public class BlockRottenPlant extends BlockBush implements IGrowable
 {
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 1);
 	
@@ -43,29 +45,33 @@ public class BlockRottenPlant extends BlockMushroom implements IGrowable
 	{
 		return name;
 	}
-
-	/*
-	@SideOnly(Side.CLIENT)
-	private IIcon[] iconArray;
-
-	@SideOnly(Side.CLIENT)
+	
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		iconArray = new IIcon[2];
-		for (int i = 0; i < this.iconArray.length; ++i)
-		{
-			this.iconArray[i] = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)) + i);
-		}
-	}
+	public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+    }
 
-	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
-		return iconArray[par2];
-	}*/
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((Integer)state.getValue(AGE)).intValue();
+    }
 
+	@Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {AGE});
+    }
+	
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
+    {
+        if(worldIn.getBlockState(new BlockPos(pos.getX(), pos.getY() -1, pos.getZ())).getBlock() == Blocks.netherrack)
+        	return true;
+        else
+        	return false;
+    }
+	
 	@Override
 	public boolean canPlaceBlockOn(Block ground)
 	{
@@ -83,7 +89,7 @@ public class BlockRottenPlant extends BlockMushroom implements IGrowable
     {
         super.updateTick(worldIn, pos, state, rand);
 
-        if (worldIn.getLightFromNeighbors(pos.up()) < 4)
+        if (worldIn.getLightFromNeighbors(pos.up()) < 6)
         {
             int i = ((Integer)state.getValue(AGE)).intValue();
 
@@ -153,28 +159,6 @@ public class BlockRottenPlant extends BlockMushroom implements IGrowable
 
         return f;
     }
-
-	/**
-	 * The type of render function that is called for this block
-	 */
-
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
-	
-	@Override
-	public int getRenderType()
-	{
-		return 6;
-	}
 
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)

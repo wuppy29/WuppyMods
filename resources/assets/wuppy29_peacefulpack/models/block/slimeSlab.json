@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "wuppy29_peacefulpack:blocks/slime",
+        "top": "wuppy29_peacefulpack:blocks/slime",
+        "side": "wuppy29_peacefulpack:blocks/slime"
+    }
+}

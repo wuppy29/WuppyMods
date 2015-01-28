@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":  { "model": "wuppy29_peacefulpack:blazeLog" },
+        "axis=z":   { "model": "wuppy29_peacefulpack:blazeLog_side" },
+        "axis=x":   { "model": "wuppy29_peacefulpack:blazeLog_side", "y": 90 },
+        "axis=none": { "model": "wuppy29_peacefulpack:blazeLog_bark" }
+    }
+}

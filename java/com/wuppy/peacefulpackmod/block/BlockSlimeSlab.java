@@ -29,7 +29,6 @@ public class BlockSlimeSlab extends Block
 		setLightLevel(0.5F);
 		setResistance(1.0F);
 		setHardness(2.0F);
-		//setBlockTextureName(PeacefulPack.modid + ":" + "slime");
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 		
 		setCreativeTab(PeacefulPack.ppBlocksTab);
