@@ -1,22 +1,22 @@
 package com.wuppy.koi;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.Vec3;
 
 public class EntityAIPanicKoi extends EntityAIBase
 {
-    private EntityMob theEntityCreature;
+    private EntityCreature theEntityCreature;
     protected double speed;
     private double randPosX;
     private double randPosY;
     private double randPosZ;
     private static final String __OBFID = "CL_00001604";
 
-    public EntityAIPanicKoi(EntityMob p_i1645_1_, double p_i1645_2_)
+    public EntityAIPanicKoi(EntityCreature p_i1645_1_, double p_i1645_2_)
     {
         this.theEntityCreature = p_i1645_1_;
         this.speed = p_i1645_2_;
