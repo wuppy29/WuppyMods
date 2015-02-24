@@ -23,7 +23,7 @@ public class WorldGenBlazeTrees extends WorldGenAbstractTree
 
     public WorldGenBlazeTrees()
     {
-        this(true, 4, 0, 0, false);
+        this(true, 4, 1, 0, false);
     }
 
     public WorldGenBlazeTrees(boolean p_i2028_1_, int p_i2028_2_, int p_i2028_3_, int p_i2028_4_, boolean p_i2028_5_)
@@ -86,9 +86,12 @@ public class WorldGenBlazeTrees extends WorldGenAbstractTree
             {
                 BlockPos down = p_180709_3_.down();
                 Block block1 = worldIn.getBlockState(down).getBlock();
-                boolean isSoil = block1.canSustainPlant(worldIn, down, net.minecraft.util.EnumFacing.UP, (net.minecraft.block.BlockSapling)Blocks.sapling);
-
-                if (isSoil && p_180709_3_.getY() < 256 - i - 1)
+                
+                boolean goodSoil = false;
+                if(block1 == Blocks.netherrack)
+                	goodSoil = true;
+                
+                if (goodSoil && p_180709_3_.getY() < 256 - i - 1)
                 {
                     block1.onPlantGrow(worldIn, down, p_180709_3_);
                     b0 = 3;

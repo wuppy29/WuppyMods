@@ -1,7 +1,10 @@
 package com.wuppy.peacefulpackmod.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -33,7 +36,7 @@ public class ModBlocks
 		flax = new BlockFlax();
 		slimeSlab = new BlockSlimeSlab();
 		rottenPlant = new BlockRottenPlant();
-		blazeLog = new BlockBlazeLog();//TODO
+		blazeLog = new BlockBlazeLog();
 		blazeLeaves = new BlockBlazeLeaves();
 		ghastOre = new BlockGhastOre();
 		enderClam = new BlockEnderclam();
@@ -59,7 +62,10 @@ public class ModBlocks
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(slimeSlab), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockSlimeSlab) slimeSlab).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(rottenPlant), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRottenPlant) rottenPlant).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLog), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLog) blazeLog).getName(), "inventory"));
+		    
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLeaves), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLeaves) blazeLeaves).getName(), "inventory"));
+		    Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blazeLeaves, (new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {BlockBlazeLeaves.CHECK_DECAY, BlockBlazeLeaves.DECAYABLE}).build()));
+		    
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(ghastOre), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockGhastOre) ghastOre).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(enderClam), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockEnderclam) enderClam).getName(), "inventory"));
 		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeSapling), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeSapling) blazeSapling).getName(), "inventory"));

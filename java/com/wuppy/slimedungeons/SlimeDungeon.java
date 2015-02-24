@@ -20,12 +20,12 @@ import com.wuppy.slimedungeons.helpers.ModRecipes;
 import com.wuppy.slimedungeons.helpers.UpdateChecker;
 import com.wuppy.slimedungeons.proxies.CommonProxySlime;
 
-@Mod(modid = SlimeDungeon.MODID, name = "Slime Dungeons", version = "1.6.3")
+@Mod(modid = SlimeDungeon.MODID, name = "Slime Dungeons", version = "1.6.4")
 public class SlimeDungeon
 {
 	public static final String MODID = "wuppy29_slimedungeon";
 
-	public static final int VERSION = 5;
+	public static final int VERSION = 6;
 	public static String updates = "";
 	public static boolean outdated = false;
 

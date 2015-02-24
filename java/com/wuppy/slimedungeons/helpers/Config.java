@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class Config
 {
 	public static boolean checkForUpdates = true;
+	public static boolean addEntityEggs = true;
 	
 	public static void loadConfig(FMLPreInitializationEvent event)
 	{
@@ -14,6 +15,7 @@ public class Config
 		config.load();
 
 		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "Check Updates", true).getBoolean(true);
+		addEntityEggs = config.get(Configuration.CATEGORY_GENERAL, "Add Entity Eggs", true).getBoolean(true);
 
 		config.save();
 	}

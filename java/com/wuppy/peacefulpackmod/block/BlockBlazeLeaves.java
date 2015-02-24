@@ -6,7 +6,12 @@ import java.util.Random;
 
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -18,6 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ModItems;
 
 public class BlockBlazeLeaves extends BlockLeaves
 {
@@ -39,6 +45,53 @@ public class BlockBlazeLeaves extends BlockLeaves
 	}
 	
 	@Override
+	public IBlockState getStateFromMeta(int meta)
+    {
+		IBlockState state = getDefaultState();
+		
+		if(meta < 2)
+			state.withProperty(DECAYABLE, true);
+		else
+			state.withProperty(DECAYABLE, false);
+		
+		if(meta == 0 || meta == 2)
+			state.withProperty(CHECK_DECAY, true);
+		else
+			state.withProperty(CHECK_DECAY, false);
+		
+        return state;
+    }
+
+	@Override
+    public int getMetaFromState(IBlockState state)
+    {
+		if((Boolean) state.getValue(DECAYABLE))
+		{
+			if((Boolean) state.getValue(CHECK_DECAY))
+			{
+				return 0;
+			}
+			else
+				return 1;
+		}
+		else
+		{
+			if((Boolean) state.getValue(CHECK_DECAY))
+			{
+				return 2;
+			}
+			else
+				return 3;
+		}
+    }
+	
+	@Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {DECAYABLE, CHECK_DECAY});
+    }
+	
+	@Override
 	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
 		super.randomDisplayTick(worldIn, pos, state, rand);
@@ -52,20 +105,25 @@ public class BlockBlazeLeaves extends BlockLeaves
 			worldIn.spawnParticle(EnumParticleTypes.FLAME, pX, pY, pZ, 0.0D, 0.0D, 0.0D);
 		}
 	}
-
-	/*
+	
 	@Override
-	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
-	{
-		if (par1World.rand.nextInt(12) == 0)
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		
+		Random rand = world instanceof World ? ((World)world).rand : new Random();
+		
+		if (rand.nextInt(10) == 0)
 		{
-			this.dropBlockAsItem(par1World, par2, par3, par4, new ItemStack(ModBlocks.blazeSapling, 1));
+			ret.add(new ItemStack(ModBlocks.blazeSapling));
 		}
-		else if (par1World.rand.nextInt(5) == 0)
+		if (rand.nextInt(5) == 0)
 		{
-			this.dropBlockAsItem(par1World, par2, par3, par4, new ItemStack(Items.blaze_rod));
+			ret.add(new ItemStack(Items.blaze_rod));
 		}
-	}*/
+
+		return ret;
+    }
 
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 

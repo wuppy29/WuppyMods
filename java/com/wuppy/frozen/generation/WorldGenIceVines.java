@@ -2,10 +2,12 @@ package com.wuppy.frozen.generation;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockVine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.wuppy.frozen.blocks.BlockIceVine;
@@ -26,9 +28,9 @@ public class WorldGenIceVines extends WorldGenerator
                 {
                     EnumFacing enumfacing = aenumfacing[j];
 
-                    if (ModBlocks.iceVine.canPlaceBlockOnSide(worldIn, pos, enumfacing))
+                    if (ModBlocks.iceVine.canPlaceBlockOnSide(worldIn, pos, enumfacing) && worldIn.getBiomeGenForCoords(pos).getTempCategory() == BiomeGenBase.TempCategory.COLD)
                     {
-                        IBlockState iblockstate = ModBlocks.iceVine.getDefaultState().withProperty(BlockIceVine.NORTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockIceVine.EAST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockIceVine.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockIceVine.WEST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
+                        IBlockState iblockstate = ModBlocks.iceVine.getDefaultState().withProperty(BlockIceVine.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockIceVine.WEST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockIceVine.NORTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockIceVine.EAST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
                         worldIn.setBlockState(pos, iblockstate, 2);
                         break;
                     }

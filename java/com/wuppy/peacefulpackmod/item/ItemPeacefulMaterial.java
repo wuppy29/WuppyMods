@@ -2,6 +2,7 @@ package com.wuppy.peacefulpackmod.item;
 
 import java.util.List;
 
+import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,12 +23,24 @@ public class ItemPeacefulMaterial extends Item
     	GameRegistry.registerItem(this, name);
     	setUnlocalizedName(PeacefulPack.modid + "_" + name);
     	
+    	registerVariants();
+    	
         setCreativeTab(PeacefulPack.ppMaterialTab);
     }
     
     public String getNameFromDamage(int damage)
     {
     	return metaNames[damage];
+    }
+    
+    void registerVariants()
+    {
+    	String[] variantNames = new String[metaNames.length];
+    	for(int i = 0; i < metaNames.length; i++)
+    	{
+    		variantNames[i] = PeacefulPack.modid + ":" + getNameFromDamage(i);
+    	}
+    	ModelBakery.addVariantName(this, variantNames);
     }
     
     @Override

@@ -3,9 +3,12 @@ package com.wuppy.peacefulpackmod.block;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
@@ -17,7 +20,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.wuppy.peacefulpackmod.PeacefulPack;
 import com.wuppy.peacefulpackmod.worldgen.WorldGenBlazeTrees;
 
-public class BlockBlazeSapling extends Block implements IGrowable
+public class BlockBlazeSapling extends BlockBush implements IGrowable
 {
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
 	
@@ -41,12 +44,19 @@ public class BlockBlazeSapling extends Block implements IGrowable
 		return name;
 	}
     
-    /**
-     * The type of render function that is called for this block
-     */
-    public int getRenderType()
+    public IBlockState getStateFromMeta(int meta)
     {
-        return 1;
+        return this.getDefaultState().withProperty(STAGE, Integer.valueOf(meta));
+    }
+
+    public int getMetaFromState(IBlockState state)
+    {
+    	return (Integer) state.getValue(STAGE);
+    }
+    
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {STAGE});
     }
     
     public boolean isOpaqueCube()
@@ -60,9 +70,9 @@ public class BlockBlazeSapling extends Block implements IGrowable
     }
     
     @Override
-    public boolean canPlaceBlockAt(World world, BlockPos pos)
-    {
-    	if(world.getBlockState(pos).getBlock() == Blocks.netherrack)
+	public boolean canPlaceBlockOn(Block ground)
+	{
+    	if(ground == Blocks.netherrack)
     		return true;
     	else
     		return false;
@@ -91,10 +101,7 @@ public class BlockBlazeSapling extends Block implements IGrowable
     	world.setBlockState(pos, Blocks.air.getDefaultState());
     	
     	WorldGenBlazeTrees generator = new WorldGenBlazeTrees();
-    	if(!((WorldGenerator) (generator)).generate(world, random, pos))
-        {
-            world.setBlockState(pos, ModBlocks.blazeLog.getDefaultState(), 2);
-        }
+    	generator.generate(world, random, pos);
     }
 
 	@Override

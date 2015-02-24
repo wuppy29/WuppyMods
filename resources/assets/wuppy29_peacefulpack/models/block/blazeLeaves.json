@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "wuppy29_peacefulpack:blocks/blazeleaves"
+    }
+}

@@ -1,5 +1,6 @@
 package com.wuppy.koi;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.Blocks;
@@ -27,9 +28,9 @@ public class EntityAISwimmingFish extends EntityAIBase
     
     public void updateTask()
     {
-    	if(entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY, entity.posZ)).getBlock() == Blocks.water || entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY, entity.posZ)).getBlock() == Blocks.flowing_water);
+    	if(entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY + 1, entity.posZ)).getBlock().getMaterial() == Material.water);
     	{
-	        if (entity.getRNG().nextFloat() < 0.5F)
+	        if (entity.getRNG().nextFloat() < 0.1F)
 	        {
 	            entity.getJumpHelper().setJumping();
 	        }

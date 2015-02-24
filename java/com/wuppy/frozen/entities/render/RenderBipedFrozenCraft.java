@@ -10,7 +10,7 @@ import com.wuppy.frozen.FrozenCraft;
 
 public class RenderBipedFrozenCraft extends RenderBiped
 {
-	 private ResourceLocation texture;
+	private ResourceLocation texture;
 	
 	public RenderBipedFrozenCraft(ModelBiped par1ModelBiped, float par2, String string)
 	{

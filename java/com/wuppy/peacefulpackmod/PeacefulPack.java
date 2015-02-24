@@ -19,12 +19,12 @@ import com.wuppy.peacefulpackmod.helper.UpdateChecker;
 import com.wuppy.peacefulpackmod.item.ModItems;
 import com.wuppy.peacefulpackmod.worldgen.PeacefulGenerator;
 
-@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.8.5")
+@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.9.0")
 public class PeacefulPack
 {
 	public static final String modid = "wuppy29_peacefulpack";
 
-	public static final int VERSION = 7;
+	public static final int VERSION = 8;
 	public static String updates = "";
 	public static boolean outdated = false;
 	

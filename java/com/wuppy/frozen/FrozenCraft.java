@@ -30,10 +30,10 @@ import com.wuppy.frozen.network.FrozenIceBoltSpawnMessage;
 import com.wuppy.frozen.network.FrozenIceBoltSpawnMessageHandler;
 import com.wuppy.frozen.proxies.CommonProxyFrozen;
 
-@Mod(modid = FrozenCraft.modid, name = "Frozencraft", version = "1.0.0.0")
+@Mod(modid = FrozenCraft.modid, name = "Frozencraft", version = "1.0.1.0")
 public class FrozenCraft
 {
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 	
 	public static final String modid = "wuppy29_frozencraft";
 	
@@ -65,9 +65,7 @@ public class FrozenCraft
 		Config.loadConfig(event);
 		
 		if(Config.checkForUpdates)
-			UpdateChecker.checkForUpdates();
-		
-		proxy.registerRenders();
+			UpdateChecker.checkForUpdates();		
 		
 		//setup
 		new ModMaterials();
@@ -87,6 +85,8 @@ public class FrozenCraft
 		ModRecipes.loadRecipes();
 		
 		FrozenData.init();
+		
+		proxy.registerRenders();
 	}
 	
 	@EventHandler

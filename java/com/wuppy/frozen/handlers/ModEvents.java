@@ -1,8 +1,13 @@
 package com.wuppy.frozen.handlers;
 
+import org.lwjgl.input.Mouse;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent.MouseInputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import com.wuppy.frozen.FrozenCraft;
@@ -21,33 +26,33 @@ public class ModEvents
 			event.player.addChatComponentMessage(new ChatComponentText(UpdateChecker.updates));
 		}
 	}
-
+	
 	@SubscribeEvent
-	public void shootIceBolt(PlayerInteractEvent event)
+	public void shootIceBolt(MouseInputEvent event)
 	{
-		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+		if(Mouse.getEventButton() == 1 && Mouse.getEventButtonState())
 		{
-			if (event.entityPlayer.getCurrentEquippedItem() == null)
+			EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+			
+			if (player.getCurrentEquippedItem() == null)
 			{
-				System.out.println("si");
 				boolean fullSuit = true;
-
+	
 				for (int i = 0; i < 4; i++)
 				{
-					if (event.entityPlayer.getCurrentArmor(i) == null)
+					if (player.getCurrentArmor(i) == null)
 					{
 						fullSuit = false;
 						return;
 					}
-					else if (!(event.entityPlayer.getCurrentArmor(i).getItem() instanceof ItemElsaArmor))
+					else if (!(player.getCurrentArmor(i).getItem() instanceof ItemElsaArmor))
 					{
 						fullSuit = false;
 					}
 				}
-
+	
 				if (fullSuit)
 				{
-					System.out.println("wot");
 					//send packet to server
 					FrozenCraft.frozenCraftNetworkManager.sendToServer(new FrozenIceBoltSpawnMessage());
 				}

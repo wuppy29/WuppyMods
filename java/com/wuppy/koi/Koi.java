@@ -53,7 +53,7 @@ public class Koi
 		for(int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++)
 		{
 			if(BiomeGenBase.getBiomeGenArray()[i] != null)
-				EntityRegistry.addSpawn(EntityKoi.class, 10, 2, 4, EnumCreatureType.WATER_CREATURE, BiomeGenBase.getBiomeGenArray()[i]);
+				EntityRegistry.addSpawn(EntityKoi.class, 200, 2, 4, EnumCreatureType.WATER_CREATURE, BiomeGenBase.getBiomeGenArray()[i]);
 		}
 		
 		registerEntityEgg(EntityKoi.class, 0x4A8FFF, 0xFFDB4A);
