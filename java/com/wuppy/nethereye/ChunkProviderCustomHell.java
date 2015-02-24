@@ -48,17 +48,23 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderCustomHell implements IChunkProvider
 {
+    /** Is the world that the nether is getting generated. */
     private final World worldObj;
     private final boolean field_177466_i;
     private final Random hellRNG;
+    /** Holds the noise used to determine whether slowsand can be generated at a location */
     private double[] slowsandNoise = new double[256];
     private double[] gravelNoise = new double[256];
+    /** Holds the noise used to determine whether something other than netherrack can be generated at a location */
     private double[] netherrackExclusivityNoise = new double[256];
     private double[] noiseField;
+    /** A NoiseGeneratorOctaves used in generating nether terrain */
     private final NoiseGeneratorOctaves netherNoiseGen1;
     private final NoiseGeneratorOctaves netherNoiseGen2;
     private final NoiseGeneratorOctaves netherNoiseGen3;
+    /** Determines whether slowsand or gravel can be generated at a location */
     private final NoiseGeneratorOctaves slowsandGravelNoiseGen;
+    /** Determines whether something other than nettherack can be generated at a location */
     private final NoiseGeneratorOctaves netherrackExculsivityNoiseGen;
     public final NoiseGeneratorOctaves netherNoiseGen6;
     public final NoiseGeneratorOctaves netherNoiseGen7;
@@ -281,6 +287,10 @@ public class ChunkProviderCustomHell implements IChunkProvider
         }
     }
 
+    /**
+     * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
+     * specified chunk from the map seed and chunk seed
+     */
     public Chunk provideChunk(int x, int z)
     {
         this.hellRNG.setSeed((long)x * 341873128712L + (long)z * 132897987541L);
@@ -307,6 +317,10 @@ public class ChunkProviderCustomHell implements IChunkProvider
         return chunk;
     }
 
+    /**
+     * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
+     * size.
+     */
     private double[] initializeNoiseField(double[] p_73164_1_, int p_73164_2_, int p_73164_3_, int p_73164_4_, int p_73164_5_, int p_73164_6_, int p_73164_7_)
     {
         ChunkProviderEvent.InitNoiseField event = new ChunkProviderEvent.InitNoiseField(this, p_73164_1_, p_73164_2_, p_73164_3_, p_73164_4_, p_73164_5_, p_73164_6_, p_73164_7_);
@@ -398,11 +412,17 @@ public class ChunkProviderCustomHell implements IChunkProvider
         return p_73164_1_;
     }
 
+    /**
+     * Checks to see if a chunk exists at x, z
+     */
     public boolean chunkExists(int x, int z)
     {
         return true;
     }
 
+    /**
+     * Populates chunk with ores etc etc
+     */
     public void populate(IChunkProvider p_73153_1_, int p_73153_2_, int p_73153_3_)
     {
         BlockFalling.fallInstantly = true;
@@ -470,45 +490,62 @@ public class ChunkProviderCustomHell implements IChunkProvider
         return false;
     }
 
+    /**
+     * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.
+     * Return true if all chunks have been saved.
+     */
     public boolean saveChunks(boolean p_73151_1_, IProgressUpdate p_73151_2_)
     {
         return true;
     }
 
+    /**
+     * Save extra data not associated with any Chunk.  Not saved during autosave, only during world unload.  Currently
+     * unimplemented.
+     */
     public void saveExtraData() {}
 
+    /**
+     * Unloads chunks that are marked to be unloaded. This is not guaranteed to unload every such chunk.
+     */
     public boolean unloadQueuedChunks()
     {
         return false;
     }
 
+    /**
+     * Returns if the IChunkProvider supports saving.
+     */
     public boolean canSave()
     {
         return true;
     }
 
+    /**
+     * Converts the instance data to a readable string.
+     */
     public String makeString()
     {
         return "HellRandomLevelSource";
     }
 
-    public List func_177458_a(EnumCreatureType p_177458_1_, BlockPos p_177458_2_)
+    public List getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos)
     {
-        if (p_177458_1_ == EnumCreatureType.MONSTER)
+        if (creatureType == EnumCreatureType.MONSTER)
         {
-            if (this.genNetherBridge.func_175795_b(p_177458_2_))
+            if (this.genNetherBridge.func_175795_b(pos))
             {
                 return this.genNetherBridge.getSpawnList();
             }
 
-            if (this.genNetherBridge.func_175796_a(this.worldObj, p_177458_2_) && this.worldObj.getBlockState(p_177458_2_.down()).getBlock() == Blocks.nether_brick)
+            if (this.genNetherBridge.func_175796_a(this.worldObj, pos) && this.worldObj.getBlockState(pos.down()).getBlock() == Blocks.nether_brick)
             {
                 return this.genNetherBridge.getSpawnList();
             }
         }
 
-        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(p_177458_2_);
-        return biomegenbase.getSpawnableList(p_177458_1_);
+        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(pos);
+        return biomegenbase.getSpawnableList(creatureType);
     }
 
     public BlockPos getStrongholdGen(World worldIn, String p_180513_2_, BlockPos p_180513_3_)

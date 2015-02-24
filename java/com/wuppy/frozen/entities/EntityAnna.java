@@ -33,7 +33,7 @@ public class EntityAnna extends EntityAnimal
         super(par1World);
         this.setSize(1.0F, 2.0F);
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
-        ((PathNavigateGround)this.getNavigator()).func_179688_b(true);
+        ((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAvoidEntity(this, new Predicate()
         {

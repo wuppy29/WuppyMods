@@ -27,7 +27,7 @@ public class EntitySlimeZombie extends EntityMob
 	public EntitySlimeZombie(World par1World)
     {
         super(par1World);
-        ((PathNavigateGround)this.getNavigator()).func_179688_b(true);
+        ((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIBreakDoor(this));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
@@ -125,7 +125,7 @@ public class EntitySlimeZombie extends EntityMob
     }
 
 	@Override
-    protected void addRandomArmor()
+    protected void addRandomDrop()
     {
         switch (this.rand.nextInt(4))
         {

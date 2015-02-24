@@ -27,7 +27,7 @@ public class EntityMarshmallow extends EntityMob implements IRangedAttackMob
 	{
 		super(world);
 		setSize(2F, 3F);
-		((PathNavigateGround)this.getNavigator()).func_179688_b(true);
+		((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
         tasks.addTask(0, new EntityAISwimming(this));
         tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
         tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F));
