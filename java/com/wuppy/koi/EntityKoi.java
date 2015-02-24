@@ -1,9 +1,9 @@
 package com.wuppy.koi;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,7 +13,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityKoi extends EntityMob
+public class EntityKoi extends EntityCreature
 {
     public EntityKoi(World par1World)
     {
