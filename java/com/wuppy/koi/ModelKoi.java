@@ -86,7 +86,8 @@ public class ModelKoi extends ModelBase
 		setRotation(Top_Fin, 0F, 0F, 0F);
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
@@ -109,7 +110,8 @@ public class ModelKoi extends ModelBase
 		model.rotateAngleZ = z;
 	}
 
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par6Entity) 
+	@Override
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par6Entity)
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, par6Entity);
 	}

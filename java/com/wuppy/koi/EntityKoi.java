@@ -1,23 +1,41 @@
 package com.wuppy.koi;
 
-import net.minecraft.entity.EntityCreature;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathNavigate;
+import net.minecraft.pathfinding.PathNavigateSwimmer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityKoi extends EntityCreature
+public class EntityKoi extends EntityMob
 {
     public EntityKoi(World par1World)
     {
     	super(par1World);
-    	/*tasks.addTask(1, new EntityAISwimmingFish(this));
+    	tasks.addTask(1, new EntityAISwimmingFish(this));
     	tasks.addTask(2, new EntityAIPanicKoi(this, 0.38F));
-    	tasks.addTask(3, new EntityAIWanderKoi(this, 0.3F));*/
+    	tasks.addTask(3, new EntityAIWander(this, 1.0D));
     }
+
+	@Override
+	public float getBlockPathWeight(BlockPos pos)
+	{
+		return this.worldObj.getBlockState(pos).getBlock().getMaterial() == Material.water ? 10.0F + this.worldObj.getLightBrightness(pos) - 0.5F : super.getBlockPathWeight(pos);
+	}
+
+	@Override
+	protected PathNavigate getNewNavigator(World worldIn)
+	{
+		return new PathNavigateSwimmer(this, worldIn);
+	}
     
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
