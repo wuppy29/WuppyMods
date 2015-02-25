@@ -1,7 +1,12 @@
 package com.wuppy.koi;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -15,13 +20,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-@Mod(modid = Koi.modid, name = "Koi", version = "1.11.3")
+@Mod(modid = Koi.modid, name = "Koi", version = "1.12.0")
 public class Koi
 {
 	public static final String modid = "wuppy29_koi";
 	
-	public static final int VERSION = 4;
+	public static final int VERSION = 5;
 	public static String updates = "";
 	public static boolean outdated = false;
 	
@@ -63,6 +69,23 @@ public class Koi
 	public void init(FMLInitializationEvent event)
 	{
 		proxy.registerRenderThings();
+		
+		//change first name to ENTITY_PLACEMENT when updated mappings
+		Field field = ReflectionHelper.findField(EntitySpawnPlacementRegistry.class, "field_180110_a", "field_180110_a");
+		field.setAccessible(true);
+		try 
+		{
+			HashMap<Class<? extends Entity>, EntityLiving.SpawnPlacementType> map = (HashMap) field.get(null);
+			map.put(EntityKoi.class, EntityLiving.SpawnPlacementType.IN_WATER);
+		} 
+		catch (IllegalArgumentException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (IllegalAccessException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public static int getUniqueEntityId()
