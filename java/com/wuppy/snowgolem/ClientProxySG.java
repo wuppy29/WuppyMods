@@ -5,7 +5,8 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxySG extends CommonProxySG
 {
-	public void registerRenderThings() 
+	@Override
+	public void registerRenderThings()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityCleanSnowGolem.class, new RenderCleanSnowGolem(Minecraft.getMinecraft().getRenderManager()));
 	}

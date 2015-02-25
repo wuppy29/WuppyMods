@@ -8,7 +8,8 @@ import com.wuppy.peacefulpackmod.item.ModItems;
 
 public class PeacefulFuel implements IFuelHandler 
 {
-	public int getBurnTime(ItemStack fuel) 
+	@Override
+	public int getBurnTime(ItemStack fuel)
 	{
 		if(fuel == new ItemStack(ModItems.peacefulMaterial, 1, 0))
 			return 1000;

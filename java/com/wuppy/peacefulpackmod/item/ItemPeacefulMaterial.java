@@ -49,6 +49,7 @@ public class ItemPeacefulMaterial extends Item
 		return super.getUnlocalizedName() + "." + metaNames[par1ItemStack.getItemDamage()];
 	}
     
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itemIn, CreativeTabs tab, List subItems)
     {

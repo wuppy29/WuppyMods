@@ -44,21 +44,25 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
 		return name;
 	}
     
+    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(STAGE, Integer.valueOf(meta));
     }
 
+    @Override
     public int getMetaFromState(IBlockState state)
     {
     	return (Integer) state.getValue(STAGE);
     }
     
+    @Override
     protected BlockState createBlockState()
     {
         return new BlockState(this, new IProperty[] {STAGE});
     }
     
+    @Override
     public boolean isOpaqueCube()
     {
         return false;

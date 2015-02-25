@@ -16,7 +16,8 @@ public class RenderThug extends RenderBiped
 		super(Minecraft.getMinecraft().getRenderManager(), new ModelBiped(), 0.5F);
 	}
 	
-	protected ResourceLocation getEntityTexture(Entity entity) 
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		EntityThug thug = (EntityThug) entity;
 		

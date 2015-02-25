@@ -31,6 +31,7 @@ public class EntityIceBoltElsa extends EntityArrow
 		super(par1World, par2EntityLivingBase, par3EntityLivingBase, par4, par5);
     }
 	
+	@Override
 	@SuppressWarnings("rawtypes")
 	public void onUpdate()
     {

@@ -32,8 +32,10 @@ public class EntityNetherEye extends Entity
         this.setSize(0.25F, 0.25F);
     }
 
+    @Override
     protected void entityInit() {}
 
+    @Override
     @SideOnly(Side.CLIENT)
 
     /**
@@ -82,6 +84,7 @@ public class EntityNetherEye extends Entity
         this.shatterOrDrop = this.rand.nextInt(5) > 0;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
 
     /**
@@ -104,6 +107,7 @@ public class EntityNetherEye extends Entity
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
         this.lastTickPosX = this.posX;
@@ -204,11 +208,13 @@ public class EntityNetherEye extends Entity
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {}
 
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {}
 
     @SideOnly(Side.CLIENT)
@@ -220,11 +226,13 @@ public class EntityNetherEye extends Entity
     /**
      * Gets how bright this entity is.
      */
+    @Override
     public float getBrightness(float par1)
     {
         return 1.0F;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public int getBrightnessForRender(float par1)
     {
@@ -234,6 +242,7 @@ public class EntityNetherEye extends Entity
     /**
      * If returns false, the item will not inflict any damage against entities.
      */
+    @Override
     public boolean canAttackWithItem()
     {
         return false;

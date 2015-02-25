@@ -20,7 +20,8 @@ public class RenderSlimeZombie extends RenderLiving
         super(Minecraft.getMinecraft().getRenderManager(), par1ModelBase, par2);
     }
     
-	protected ResourceLocation getEntityTexture(Entity entity) 
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return texture;
 	}

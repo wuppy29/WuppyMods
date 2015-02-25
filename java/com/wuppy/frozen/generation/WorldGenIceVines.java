@@ -15,6 +15,7 @@ import com.wuppy.frozen.blocks.ModBlocks;
 
 public class WorldGenIceVines extends WorldGenerator
 {
+    @Override
     public boolean generate(World worldIn, Random rand, BlockPos pos)
     {
         for (; pos.getY() < 128; pos = pos.up())

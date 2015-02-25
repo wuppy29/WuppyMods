@@ -18,7 +18,8 @@ public class RenderBipedFrozenCraft extends RenderBiped
 		texture = new ResourceLocation(FrozenCraft.modid, string);
 	}
 	
-	protected ResourceLocation getEntityTexture(Entity entity) 
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return texture;
 	}

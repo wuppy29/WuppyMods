@@ -11,6 +11,7 @@ import com.wuppy.peacefulpackmod.block.ModBlocks;
 
 public class WorldGenRottenplant extends WorldGenerator
 {
+	@Override
 	public boolean generate(World par1World, Random par2Random, BlockPos pos)
     {
         for (int i = 0; i < 64; i++)

@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class SlimeGenerator implements IWorldGenerator 
 {
+	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
 		switch (world.provider.getDimensionId())

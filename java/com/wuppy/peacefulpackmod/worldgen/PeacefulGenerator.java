@@ -15,6 +15,7 @@ import com.wuppy.peacefulpackmod.config.Config;
 
 public class PeacefulGenerator implements IWorldGenerator
 {
+	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
 		switch (world.provider.getDimensionId())

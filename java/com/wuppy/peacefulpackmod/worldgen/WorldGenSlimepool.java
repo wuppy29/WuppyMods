@@ -15,6 +15,7 @@ public class WorldGenSlimepool extends WorldGenerator
 	{		
 	}
 	
+	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
 		if (pos.getY() > 45 || pos.getY() < 3)

@@ -64,6 +64,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
         return new BlockState(this, new IProperty[] {AGE});
     }
 	
+	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
         if(worldIn.getBlockState(new BlockPos(pos.getX(), pos.getY() -1, pos.getZ())).getBlock() == Blocks.netherrack)

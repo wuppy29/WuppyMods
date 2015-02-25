@@ -30,11 +30,13 @@ public class RenderCleanSnowGolem extends RenderLiving
         return (ModelSnowMan)super.getMainModel();
     }
 
+    @Override
     public ModelBase getMainModel()
     {
         return this.func_177123_g();
     }
 
+    @Override
     protected ResourceLocation getEntityTexture(Entity p_110775_1_)
     {
         return this.func_180587_a((EntitySnowman)p_110775_1_);

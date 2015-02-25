@@ -41,6 +41,7 @@ public class EntityAnna extends EntityAnimal
             {
                 return entityIn instanceof EntityZombie;
             }
+            @Override
             public boolean apply(Object objectIn)
             {
                 return this.shouldAvoidEntity((Entity)objectIn);

@@ -31,6 +31,7 @@ public class WorldGenMinableFossil extends WorldGenerator
         this.field_175919_c = p_i45631_3_;
     }
 
+    @Override
     public boolean generate(World worldIn, Random p_180709_2_, BlockPos p_180709_3_)
     {
         float f = p_180709_2_.nextFloat() * (float)Math.PI;

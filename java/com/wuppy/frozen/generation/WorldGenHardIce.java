@@ -11,6 +11,7 @@ import com.wuppy.frozen.blocks.ModBlocks;
 
 public class WorldGenHardIce extends WorldGenerator
 {
+    @Override
     public boolean generate(World par1World, Random par2Random, BlockPos pos)
     {
         for (int l = 0; l < 40; ++l)

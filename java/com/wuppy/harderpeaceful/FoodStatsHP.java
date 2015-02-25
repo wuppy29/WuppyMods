@@ -19,17 +19,20 @@ public class FoodStatsHP extends FoodStats
     private int prevFoodLevel = 20;
     private static final String __OBFID = "CL_00001729";
 
+    @Override
     public void addStats(int p_75122_1_, float p_75122_2_)
     {
         this.foodLevel = Math.min(p_75122_1_ + this.foodLevel, 20);
         this.foodSaturationLevel = Math.min(this.foodSaturationLevel + (float)p_75122_1_ * p_75122_2_ * 2.0F, (float)this.foodLevel);
     }
 
+    @Override
     public void addStats(ItemFood p_151686_1_, ItemStack p_151686_2_)
     {
         this.addStats(p_151686_1_.getHealAmount(p_151686_2_), p_151686_1_.getSaturationModifier(p_151686_2_));
     }
 
+    @Override
     public void onUpdate(EntityPlayer p_75118_1_)
     {
         EnumDifficulty enumdifficulty = p_75118_1_.worldObj.getDifficulty();
@@ -89,37 +92,44 @@ public class FoodStatsHP extends FoodStats
         }
     }
 
+    @Override
     public int getFoodLevel()
     {
         return this.foodLevel;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public int getPrevFoodLevel()
     {
         return this.prevFoodLevel;
     }
 
+    @Override
     public boolean needFood()
     {
         return this.foodLevel < 20;
     }
 
+    @Override
     public void addExhaustion(float p_75113_1_)
     {
         this.foodExhaustionLevel = Math.min(this.foodExhaustionLevel + p_75113_1_, 40.0F);
     }
 
+    @Override
     public float getSaturationLevel()
     {
         return this.foodSaturationLevel;
     }
 
+    @Override
     public void setFoodLevel(int p_75114_1_)
     {
         this.foodLevel = p_75114_1_;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void setFoodSaturationLevel(float p_75119_1_)
     {
