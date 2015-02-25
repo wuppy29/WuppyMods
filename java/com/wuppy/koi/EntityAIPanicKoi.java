@@ -45,7 +45,7 @@ public class EntityAIPanicKoi extends EntityAIBase
             else
             {
                 this.randPosX = vec3.xCoord;
-                //this.randPosY = vec3.yCoord;
+                this.randPosY = vec3.yCoord;
                 this.randPosZ = vec3.zCoord;
                 return true;
             }

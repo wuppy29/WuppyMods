@@ -15,12 +15,14 @@ import net.minecraft.world.World;
 
 public class EntityKoi extends EntityCreature
 {
+	double speed = 0.38;
+	
     public EntityKoi(World par1World)
     {
     	super(par1World);
+    	tasks.addTask(0, new EntityAIPanicKoi(this, speed));
     	tasks.addTask(1, new EntityAISwimmingFish(this));
-    	tasks.addTask(2, new EntityAIPanicKoi(this, 0.38F));
-    	tasks.addTask(3, new EntityAIWander(this, 1.0D));
+    	tasks.addTask(2, new EntityAIWander(this, speed));
     }
 
 	@Override
@@ -71,7 +73,10 @@ public class EntityKoi extends EntityCreature
     @Override
     public boolean getCanSpawnHere()
     {
-        return true;
+    	if(worldObj.getBlockState(new BlockPos(posX, posY, posZ)).getBlock().getMaterial() == Material.water)
+    		return true;
+    	else
+    		return false;
     }
 
     @Override

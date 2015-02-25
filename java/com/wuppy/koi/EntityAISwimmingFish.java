@@ -29,7 +29,7 @@ public class EntityAISwimmingFish extends EntityAIBase
     {
     	if(entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY + 1, entity.posZ)).getBlock().getMaterial() == Material.water);
     	{
-	        if (entity.getRNG().nextFloat() < 0.1F)
+	        if (entity.getRNG().nextFloat() < 0.5F)
 	        {
 	            entity.getJumpHelper().setJumping();
 	        }
