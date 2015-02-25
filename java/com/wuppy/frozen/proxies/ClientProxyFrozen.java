@@ -7,9 +7,11 @@ import com.wuppy.frozen.entities.render.RenderThug;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-public class ClientProxyFrozen extends CommonProxyFrozen {
+public class ClientProxyFrozen extends CommonProxyFrozen
+{
 	@Override
-	public void registerRenders() {
+	public void registerRenders()
+	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceBoltElsa.class, new RenderIceBolt());
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceBoltFailed.class, new RenderIceBolt());
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceBoltPlayer.class, new RenderIceBolt());

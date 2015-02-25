@@ -11,10 +11,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockBoltObsidian extends BlockObsidian {
+public class BlockBoltObsidian extends BlockObsidian
+{
 	private final String name = "obsidian";
 
-	public BlockBoltObsidian() {
+	public BlockBoltObsidian()
+	{
 		super();
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(FrozenCraft.modid + "_" + name);
@@ -24,16 +26,19 @@ public class BlockBoltObsidian extends BlockObsidian {
 		setStepSound(soundTypePiston);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void updateTick(World world, int x, int y, int z, Random rand) {
+	public void updateTick(World world, int x, int y, int z, Random rand)
+	{
 		world.setBlockState(new BlockPos(x, y, z), Blocks.obsidian.getDefaultState());
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return Item.getItemFromBlock(Blocks.obsidian);
 	}
 }

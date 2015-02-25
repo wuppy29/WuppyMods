@@ -10,10 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class EntityHans extends EntityMob {
+public class EntityHans extends EntityMob
+{
 	private static final ItemStack defaultHeldItem = new ItemStack(ModItems.hansSword, 1);
 
-	public EntityHans(World par1World) {
+	public EntityHans(World par1World)
+	{
 		super(par1World);
 
 		tasks.addTask(1, new EntityAISwimming(this));
@@ -27,25 +29,29 @@ public class EntityHans extends EntityMob {
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes()
+	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4D);
 	}
 
 	@Override
-	public ItemStack getHeldItem() {
+	public ItemStack getHeldItem()
+	{
 		return defaultHeldItem;
 	}
 
 	long lastTalked = 0;
 
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer) {
+	public boolean interact(EntityPlayer par1EntityPlayer)
+	{
 		if (lastTalked == 0)
 			worldObj.getWorldTime();
 
-		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime()) {
+		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime())
+		{
 			int rand = worldObj.rand.nextInt(3);
 
 			if (rand == 0)
@@ -62,7 +68,8 @@ public class EntityHans extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean par1, int par2)
+	{
 		dropItem(Items.gold_ingot, 2);
 	}
 }

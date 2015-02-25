@@ -12,7 +12,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class ModBlocks {
+public class ModBlocks
+{
 	public static Block oreBlock;
 	public static Block flax;
 	public static Block slimeSlab;
@@ -24,7 +25,8 @@ public class ModBlocks {
 	public static Block blazeSapling;
 	public static Block remains;
 
-	public static void init(FMLPreInitializationEvent event) {
+	public static void init(FMLPreInitializationEvent event)
+	{
 		oreBlock = new BlockPeacefulOres();
 		flax = new BlockFlax();
 		slimeSlab = new BlockSlimeSlab();
@@ -36,13 +38,16 @@ public class ModBlocks {
 		blazeSapling = new BlockBlazeSapling();
 		remains = new BlockRemains();
 
-		if (event.getSide() == Side.CLIENT) {
+		if (event.getSide() == Side.CLIENT)
+		{
 			BlockPeacefulOres.OreType.registerVariants();
 		}
 	}
 
-	public static void postInit(FMLPostInitializationEvent event) {
-		if (event.getSide() == Side.CLIENT) {
+	public static void postInit(FMLPostInitializationEvent event)
+	{
+		if (event.getSide() == Side.CLIENT)
+		{
 			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 			BlockPeacefulOres.OreType.registerRenders();
@@ -54,7 +59,7 @@ public class ModBlocks {
 			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLog), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLog) blazeLog).getName(), "inventory"));
 
 			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLeaves), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLeaves) blazeLeaves).getName(), "inventory"));
-			Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blazeLeaves, (new StateMap.Builder().addPropertiesToIgnore(new IProperty[]{BlockBlazeLeaves.CHECK_DECAY, BlockBlazeLeaves.DECAYABLE}).build()));
+			Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blazeLeaves, (new StateMap.Builder().addPropertiesToIgnore(new IProperty[] { BlockBlazeLeaves.CHECK_DECAY, BlockBlazeLeaves.DECAYABLE }).build()));
 
 			renderItem.getItemModelMesher().register(Item.getItemFromBlock(ghastOre), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockGhastOre) ghastOre).getName(), "inventory"));
 			renderItem.getItemModelMesher().register(Item.getItemFromBlock(enderClam), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockEnderclam) enderClam).getName(), "inventory"));

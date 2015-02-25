@@ -19,7 +19,8 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 @Mod(modid = Koi.modid, name = "Koi", version = "1.12.0")
-public class Koi {
+public class Koi
+{
 	public static final String modid = "wuppy29_koi";
 
 	public static final int VERSION = 5;
@@ -34,7 +35,8 @@ public class Koi {
 	static int startEntityId = 300;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		FMLCommonHandler.instance().bus().register(this);
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -50,7 +52,8 @@ public class Koi {
 
 		EntityRegistry.registerModEntity(EntityKoi.class, "Koi", 44, this, 40, 1, true);
 
-		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
+		for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++)
+		{
 			if (BiomeGenBase.getBiomeGenArray()[i] != null)
 				EntityRegistry.addSpawn(EntityKoi.class, 10, 2, 4, EnumCreatureType.WATER_CREATURE, BiomeGenBase.getBiomeGenArray()[i]);
 		}
@@ -59,38 +62,47 @@ public class Koi {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		proxy.registerRenderThings();
 
-		//change first name to ENTITY_PLACEMENT when updated mappings
+		// change first name to ENTITY_PLACEMENT when updated mappings
 		Field field = ReflectionHelper.findField(EntitySpawnPlacementRegistry.class, "field_180110_a", "field_180110_a");
 		field.setAccessible(true);
-		try {
+		try
+		{
 			HashMap<Class<? extends Entity>, EntityLiving.SpawnPlacementType> map = (HashMap) field.get(null);
 			map.put(EntityKoi.class, EntityLiving.SpawnPlacementType.IN_WATER);
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e)
+		{
 			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		} catch (IllegalAccessException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	public static int getUniqueEntityId() {
-		do {
+	public static int getUniqueEntityId()
+	{
+		do
+		{
 			startEntityId++;
 		} while (EntityList.getStringFromID(startEntityId) != null);
 
 		return startEntityId;
 	}
 
-	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor) {
+	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor)
+	{
 		int id = getUniqueEntityId();
 		EntityList.addMapping(EntityKoi.class, "Koi", id, primaryColor, secondaryColor);
 	}
 
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
-		if (outdated) {
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		if (outdated)
+		{
 			event.player.addChatComponentMessage(new ChatComponentText("Koi is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(updates));

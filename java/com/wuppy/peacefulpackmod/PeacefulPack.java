@@ -15,7 +15,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.9.0")
-public class PeacefulPack {
+public class PeacefulPack
+{
 	public static final String modid = "wuppy29_peacefulpack";
 
 	public static final int VERSION = 8;
@@ -26,7 +27,8 @@ public class PeacefulPack {
 	public static CreativeTabs ppMaterialTab = new PeacefulTab(CreativeTabs.getNextID(), "pp_materials");
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		MinecraftForge.EVENT_BUS.register(new PeacefulEvent());
 
 		Config.init(event);
@@ -44,12 +46,14 @@ public class PeacefulPack {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		ModRecipes.init();
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		ModBlocks.postInit(event);
 		ModItems.postInit(event);
 	}

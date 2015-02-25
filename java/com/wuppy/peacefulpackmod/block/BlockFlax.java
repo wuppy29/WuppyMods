@@ -19,12 +19,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.List;
 import java.util.Random;
 
-public class BlockFlax extends BlockBush implements IGrowable {
+public class BlockFlax extends BlockBush implements IGrowable
+{
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 2);
 
 	private final String name = "flax";
 
-	public BlockFlax() {
+	public BlockFlax()
+	{
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
 
@@ -36,65 +38,80 @@ public class BlockFlax extends BlockBush implements IGrowable {
 		setCreativeTab(null);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
+	public IBlockState getStateFromMeta(int meta)
+	{
 		return this.getDefaultState().withProperty(AGE, meta);
 	}
 
 	@Override
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(IBlockState state)
+	{
 		return (Integer) state.getValue(AGE);
 	}
 
 	@Override
-	protected BlockState createBlockState() {
+	protected BlockState createBlockState()
+	{
 		return new BlockState(this, AGE);
 	}
 
 	@Override
-	public boolean canPlaceBlockOn(Block ground) {
+	public boolean canPlaceBlockOn(Block ground)
+	{
 		return ground == Blocks.grass;
 	}
 
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+	{
 		super.updateTick(worldIn, pos, state, rand);
 
-		if (worldIn.getLightFromNeighbors(pos.up()) >= 9) {
+		if (worldIn.getLightFromNeighbors(pos.up()) >= 9)
+		{
 			int i = (Integer) state.getValue(AGE);
 
-			if (i < 2) {
+			if (i < 2)
+			{
 				float f = getGrowthChance(this, worldIn, pos);
 
-				if (rand.nextInt((int) (25.0F / f) + 1) == 0) {
+				if (rand.nextInt((int) (25.0F / f) + 1) == 0)
+				{
 					worldIn.setBlockState(pos, state.withProperty(AGE, i + 1), 2);
 				}
 			}
 		}
 	}
 
-	protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos) {
+	protected static float getGrowthChance(Block blockIn, World worldIn, BlockPos pos)
+	{
 		float f = 1.0F;
 		BlockPos blockpos1 = pos.down();
 
-		for (int i = -1; i <= 1; ++i) {
-			for (int j = -1; j <= 1; ++j) {
+		for (int i = -1; i <= 1; ++i)
+		{
+			for (int j = -1; j <= 1; ++j)
+			{
 				float f1 = 0.0F;
 				IBlockState iblockstate = worldIn.getBlockState(blockpos1.add(i, 0, j));
 
-				if (iblockstate.getBlock().canSustainPlant(worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) blockIn)) {
+				if (iblockstate.getBlock().canSustainPlant(worldIn, blockpos1.add(i, 0, j), net.minecraft.util.EnumFacing.UP, (net.minecraftforge.common.IPlantable) blockIn))
+				{
 					f1 = 1.0F;
 
-					if (iblockstate.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j))) {
+					if (iblockstate.getBlock().isFertile(worldIn, blockpos1.add(i, 0, j)))
+					{
 						f1 = 3.0F;
 					}
 				}
 
-				if (i != 0 || j != 0) {
+				if (i != 0 || j != 0)
+				{
 					f1 /= 4.0F;
 				}
 
@@ -109,12 +126,15 @@ public class BlockFlax extends BlockBush implements IGrowable {
 		boolean flag = blockIn == worldIn.getBlockState(blockpos4).getBlock() || blockIn == worldIn.getBlockState(blockpos5).getBlock();
 		boolean flag1 = blockIn == worldIn.getBlockState(blockpos2).getBlock() || blockIn == worldIn.getBlockState(blockpos3).getBlock();
 
-		if (flag && flag1) {
+		if (flag && flag1)
+		{
 			f /= 2.0F;
-		} else {
+		} else
+		{
 			boolean flag2 = blockIn == worldIn.getBlockState(blockpos4.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos5.north()).getBlock() || blockIn == worldIn.getBlockState(blockpos5.south()).getBlock() || blockIn == worldIn.getBlockState(blockpos4.south()).getBlock();
 
-			if (flag2) {
+			if (flag2)
+			{
 				f /= 2.0F;
 			}
 		}
@@ -122,10 +142,12 @@ public class BlockFlax extends BlockBush implements IGrowable {
 		return f;
 	}
 
-	public void grow(World worldIn, BlockPos pos, IBlockState state) {
+	public void grow(World worldIn, BlockPos pos, IBlockState state)
+	{
 		int newAge = (Integer) state.getValue(AGE) + 1;
 
-		if (newAge > 2) {
+		if (newAge > 2)
+		{
 			newAge = 2;
 		}
 
@@ -133,16 +155,19 @@ public class BlockFlax extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	{
 		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 
 		int age = (Integer) state.getValue(AGE);
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
-		if (age == 2) {
+		if (age == 2)
+		{
 			ret.add(new ItemStack(ModItems.peacefulMaterial, 2, 2));
 		}
-		if (rand.nextInt(2) == 0) {
+		if (rand.nextInt(2) == 0)
+		{
 			ret.add(new ItemStack(ModItems.flaxSeed));
 		}
 
@@ -150,22 +175,26 @@ public class BlockFlax extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return null;
 	}
 
 	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient)
+	{
 		return (Integer) state.getValue(AGE) < 2;
 	}
 
 	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state)
+	{
 		return true;
 	}
 
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
+	{
 		grow(worldIn, pos, state);
 	}
 }

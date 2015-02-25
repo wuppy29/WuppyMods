@@ -30,7 +30,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = FrozenCraft.modid, name = "Frozencraft", version = "1.0.1.0")
-public class FrozenCraft {
+public class FrozenCraft
+{
 	public static final int VERSION = 2;
 
 	public static final String modid = "wuppy29_frozencraft";
@@ -48,23 +49,24 @@ public class FrozenCraft {
 	public static ToolMaterial gearMaterial = EnumHelper.addToolMaterial("gearMaterial", 2, 350, 7.0F, 2.5F, 14);
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		//Event registry
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		// Event registry
 		FMLCommonHandler.instance().bus().register(events);
 		MinecraftForge.EVENT_BUS.register(events);
 
-		//Packet registry
+		// Packet registry
 		frozenCraftNetworkManager = NetworkRegistry.INSTANCE.newSimpleChannel(modid);
 		frozenCraftNetworkManager.registerMessage(FrozenIceBoltSpawnMessageHandler.class, FrozenIceBoltSpawnMessage.class, 0, Side.SERVER);
 		frozenCraftNetworkManager.registerMessage(FrozenIceBoltRemoveMessageHandler.class, FrozenIceBoltRemoveMessage.class, 1, Side.SERVER);
 
-		//pre setup stuff
+		// pre setup stuff
 		Config.loadConfig(event);
 
 		if (Config.checkForUpdates)
 			UpdateChecker.checkForUpdates();
 
-		//setup
+		// setup
 		new ModMaterials();
 
 		ModBlocks.loadBlocks();
@@ -77,7 +79,8 @@ public class FrozenCraft {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		ModRecipes.loadRecipes();
 
 		FrozenData.init();
@@ -86,7 +89,8 @@ public class FrozenCraft {
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		ModBlocks.registerBlockRenders(event);
 
 		ModItems.regsisterItemRenders(event);

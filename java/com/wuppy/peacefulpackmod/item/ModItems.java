@@ -10,22 +10,26 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class ModItems {
+public class ModItems
+{
 	public static Item peacefulMaterial;
 
 	public static Item flaxSeed;
 	public static Item cookedFlesh;
 	public static Item rottenSeed;
 
-	public static void init() {
+	public static void init()
+	{
 		peacefulMaterial = new ItemPeacefulMaterial();
 		flaxSeed = new ItemPeacefulSeed(ModBlocks.flax, Blocks.grass, "flaxseed");
 		cookedFlesh = new ItemCookedFlesh(4, 5, true);
 		rottenSeed = new ItemPeacefulSeed(ModBlocks.rottenPlant, Blocks.netherrack, "rottenseed");
 	}
 
-	public static void postInit(FMLPostInitializationEvent event) {
-		if (event.getSide() == Side.CLIENT) {
+	public static void postInit(FMLPostInitializationEvent event)
+	{
+		if (event.getSide() == Side.CLIENT)
+		{
 			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 			renderItem.getItemModelMesher().register(peacefulMaterial, 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((ItemPeacefulMaterial) peacefulMaterial).getNameFromDamage(0), "inventory"));

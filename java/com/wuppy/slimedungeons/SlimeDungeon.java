@@ -18,7 +18,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = SlimeDungeon.MODID, name = "Slime Dungeons", version = "1.6.4")
-public class SlimeDungeon {
+public class SlimeDungeon
+{
 	public static final String MODID = "wuppy29_slimedungeon";
 
 	public static final int VERSION = 6;
@@ -31,7 +32,8 @@ public class SlimeDungeon {
 	ModEvents events = new ModEvents();
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		FMLCommonHandler.instance().bus().register(events);
 
 		Config.loadConfig(event);
@@ -47,12 +49,14 @@ public class SlimeDungeon {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
 		proxy.registerRenderThings();
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		ModBlocks.registerModels(event);
 	}
 }

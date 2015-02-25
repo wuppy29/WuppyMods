@@ -14,10 +14,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockSlimeSlab extends Block {
+public class BlockSlimeSlab extends Block
+{
 	private final String name = "slimeSlab";
 
-	public BlockSlimeSlab() {
+	public BlockSlimeSlab()
+	{
 		super(Material.ground);
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
@@ -33,20 +35,24 @@ public class BlockSlimeSlab extends Block {
 		setTickRandomly(true);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return Items.slime_ball;
 	}
 
 	@Override
-	public void randomDisplayTick(World par1World, BlockPos pos, IBlockState state, Random par5Random) {
+	public void randomDisplayTick(World par1World, BlockPos pos, IBlockState state, Random par5Random)
+	{
 		super.randomDisplayTick(par1World, pos, state, par5Random);
 
-		if (par5Random.nextInt(2) == 0) {
+		if (par5Random.nextInt(2) == 0)
+		{
 			double dX = (double) ((float) pos.getX() + par1World.rand.nextFloat());
 			double dY = (double) ((float) pos.getY() + par1World.rand.nextFloat());
 			double dZ = (double) ((float) pos.getZ() + par1World.rand.nextFloat());
@@ -55,17 +61,20 @@ public class BlockSlimeSlab extends Block {
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube()
+	{
 		return false;
 	}
 
 	@Override
-	public boolean isFullCube() {
+	public boolean isFullCube()
+	{
 		return false;
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity) {
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+	{
 		entity.motionX *= 0.00001D;
 		entity.motionY *= 0.0D;
 		entity.motionZ *= 0.00001D;

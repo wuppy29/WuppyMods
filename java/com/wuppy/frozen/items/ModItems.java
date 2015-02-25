@@ -8,15 +8,16 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class ModItems {
-	//standard item objects
+public class ModItems
+{
+	// standard item objects
 	public static Item frozenHeart;
 	public static Item iceSaw;
 	public static Item elsaGlove;
 	public static Item hansSword;
 	public static Item kristoffPickaxe;
 
-	//armor item objects
+	// armor item objects
 	public static Item elsaTiara;
 	public static Item elsaBodice;
 	public static Item elsaSkirt;
@@ -37,15 +38,16 @@ public class ModItems {
 	public static Item hansPants;
 	public static Item hansBoots;
 
-	public static void loadItems() {
-		//standard item init
+	public static void loadItems()
+	{
+		// standard item init
 		frozenHeart = new ItemFrozenHeart();
 		iceSaw = new ItemIceSaw();
 		elsaGlove = new ItemElsaGlove();
 		hansSword = new ItemHansSword();
 		kristoffPickaxe = new ItemKristoffPickaxe();
 
-		//armor item init
+		// armor item init
 		elsaTiara = new ItemElsaArmor(ModMaterials.elsa, 0, "elsaTiara");
 		elsaBodice = new ItemElsaArmor(ModMaterials.elsa, 1, "elsaBodice");
 		elsaSkirt = new ItemElsaArmor(ModMaterials.elsa, 2, "elsaSkirt");
@@ -67,8 +69,10 @@ public class ModItems {
 		hansBoots = new ItemHansArmor(ModMaterials.hans, 3, "hansBoots");
 	}
 
-	public static void regsisterItemRenders(FMLPostInitializationEvent event) {
-		if (event.getSide() == Side.CLIENT) {
+	public static void regsisterItemRenders(FMLPostInitializationEvent event)
+	{
+		if (event.getSide() == Side.CLIENT)
+		{
 			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 			renderItem.getItemModelMesher().register(frozenHeart, 0, new ModelResourceLocation(FrozenCraft.modid + ":" + ((ItemFrozenHeart) frozenHeart).getName(), "inventory"));

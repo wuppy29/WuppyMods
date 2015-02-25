@@ -13,8 +13,10 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntitySlimeZombie extends EntityMob {
-	public EntitySlimeZombie(World par1World) {
+public class EntitySlimeZombie extends EntityMob
+{
+	public EntitySlimeZombie(World par1World)
+	{
 		super(par1World);
 		((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -32,7 +34,8 @@ public class EntitySlimeZombie extends EntityMob {
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes()
+	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
@@ -42,20 +45,23 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Returns the current armor value as determined by a call to InventoryPlayer.getTotalArmorValue
 	 */
 	@Override
-	public int getTotalArmorValue() {
+	public int getTotalArmorValue()
+	{
 		return 2;
 	}
 
 	/**
-	 * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-	 * use this to react to sunlight and start to burn.
+	 * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons use this to react to sunlight and start to burn.
 	 */
 	@Override
-	public void onLivingUpdate() {
-		if (this.worldObj.isDaytime() && !this.worldObj.isRemote) {
+	public void onLivingUpdate()
+	{
+		if (this.worldObj.isDaytime() && !this.worldObj.isRemote)
+		{
 			float var1 = this.getBrightness(1.0F);
 
-			if (var1 > 0.5F && this.worldObj.canSeeSky(new BlockPos(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))) && this.rand.nextFloat() * 30.0F < (var1 - 0.4F) * 2.0F) {
+			if (var1 > 0.5F && this.worldObj.canSeeSky(new BlockPos(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))) && this.rand.nextFloat() * 30.0F < (var1 - 0.4F) * 2.0F)
+			{
 				this.setFire(8);
 			}
 		}
@@ -67,7 +73,8 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Returns the sound this mob makes while it's alive.
 	 */
 	@Override
-	protected String getLivingSound() {
+	protected String getLivingSound()
+	{
 		return "mob.zombie";
 	}
 
@@ -75,7 +82,8 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Returns the sound this mob makes when it is hurt.
 	 */
 	@Override
-	protected String getHurtSound() {
+	protected String getHurtSound()
+	{
 		return "mob.zombiehurt";
 	}
 
@@ -83,7 +91,8 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Returns the sound this mob makes on death.
 	 */
 	@Override
-	protected String getDeathSound() {
+	protected String getDeathSound()
+	{
 		return "mob.zombiedeath";
 	}
 
@@ -91,7 +100,8 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Returns the item ID for the item the mob drops on death.
 	 */
 	@Override
-	protected Item getDropItem() {
+	protected Item getDropItem()
+	{
 		return Items.slime_ball;
 	}
 
@@ -99,24 +109,27 @@ public class EntitySlimeZombie extends EntityMob {
 	 * Get this Entity's EnumCreatureAttribute
 	 */
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute() {
+	public EnumCreatureAttribute getCreatureAttribute()
+	{
 		return EnumCreatureAttribute.UNDEAD;
 	}
 
 	@Override
-	protected void addRandomDrop() {
-		switch (this.rand.nextInt(4)) {
-			case 0:
-				this.dropItem(Items.iron_sword, 1);
-				break;
-			case 1:
-				this.dropItem(Items.iron_helmet, 1);
-				break;
-			case 2:
-				this.dropItem(Items.iron_ingot, 1);
-				break;
-			case 3:
-				this.dropItem(Items.iron_shovel, 1);
+	protected void addRandomDrop()
+	{
+		switch (this.rand.nextInt(4))
+		{
+		case 0:
+			this.dropItem(Items.iron_sword, 1);
+			break;
+		case 1:
+			this.dropItem(Items.iron_helmet, 1);
+			break;
+		case 2:
+			this.dropItem(Items.iron_ingot, 1);
+			break;
+		case 3:
+			this.dropItem(Items.iron_shovel, 1);
 		}
 	}
 }

@@ -10,10 +10,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockRemains extends Block {
+public class BlockRemains extends Block
+{
 	private final String name = "remains";
 
-	public BlockRemains() {
+	public BlockRemains()
+	{
 		super(Material.ground);
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
@@ -24,12 +26,14 @@ public class BlockRemains extends Block {
 		setCreativeTab(PeacefulPack.ppBlocksTab);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return Items.rotten_flesh;
 	}
 }

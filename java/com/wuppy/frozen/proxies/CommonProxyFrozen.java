@@ -1,7 +1,9 @@
 package com.wuppy.frozen.proxies;
 
-public class CommonProxyFrozen {
-	public void registerRenders() {
+public class CommonProxyFrozen
+{
+	public void registerRenders()
+	{
 
 	}
 }

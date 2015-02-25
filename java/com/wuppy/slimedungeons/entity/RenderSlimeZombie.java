@@ -10,15 +10,18 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderSlimeZombie extends RenderLiving {
+public class RenderSlimeZombie extends RenderLiving
+{
 	private static ResourceLocation texture = new ResourceLocation(SlimeDungeon.MODID, "textures/models/slime zombie.png");
 
-	public RenderSlimeZombie(ModelBase par1ModelBase, float par2) {
+	public RenderSlimeZombie(ModelBase par1ModelBase, float par2)
+	{
 		super(Minecraft.getMinecraft().getRenderManager(), par1ModelBase, par2);
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
 		return texture;
 	}
 }

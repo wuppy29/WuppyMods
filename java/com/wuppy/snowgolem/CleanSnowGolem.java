@@ -16,7 +16,8 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 @Mod(modid = CleanSnowGolem.modid, name = "Clean Snow Golem", version = "1.6.2")
-public class CleanSnowGolem {
+public class CleanSnowGolem
+{
 	public static final String modid = "wuppy29_snowgolem";
 
 	public static final int VERSION = 3;
@@ -29,7 +30,8 @@ public class CleanSnowGolem {
 	public static boolean checkForUpdates = true;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		FMLCommonHandler.instance().bus().register(this);
 		MinecraftForge.EVENT_BUS.register(this);
 
@@ -46,15 +48,18 @@ public class CleanSnowGolem {
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event)
+	{
 		proxy.registerRenderThings();
 
 		EntityRegistry.registerModEntity(EntityCleanSnowGolem.class, "snow golem", 1, this, 80, 3, true);
 	}
 
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
-		if (outdated) {
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		if (outdated)
+		{
 			event.player.addChatComponentMessage(new ChatComponentText("Jelly Cubes is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(updates));
@@ -62,9 +67,12 @@ public class CleanSnowGolem {
 	}
 
 	@SubscribeEvent
-	public void checkSnowGolems(EntityJoinWorldEvent event) {
-		if (event.entity instanceof EntitySnowman && !(event.entity instanceof EntityCleanSnowGolem)) {
-			if (!event.world.isRemote) {
+	public void checkSnowGolems(EntityJoinWorldEvent event)
+	{
+		if (event.entity instanceof EntitySnowman && !(event.entity instanceof EntityCleanSnowGolem))
+		{
+			if (!event.world.isRemote)
+			{
 				EntityCleanSnowGolem golem = new EntityCleanSnowGolem(event.world);
 				golem.setLocationAndAngles(event.entity.posX, event.entity.posY, event.entity.posZ, 0, 0);
 

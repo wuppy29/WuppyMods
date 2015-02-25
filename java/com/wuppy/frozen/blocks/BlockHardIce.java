@@ -14,10 +14,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockHardIce extends Block {
+public class BlockHardIce extends Block
+{
 	private final String name = "hardIce";
 
-	public BlockHardIce() {
+	public BlockHardIce()
+	{
 		super(Material.ice);
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(FrozenCraft.modid + "_" + name);
@@ -27,12 +29,14 @@ public class BlockHardIce extends Block {
 		setStepSound(soundTypeGlass);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		if (rand.nextInt(20) == 0)
 			return ModItems.frozenHeart;
 		else
@@ -40,7 +44,8 @@ public class BlockHardIce extends Block {
 	}
 
 	@Override
-	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
+	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+	{
 		return player.getHeldItem().getItem() == ModItems.iceSaw;
 	}
 }

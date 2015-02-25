@@ -17,12 +17,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockBlazeSapling extends BlockBush implements IGrowable {
+public class BlockBlazeSapling extends BlockBush implements IGrowable
+{
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
 
 	private final String name = "blazeSapling";
 
-	public BlockBlazeSapling() {
+	public BlockBlazeSapling()
+	{
 		super(Material.plants);
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
@@ -34,53 +36,65 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable {
 		setCreativeTab(PeacefulPack.ppBlocksTab);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
+	public IBlockState getStateFromMeta(int meta)
+	{
 		return this.getDefaultState().withProperty(STAGE, meta);
 	}
 
 	@Override
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(IBlockState state)
+	{
 		return (Integer) state.getValue(STAGE);
 	}
 
 	@Override
-	protected BlockState createBlockState() {
+	protected BlockState createBlockState()
+	{
 		return new BlockState(this, STAGE);
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube()
+	{
 		return false;
 	}
 
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
+	{
 		return null;
 	}
 
 	@Override
-	public boolean canPlaceBlockOn(Block ground) {
+	public boolean canPlaceBlockOn(Block ground)
+	{
 		return ground == Blocks.netherrack;
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
+	{
 		super.updateTick(world, pos, state, random);
 
-		if (world.getLightFromNeighbors(pos.up()) < 7 && random.nextInt(7) == 0) {
-			if ((Integer) state.getValue(STAGE) == 0) {
+		if (world.getLightFromNeighbors(pos.up()) < 7 && random.nextInt(7) == 0)
+		{
+			if ((Integer) state.getValue(STAGE) == 0)
+			{
 				world.setBlockState(pos, state.cycleProperty(STAGE), 4);
-			} else {
+			} else
+			{
 				growTree(world, pos, random);
 			}
 		}
 	}
 
-	public void growTree(World world, BlockPos pos, Random random) {
+	public void growTree(World world, BlockPos pos, Random random)
+	{
 		world.setBlockState(pos, Blocks.air.getDefaultState());
 
 		WorldGenBlazeTrees generator = new WorldGenBlazeTrees();
@@ -88,17 +102,20 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable {
 	}
 
 	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient)
+	{
 		return true;
 	}
 
 	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state)
+	{
 		return rand.nextInt(3) == 0;
 	}
 
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
+	{
 		growTree(worldIn, pos, rand);
 	}
 }

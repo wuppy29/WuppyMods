@@ -3,7 +3,8 @@ package com.wuppy.peacefulpackmod.config;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class Config {
+public class Config
+{
 	public static boolean checkForUpdates = true;
 
 	public static boolean spawnSulphurNiter = true;
@@ -19,7 +20,8 @@ public class Config {
 
 	public static boolean lavaForGhastOres = true;
 
-	public static void init(FMLPreInitializationEvent event) {
+	public static void init(FMLPreInitializationEvent event)
+	{
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
 		config.load();

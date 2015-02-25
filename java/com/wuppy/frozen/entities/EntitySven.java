@@ -9,8 +9,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class EntitySven extends EntityTameable {
-	public EntitySven(World world) {
+public class EntitySven extends EntityTameable
+{
+	public EntitySven(World world)
+	{
 		super(world);
 		setSize(3F, 2.5F);
 		tasks.addTask(1, new EntityAISwimming(this));
@@ -25,18 +27,23 @@ public class EntitySven extends EntityTameable {
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes()
+	{
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.6D);
 	}
 
 	@Override
-	public boolean interact(EntityPlayer player) {
+	public boolean interact(EntityPlayer player)
+	{
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
-		if (itemstack != null) {
-			if (itemstack.getItem() == Items.carrot) {
-				if (!isTamed()) {
+		if (itemstack != null)
+		{
+			if (itemstack.getItem() == Items.carrot)
+			{
+				if (!isTamed())
+				{
 					setTamed(true);
 					return true;
 				}
@@ -47,13 +54,15 @@ public class EntitySven extends EntityTameable {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean par1, int par2)
+	{
 		dropItem(Items.leather, 2);
 		dropItem(Items.carrot, 2);
 	}
 
 	@Override
-	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
+	public EntityAgeable createChild(EntityAgeable p_90011_1_)
+	{
 		return null;
 	}
 }

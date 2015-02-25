@@ -14,7 +14,8 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemPeacefulSeed extends Item implements IPlantable {
+public class ItemPeacefulSeed extends Item implements IPlantable
+{
 	/**
 	 * the type of block this seed turns into (wheat or pumpkin stems for instance)
 	 */
@@ -27,7 +28,8 @@ public class ItemPeacefulSeed extends Item implements IPlantable {
 
 	private final String name;
 
-	public ItemPeacefulSeed(Block block, Block soil, String name) {
+	public ItemPeacefulSeed(Block block, Block soil, String name)
+	{
 		this.name = name;
 
 		GameRegistry.registerItem(this, name);
@@ -39,32 +41,40 @@ public class ItemPeacefulSeed extends Item implements IPlantable {
 		setCreativeTab(PeacefulPack.ppMaterialTab);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (side != EnumFacing.UP) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+	{
+		if (side != EnumFacing.UP)
+		{
 			return false;
-		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
+		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack))
+		{
 			return false;
-		} else if (worldIn.getBlockState(pos).getBlock() == soilBlock && worldIn.isAirBlock(pos.up())) {
+		} else if (worldIn.getBlockState(pos).getBlock() == soilBlock && worldIn.isAirBlock(pos.up()))
+		{
 			worldIn.setBlockState(pos.up(), this.blockType.getDefaultState());
 			--stack.stackSize;
 			return true;
-		} else {
+		} else
+		{
 			return false;
 		}
 	}
 
 	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
 		return blockType.getDefaultState();
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
 		return EnumPlantType.Crop;
 	}
 }

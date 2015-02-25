@@ -11,8 +11,10 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class EntityOlaf extends EntityTameable {
-	public EntityOlaf(World world) {
+public class EntityOlaf extends EntityTameable
+{
+	public EntityOlaf(World world)
+	{
 		super(world);
 		setSize(0.8F, 0.6F);
 		((PathNavigateGround) this.getNavigator()).setAvoidsWater(true);
@@ -24,25 +26,31 @@ public class EntityOlaf extends EntityTameable {
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes()
+	{
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean par1, int par2)
+	{
 		dropItem(Items.snowball, 10);
 	}
 
 	long lastTalked = 0;
 
 	@Override
-	public boolean interact(EntityPlayer player) {
+	public boolean interact(EntityPlayer player)
+	{
 		ItemStack itemstack = player.inventory.getCurrentItem();
 
-		if (itemstack != null) {
-			if (itemstack.getItem() == Items.bone) {
-				if (!isTamed()) {
+		if (itemstack != null)
+		{
+			if (itemstack.getItem() == Items.bone)
+			{
+				if (!isTamed())
+				{
 					setTamed(true);
 					return true;
 				}
@@ -52,7 +60,8 @@ public class EntityOlaf extends EntityTameable {
 		if (lastTalked == 0)
 			worldObj.getWorldTime();
 
-		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime()) {
+		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime())
+		{
 			int rand = worldObj.rand.nextInt(4);
 
 			if (rand == 0)
@@ -74,7 +83,8 @@ public class EntityOlaf extends EntityTameable {
 	}
 
 	@Override
-	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
+	public EntityAgeable createChild(EntityAgeable p_90011_1_)
+	{
 		return null;
 	}
 }

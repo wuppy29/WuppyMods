@@ -14,10 +14,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockEnderclam extends Block {
+public class BlockEnderclam extends Block
+{
 	private final String name = "enderclam";
 
-	public BlockEnderclam() {
+	public BlockEnderclam()
+	{
 		super(Material.rock);
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
@@ -30,17 +32,20 @@ public class BlockEnderclam extends Block {
 		setCreativeTab(PeacefulPack.ppBlocksTab);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return Items.ender_pearl;
 	}
 
 	@Override
-	public int getExpDrop(IBlockAccess world, BlockPos pos, int fortune) {
+	public int getExpDrop(IBlockAccess world, BlockPos pos, int fortune)
+	{
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
 		return MathHelper.getRandomIntegerInRange(rand, 3, 7);

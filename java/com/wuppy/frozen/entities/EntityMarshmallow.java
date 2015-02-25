@@ -13,8 +13,10 @@ import net.minecraft.item.Item;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.World;
 
-public class EntityMarshmallow extends EntityMob implements IRangedAttackMob {
-	public EntityMarshmallow(World world) {
+public class EntityMarshmallow extends EntityMob implements IRangedAttackMob
+{
+	public EntityMarshmallow(World world)
+	{
 		super(world);
 		setSize(2F, 3F);
 		((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
@@ -30,7 +32,8 @@ public class EntityMarshmallow extends EntityMob implements IRangedAttackMob {
 	}
 
 	@Override
-	protected void applyEntityAttributes() {
+	protected void applyEntityAttributes()
+	{
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.35D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8D);
@@ -38,13 +41,15 @@ public class EntityMarshmallow extends EntityMob implements IRangedAttackMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean par1, int par2)
+	{
 		dropItem(Item.getItemFromBlock(Blocks.snow), 10);
 		dropItem(Items.diamond, 2);
 	}
 
 	@Override
-	public void attackEntityWithRangedAttack(EntityLivingBase entity, float var2) {
+	public void attackEntityWithRangedAttack(EntityLivingBase entity, float var2)
+	{
 		if (!worldObj.isRemote)
 			worldObj.spawnEntityInWorld(new EntitySnowball(worldObj, entity));
 	}

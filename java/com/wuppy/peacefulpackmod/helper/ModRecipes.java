@@ -7,8 +7,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ModRecipes {
-	public static void init() {
+public class ModRecipes
+{
+	public static void init()
+	{
 		// smelting recipes
 		GameRegistry.addSmelting(Items.rotten_flesh, new ItemStack(ModItems.cookedFlesh, 1), 1F);
 

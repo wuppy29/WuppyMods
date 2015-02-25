@@ -14,25 +14,26 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 @SideOnly(Side.CLIENT)
-public class RenderIceBolt extends Render {
+public class RenderIceBolt extends Render
+{
 	private static final ResourceLocation texture = new ResourceLocation(FrozenCraft.modid, "textures/models/icebolt.png");
 
-	public RenderIceBolt() {
+	public RenderIceBolt()
+	{
 		super(Minecraft.getMinecraft().getRenderManager());
 	}
 
 	/**
-	 * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-	 * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-	 * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
-	 * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
+	 * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1, double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
 	 */
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	{
 		this.render(par1Entity, par2, par4, par6, par8, par9);
 	}
 
-	public void render(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+	public void render(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	{
 		this.bindEntityTexture(par1Entity);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
@@ -53,7 +54,8 @@ public class RenderIceBolt extends Render {
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		float f11 = (float) 7 - par9;
 
-		if (f11 > 0.0F) {
+		if (f11 > 0.0F)
+		{
 			float f12 = -MathHelper.sin(f11 * 3.0F) * f11;
 			GL11.glRotatef(f12, 0.0F, 0.0F, 1.0F);
 		}
@@ -76,7 +78,8 @@ public class RenderIceBolt extends Render {
 		worldrenderer.addVertexWithUV(-7.0D, -2.0D, -2.0D, (double) f6, (double) f9);
 		tessellator.draw();
 
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < 4; ++i)
+		{
 			GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glNormal3f(0.0F, 0.0F, f10);
 			worldrenderer.startDrawingQuads();
@@ -92,7 +95,8 @@ public class RenderIceBolt extends Render {
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
 		return texture;
 	}
 }

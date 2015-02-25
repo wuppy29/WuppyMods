@@ -11,10 +11,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Random;
 
-public class BlockSlimeBlock extends Block {
+public class BlockSlimeBlock extends Block
+{
 	private final String name = "slimeblock";
 
-	public BlockSlimeBlock() {
+	public BlockSlimeBlock()
+	{
 		super(Material.rock);
 		GameRegistry.registerBlock(this, name);
 		setCreativeTab(CreativeTabs.tabBlock);
@@ -24,17 +26,20 @@ public class BlockSlimeBlock extends Block {
 		setUnlocalizedName(SlimeDungeon.MODID + "_" + name);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
 		return Items.slime_ball;
 	}
 
 	@Override
-	public int quantityDropped(Random par1Random) {
+	public int quantityDropped(Random par1Random)
+	{
 		return 2;
 	}
 }

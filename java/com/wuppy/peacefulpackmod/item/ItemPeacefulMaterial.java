@@ -11,11 +11,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemPeacefulMaterial extends Item {
+public class ItemPeacefulMaterial extends Item
+{
 	private final String name = "peacefulMaterial";
-	private final String[] metaNames = new String[]{"sulphdust", "niterdust", "flaxfibre", "cloth", "chain"};
+	private final String[] metaNames = new String[] { "sulphdust", "niterdust", "flaxfibre", "cloth", "chain" };
 
-	public ItemPeacefulMaterial() {
+	public ItemPeacefulMaterial()
+	{
 		GameRegistry.registerItem(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
 
@@ -24,35 +26,34 @@ public class ItemPeacefulMaterial extends Item {
 		setCreativeTab(PeacefulPack.ppMaterialTab);
 	}
 
-	public String getNameFromDamage(int damage) {
+	public String getNameFromDamage(int damage)
+	{
 		return metaNames[damage];
 	}
 
-	void registerVariants() {
+	void registerVariants()
+	{
 		String[] variantNames = new String[metaNames.length];
-		for (int i = 0; i < metaNames.length; i++) {
+		for (int i = 0; i < metaNames.length; i++)
+		{
 			variantNames[i] = PeacefulPack.modid + ":" + getNameFromDamage(i);
 		}
 		ModelBakery.addVariantName(this, variantNames);
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
+	public String getUnlocalizedName(ItemStack par1ItemStack)
+	{
 		return super.getUnlocalizedName() + "." + metaNames[par1ItemStack.getItemDamage()];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab, List subItems) {
-		for (int i = 0; i < 5; ++i) {
+	public void getSubItems(Item itemIn, CreativeTabs tab, List subItems)
+	{
+		for (int i = 0; i < 5; ++i)
+		{
 			subItems.add(new ItemStack(itemIn, 1, i));
 		}
 	}
-
-    /*@SideOnly(Side.CLIENT)
-    @Override
-    public void registerIcons(IIconRegister par1IconRegister)
-    {
-        this.itemIcon = par1IconRegister.registerIcon(PeacefulPack.modid + ":" + (this.getUnlocalizedName().substring(5)));
-    }*/
 }

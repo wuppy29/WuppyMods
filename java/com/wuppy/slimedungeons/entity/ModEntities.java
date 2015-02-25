@@ -7,10 +7,12 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class ModEntities {
+public class ModEntities
+{
 	private static int startEntityId = 30;
 
-	public static void init(SlimeDungeon mod) {
+	public static void init(SlimeDungeon mod)
+	{
 		EntityRegistry.registerModEntity(EntitySlimeZombie.class, "SlimeZombie", 0, mod, 80, 3, true);
 
 		if (Config.addEntityEggs)
@@ -18,17 +20,19 @@ public class ModEntities {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor) {
+	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor)
+	{
 		int id = getUniqueEntityId();
 		EntityList.idToClassMapping.put(id, entity);
 		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
 	}
 
-	public static int getUniqueEntityId() {
-		do {
+	public static int getUniqueEntityId()
+	{
+		do
+		{
 			startEntityId++;
-		}
-		while (EntityList.getStringFromID(startEntityId) != null);
+		} while (EntityList.getStringFromID(startEntityId) != null);
 
 		return startEntityId;
 	}

@@ -17,10 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BlockBlazeLeaves extends BlockLeaves {
+public class BlockBlazeLeaves extends BlockLeaves
+{
 	private final String name = "blazeLeaves";
 
-	public BlockBlazeLeaves() {
+	public BlockBlazeLeaves()
+	{
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
 
@@ -29,12 +31,14 @@ public class BlockBlazeLeaves extends BlockLeaves {
 		setCreativeTab(PeacefulPack.ppBlocksTab);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
+	public IBlockState getStateFromMeta(int meta)
+	{
 		IBlockState state = getDefaultState();
 
 		if (meta < 2)
@@ -51,14 +55,19 @@ public class BlockBlazeLeaves extends BlockLeaves {
 	}
 
 	@Override
-	public int getMetaFromState(IBlockState state) {
-		if ((Boolean) state.getValue(DECAYABLE)) {
-			if ((Boolean) state.getValue(CHECK_DECAY)) {
+	public int getMetaFromState(IBlockState state)
+	{
+		if ((Boolean) state.getValue(DECAYABLE))
+		{
+			if ((Boolean) state.getValue(CHECK_DECAY))
+			{
 				return 0;
 			} else
 				return 1;
-		} else {
-			if ((Boolean) state.getValue(CHECK_DECAY)) {
+		} else
+		{
+			if ((Boolean) state.getValue(CHECK_DECAY))
+			{
 				return 2;
 			} else
 				return 3;
@@ -66,15 +75,18 @@ public class BlockBlazeLeaves extends BlockLeaves {
 	}
 
 	@Override
-	protected BlockState createBlockState() {
+	protected BlockState createBlockState()
+	{
 		return new BlockState(this, DECAYABLE, CHECK_DECAY);
 	}
 
 	@Override
-	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+	{
 		super.randomDisplayTick(worldIn, pos, state, rand);
 
-		if (rand.nextInt(2) == 0) {
+		if (rand.nextInt(2) == 0)
+		{
 			double pX = (double) ((float) pos.getX() + worldIn.rand.nextFloat());
 			double pY = (double) ((float) pos.getY() + worldIn.rand.nextFloat());
 			double pZ = (double) ((float) pos.getZ() + worldIn.rand.nextFloat());
@@ -84,15 +96,18 @@ public class BlockBlazeLeaves extends BlockLeaves {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	{
 		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 
 		Random rand = world instanceof World ? ((World) world).rand : new Random();
 
-		if (rand.nextInt(10) == 0) {
+		if (rand.nextInt(10) == 0)
+		{
 			ret.add(new ItemStack(ModBlocks.blazeSapling));
 		}
-		if (rand.nextInt(5) == 0) {
+		if (rand.nextInt(5) == 0)
+		{
 			ret.add(new ItemStack(Items.blaze_rod));
 		}
 
@@ -100,14 +115,16 @@ public class BlockBlazeLeaves extends BlockLeaves {
 	}
 
 	@Override
-	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
+	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
+	{
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(this, 1));
 		return ret;
 	}
 
 	@Override
-	public EnumType getWoodType(int meta) {
+	public EnumType getWoodType(int meta)
+	{
 		return null;
 	}
 }

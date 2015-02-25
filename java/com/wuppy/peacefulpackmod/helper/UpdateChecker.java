@@ -9,24 +9,31 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateChecker {
-	public static void checkForUpdates() {
-		try {
+public class UpdateChecker
+{
+	public static void checkForUpdates()
+	{
+		try
+		{
 			int currentVersion = PeacefulPack.VERSION;
 			int nextVersion = getNewest();
 
-			if (currentVersion < nextVersion) {
+			if (currentVersion < nextVersion)
+			{
 				PeacefulPack.updates = getUpdate(nextVersion);
 				PeacefulPack.outdated = true;
-			} else {
+			} else
+			{
 				PeacefulPack.outdated = false;
 			}
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	public static int getNewest() throws IOException {
+	public static int getNewest() throws IOException
+	{
 		URL url = new URL("http://wuppy29.com/minecraft/mods/pp/newest.txt");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
@@ -43,7 +50,8 @@ public class UpdateChecker {
 		String line;
 		StringBuilder response = new StringBuilder();
 
-		while ((line = br.readLine()) != null) {
+		while ((line = br.readLine()) != null)
+		{
 			response.append(line);
 
 		}
@@ -52,7 +60,8 @@ public class UpdateChecker {
 		return Integer.parseInt(response.toString());
 	}
 
-	private static String getUpdate(int version) throws IOException {
+	private static String getUpdate(int version) throws IOException
+	{
 		URL url = new URL("http://wuppy29.com/minecraft/mods/pp/" + version + ".txt");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
@@ -69,7 +78,8 @@ public class UpdateChecker {
 		String line;
 		StringBuilder response = new StringBuilder();
 
-		while ((line = br.readLine()) != null) {
+		while ((line = br.readLine()) != null)
+		{
 			response.append(line);
 
 		}

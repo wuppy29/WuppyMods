@@ -9,16 +9,19 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemNetherEye extends Item {
+public class ItemNetherEye extends Item
+{
 	private final String name = "nethereye";
 
-	public ItemNetherEye() {
+	public ItemNetherEye()
+	{
 		GameRegistry.registerItem(this, name);
 		setUnlocalizedName(name);
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
@@ -26,24 +29,30 @@ public class ItemNetherEye extends Item {
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if (!par2World.isRemote && par3EntityPlayer.dimension == -1) {
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	{
+		if (!par2World.isRemote && par3EntityPlayer.dimension == -1)
+		{
 			BlockPos blockpos = par2World.getStrongholdPos("Fortress", new BlockPos(par3EntityPlayer));
 
-			if (blockpos != null) {
+			if (blockpos != null)
+			{
 				EntityNetherEye var6 = new EntityNetherEye(par2World, par3EntityPlayer.posX, par3EntityPlayer.posY + 1.5f, par3EntityPlayer.posZ);
 				var6.moveTowards((double) blockpos.getX(), blockpos.getY(), (double) blockpos.getZ());
 				par2World.spawnEntityInWorld(var6);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 				par2World.playAuxSFXAtEntity(null, 1002, new BlockPos(par3EntityPlayer), 0);
 
-				if (!par3EntityPlayer.capabilities.isCreativeMode) {
+				if (!par3EntityPlayer.capabilities.isCreativeMode)
+				{
 					--par1ItemStack.stackSize;
 				}
-			} else {
+			} else
+			{
 				par3EntityPlayer.addChatComponentMessage(new ChatComponentText("There is no fortress nearby."));
 			}
-		} else if (!par2World.isRemote) {
+		} else if (!par2World.isRemote)
+		{
 			par3EntityPlayer.addChatComponentMessage(new ChatComponentText("You need to be in the Nether to use this."));
 		}
 

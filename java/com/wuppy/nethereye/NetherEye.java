@@ -23,7 +23,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = NetherEye.modid, name = "Nether Eye", version = "1.4.2")
-public class NetherEye {
+public class NetherEye
+{
 	public static final String modid = "wuppy29_nethereye";
 
 	public static final int VERSION = 4;
@@ -38,43 +39,47 @@ public class NetherEye {
 	public static boolean checkForUpdates = true;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		FMLCommonHandler.instance().bus().register(this);
 
-		//setup config file
+		// setup config file
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "Check Updates", true).getBoolean(true);
 		config.save();
 
-		//check for updates
+		// check for updates
 		if (checkForUpdates)
 			UpdateChecker.checkForUpdates();
 
-		//items
+		// items
 		nethereye = new ItemNetherEye();
 
-		//entities
+		// entities
 		EntityRegistry.registerModEntity(EntityNetherEye.class, "Nether Eye", 44, this, 40, 1, true);
 
-		//dimensions
+		// dimensions
 		DimensionManager.unregisterProviderType(-1);
 		DimensionManager.registerProviderType(-1, WorldProviderCustomHell.class, false);
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event)
+	{
 		proxy.registerEntityRender();
 
-		//recipes
+		// recipes
 		GameRegistry.addShapelessRecipe(new ItemStack(nethereye, 1), new ItemStack(Items.ender_pearl), new ItemStack(Items.magma_cream));
 		GameRegistry.addRecipe(new ItemStack(nethereye, 1), " X ", "CVC", " X ", 'X', Items.gold_nugget, 'C', Items.glowstone_dust, 'V', Items.ender_pearl);
 		GameRegistry.addRecipe(new ItemStack(nethereye, 1), " X ", "CVC", " X ", 'C', Items.gold_nugget, 'X', Items.glowstone_dust, 'V', Items.ender_pearl);
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		if (event.getSide() == Side.CLIENT) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		if (event.getSide() == Side.CLIENT)
+		{
 			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 			renderItem.getItemModelMesher().register(nethereye, 0, new ModelResourceLocation(modid + ":" + ((ItemNetherEye) nethereye).getName(), "inventory"));
@@ -82,8 +87,10 @@ public class NetherEye {
 	}
 
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
-		if (outdated) {
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
+	{
+		if (outdated)
+		{
 			event.player.addChatComponentMessage(new ChatComponentText("Nether Eye is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(updates));
