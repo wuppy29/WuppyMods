@@ -15,16 +15,15 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = SimplePack.modid, name = "Simple Recipes", version = "1.9.0")
-public class SimplePack 
-{
+public class SimplePack {
 	public static final String modid = "wuppy29_simplerecipes";
-	
+
 	public static final int VERSION = 5;
 	public static String updates = "";
 	public static boolean outdated = false;
-	
+
 	public static boolean checkForUpdates = true;
-	
+
 	public static boolean craftClay = true;
 	public static boolean craftMossyC = true;
 	public static boolean craftWeb = true;
@@ -51,18 +50,17 @@ public class SimplePack
 	public static boolean craftStoneBrick3 = true;
 	public static boolean craftLeather = true;
 	public static boolean craftFlint = true;
-	
+
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public void preInit(FMLPreInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(this);
-		
+
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
 		config.load();
 
 		checkForUpdates = config.get(Configuration.CATEGORY_GENERAL, "checkForUpdates", true).getBoolean(true);
-		
+
 		craftClay = config.get(Configuration.CATEGORY_GENERAL, "craftClay", true).getBoolean(true);
 		craftMossyC = config.get(Configuration.CATEGORY_GENERAL, "craftMossyC", true).getBoolean(true);
 		craftWeb = config.get(Configuration.CATEGORY_GENERAL, "craftWeb", true).getBoolean(true);
@@ -95,94 +93,73 @@ public class SimplePack
 		if (checkForUpdates)
 			UpdateChecker.checkForUpdates();
 	}
-	
+
 	@EventHandler
-	public void load(FMLInitializationEvent event) 
-	{
-		if(craftClay)
-		{
+	public void load(FMLInitializationEvent event) {
+		if (craftClay) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), "ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand);
 			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), "ZXZ", "XCX", "ZXZ", 'Z', Blocks.sand, 'C', Items.water_bucket, 'X', new ItemStack(Items.dye, 1, 15));
 		}
-		if(craftMossyC)
-		{
+		if (craftMossyC) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.mossy_cobblestone, 1), " X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine);
 		}
-		if(craftWeb)
-		{
+		if (craftWeb) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.web, 5), "X X", " X ", "X X", 'X', Items.string);
 		}
-		if(craftObsidian)
-		{
+		if (craftObsidian) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian, 1), new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket));
 		}
-		if(craftGravel)
-		{
+		if (craftGravel) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.gravel, 2), new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone));
 		}
-		if(craftSponge)
-		{
+		if (craftSponge) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.sponge, 4), " X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 4), 'Z', Items.water_bucket);
 		}
-		if(craftIce)
-		{
+		if (craftIce) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.ice, 1), " X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket);
 		}
-		if(craftStoneBrickMossy)
-		{
+		if (craftStoneBrickMossy) {
 			GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 1), " X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine);
 		}
-		if(craftGrass)
-		{
+		if (craftGrass) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine));
 		}
-		if(craftBone)
-		{
+		if (craftBone) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.chicken));
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.porkchop));
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.beef));
 		}
-		if(craftStoneBrickCracked)
-		{
+		if (craftStoneBrickCracked) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 2), new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick));
 		}
-		if(craftRedstone)
-		{
+		if (craftRedstone) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.redstone, 2), new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1));
 		}
-		if(craftGlowstone)
-		{
+		if (craftGlowstone) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.glowstone_dust, 2), new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11));
 		}
-		if(craftBook)
-		{
+		if (craftBook) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.book, 1), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool));
 		}
-		if(craftDye)
-		{
+		if (craftDye) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 0), new ItemStack(Items.coal));
 		}
-		if(craftArrow)
-		{
+		if (craftArrow) {
 			GameRegistry.addRecipe(new ItemStack(Items.arrow, 2), "XCX",
 					" V ",
 					" B ",
 					'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint);
 		}
-		if(craftString)
-		{
+		if (craftString) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), Blocks.wool);
 		}
-		if(craftMycelium)
-		{
+		if (craftMycelium) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.mycelium), Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.dirt);
 		}
-		if(craftPackedIce)
-		{
+		if (craftPackedIce) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.packed_ice), Blocks.ice, Blocks.ice, Blocks.ice, Blocks.ice);
 		}
-		if(craftLead)
-		{
+		if (craftLead) {
 			GameRegistry.addRecipe(new ItemStack(Items.lead), "X ",
 					"X ",
 					"XY",
@@ -192,32 +169,28 @@ public class SimplePack
 					"YX",
 					'X', Items.leather, 'Y', Items.string);
 		}
-		if(craftSaddle)
-		{
+		if (craftSaddle) {
 			GameRegistry.addRecipe(new ItemStack(Items.saddle), "XYX",
 					"X X",
 					"X X",
 					'X', Items.leather, 'Y', Items.iron_ingot);
 		}
-		if(craftGrass2)
-		{
+		if (craftGrass2) {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.dirt, 1, 2), Blocks.dirt, Blocks.leaves);
 		}
-		if(craftNetherBrick)
+		if (craftNetherBrick)
 			GameRegistry.addSmelting(Blocks.netherrack, new ItemStack(Blocks.nether_brick), 0.1F);
-		if(craftStoneBrick3)
+		if (craftStoneBrick3)
 			GameRegistry.addSmelting(Blocks.stonebrick, new ItemStack(Blocks.stonebrick, 1, 3), 0.1F);
-		if(craftLeather)
+		if (craftLeather)
 			GameRegistry.addSmelting(Items.rotten_flesh, new ItemStack(Items.leather), 0.1F);
-		if(craftFlint)
+		if (craftFlint)
 			GameRegistry.addSmelting(Blocks.gravel, new ItemStack(Items.flint), 0.1F);
 	}
-	
+
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
-	{
-		if(outdated)
-		{
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
+		if (outdated) {
 			event.player.addChatComponentMessage(new ChatComponentText("Simple Recipes is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(updates));

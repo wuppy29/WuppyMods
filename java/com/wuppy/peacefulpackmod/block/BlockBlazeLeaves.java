@@ -1,9 +1,6 @@
 package com.wuppy.peacefulpackmod.block;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.wuppy.peacefulpackmod.PeacefulPack;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.state.BlockState;
@@ -16,81 +13,68 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-public class BlockBlazeLeaves extends BlockLeaves
-{
+public class BlockBlazeLeaves extends BlockLeaves {
 	private final String name = "blazeLeaves";
-	
-	public BlockBlazeLeaves()
-	{
+
+	public BlockBlazeLeaves() {
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
-		
+
 		setLightLevel(0.7F);
 
 		setCreativeTab(PeacefulPack.ppBlocksTab);
 	}
-	
-	public String getName()
-	{
+
+	public String getName() {
 		return name;
 	}
-	
+
 	@Override
-	public IBlockState getStateFromMeta(int meta)
-    {
+	public IBlockState getStateFromMeta(int meta) {
 		IBlockState state = getDefaultState();
-		
-		if(meta < 2)
+
+		if (meta < 2)
 			state.withProperty(DECAYABLE, true);
 		else
 			state.withProperty(DECAYABLE, false);
-		
-		if(meta == 0 || meta == 2)
+
+		if (meta == 0 || meta == 2)
 			state.withProperty(CHECK_DECAY, true);
 		else
 			state.withProperty(CHECK_DECAY, false);
-		
-        return state;
-    }
+
+		return state;
+	}
 
 	@Override
-    public int getMetaFromState(IBlockState state)
-    {
-		if((Boolean) state.getValue(DECAYABLE))
-		{
-			if((Boolean) state.getValue(CHECK_DECAY))
-			{
+	public int getMetaFromState(IBlockState state) {
+		if ((Boolean) state.getValue(DECAYABLE)) {
+			if ((Boolean) state.getValue(CHECK_DECAY)) {
 				return 0;
-			}
-			else
+			} else
 				return 1;
-		}
-		else
-		{
-			if((Boolean) state.getValue(CHECK_DECAY))
-			{
+		} else {
+			if ((Boolean) state.getValue(CHECK_DECAY)) {
 				return 2;
-			}
-			else
+			} else
 				return 3;
 		}
-    }
-	
+	}
+
 	@Override
-    protected BlockState createBlockState()
-    {
-        return new BlockState(this, DECAYABLE, CHECK_DECAY);
-    }
-	
+	protected BlockState createBlockState() {
+		return new BlockState(this, DECAYABLE, CHECK_DECAY);
+	}
+
 	@Override
-	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
+	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		super.randomDisplayTick(worldIn, pos, state, rand);
 
-		if (rand.nextInt(2) == 0)
-		{
+		if (rand.nextInt(2) == 0) {
 			double pX = (double) ((float) pos.getX() + worldIn.rand.nextFloat());
 			double pY = (double) ((float) pos.getY() + worldIn.rand.nextFloat());
 			double pZ = (double) ((float) pos.getZ() + worldIn.rand.nextFloat());
@@ -98,37 +82,32 @@ public class BlockBlazeLeaves extends BlockLeaves
 			worldIn.spawnParticle(EnumParticleTypes.FLAME, pX, pY, pZ, 0.0D, 0.0D, 0.0D);
 		}
 	}
-	
+
 	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    {
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
-		
-		Random rand = world instanceof World ? ((World)world).rand : new Random();
-		
-		if (rand.nextInt(10) == 0)
-		{
+
+		Random rand = world instanceof World ? ((World) world).rand : new Random();
+
+		if (rand.nextInt(10) == 0) {
 			ret.add(new ItemStack(ModBlocks.blazeSapling));
 		}
-		if (rand.nextInt(5) == 0)
-		{
+		if (rand.nextInt(5) == 0) {
 			ret.add(new ItemStack(Items.blaze_rod));
 		}
 
 		return ret;
-    }
+	}
 
 	@Override
-	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 
-	{
+	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(this, 1));
 		return ret;
 	}
 
 	@Override
-	public EnumType getWoodType(int meta) 
-	{
+	public EnumType getWoodType(int meta) {
 		return null;
 	}
 }

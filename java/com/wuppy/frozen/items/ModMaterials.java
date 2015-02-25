@@ -3,8 +3,7 @@ package com.wuppy.frozen.items;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
-public class ModMaterials
-{
+public class ModMaterials {
 	public static ArmorMaterial elsa = EnumHelper.addArmorMaterial("elsa", "elsa", 40, new int[]{4, 10, 7, 4}, 9);
 	public static ArmorMaterial anna = EnumHelper.addArmorMaterial("anna", "anna", 33, new int[]{3, 9, 7, 4}, 9);
 	public static ArmorMaterial kristoff = EnumHelper.addArmorMaterial("kristoff", "kristoff", 33, new int[]{3, 9, 7, 4}, 9);

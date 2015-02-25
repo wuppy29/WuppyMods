@@ -1,17 +1,14 @@
 package com.wuppy.peacefulpackmod.helper;
 
+import com.wuppy.peacefulpackmod.block.ModBlocks;
+import com.wuppy.peacefulpackmod.item.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.wuppy.peacefulpackmod.block.ModBlocks;
-import com.wuppy.peacefulpackmod.item.ModItems;
-
-public class ModRecipes
-{
-	public static void init()
-	{
+public class ModRecipes {
+	public static void init() {
 		// smelting recipes
 		GameRegistry.addSmelting(Items.rotten_flesh, new ItemStack(ModItems.cookedFlesh, 1), 1F);
 

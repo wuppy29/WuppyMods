@@ -1,23 +1,15 @@
 package com.wuppy.frozen.entities;
 
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-public class EntityDuke extends EntityMob
-{
-	public EntityDuke(World par1World)
-	{
+public class EntityDuke extends EntityMob {
+	public EntityDuke(World par1World) {
 		super(par1World);
 
 		tasks.addTask(1, new EntityAISwimming(this));
@@ -31,8 +23,7 @@ public class EntityDuke extends EntityMob
 	}
 
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3D);
@@ -41,13 +32,11 @@ public class EntityDuke extends EntityMob
 	long lastTalked = 0;
 
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer)
-	{
+	public boolean interact(EntityPlayer par1EntityPlayer) {
 		if (lastTalked == 0)
 			worldObj.getWorldTime();
 
-		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime())
-		{
+		if (!worldObj.isRemote && lastTalked + 20 < worldObj.getWorldTime()) {
 			int rand = worldObj.rand.nextInt(3);
 
 			if (rand == 0)
@@ -56,7 +45,7 @@ public class EntityDuke extends EntityMob
 				par1EntityPlayer.addChatComponentMessage(new ChatComponentText("Duke of Weselton: Like an agile peacock!"));
 			else
 				par1EntityPlayer.addChatComponentMessage(new ChatComponentText("Duke of Weselton: Monster! Monster!"));
-			
+
 			lastTalked = worldObj.getWorldTime();
 		}
 
@@ -64,8 +53,7 @@ public class EntityDuke extends EntityMob
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2) {
 		dropItem(Items.iron_ingot, 2);
 	}
 }

@@ -3,13 +3,11 @@ package com.wuppy.slimedungeons.helpers;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class Config
-{
+public class Config {
 	public static boolean checkForUpdates = true;
 	public static boolean addEntityEggs = true;
-	
-	public static void loadConfig(FMLPreInitializationEvent event)
-	{
+
+	public static void loadConfig(FMLPreInitializationEvent event) {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 
 		config.load();

@@ -4,8 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelKoi extends ModelBase 
-{
+public class ModelKoi extends ModelBase {
 	// fields
 	ModelRenderer Koi_Body;
 	ModelRenderer Koi_Nose;
@@ -18,8 +17,7 @@ public class ModelKoi extends ModelBase
 	ModelRenderer Fin_2;
 	ModelRenderer Top_Fin;
 
-	public ModelKoi() 
-	{
+	public ModelKoi() {
 		textureWidth = 32;
 		textureHeight = 32;
 
@@ -87,8 +85,7 @@ public class ModelKoi extends ModelBase
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		Koi_Body.render(f5);
@@ -103,16 +100,14 @@ public class ModelKoi extends ModelBase
 		Top_Fin.render(f5);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) 
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
 	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par6Entity)
-	{
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity par6Entity) {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, par6Entity);
 	}
 }

@@ -21,8 +21,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = JellyCube.modid, name = "Jelly Cubes", version = "1.13.2")
-public class JellyCube
-{
+public class JellyCube {
 	public static final String modid = "wuppy29_jellycubes";
 
 	public static final int VERSION = 4;
@@ -30,12 +29,11 @@ public class JellyCube
 	public static boolean outdated = false;
 
 	public static Item jellycube;
-	
+
 	public static boolean checkForUpdates = true;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public void preInit(FMLPreInitializationEvent event) {
 		FMLCommonHandler.instance().bus().register(this);
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -55,30 +53,25 @@ public class JellyCube
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event)
-	{
+	public void load(FMLInitializationEvent event) {
 		GameRegistry.addShapelessRecipe(new ItemStack(jellycube, 1), new ItemStack(Items.slime_ball), new ItemStack(Items.slime_ball));
 	}
 
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
-	{
-		if (outdated)
-		{
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
+		if (outdated) {
 			event.player.addChatComponentMessage(new ChatComponentText("Jelly Cubes is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(updates));
 		}
 	}
-	
-	@EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
-		if(event.getSide() == Side.CLIENT)
-		{
-	        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
-	        renderItem.getItemModelMesher().register(jellycube, 0, new ModelResourceLocation(modid + ":item.jelly cube", "inventory"));
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		if (event.getSide() == Side.CLIENT) {
+			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+
+			renderItem.getItemModelMesher().register(jellycube, 0, new ModelResourceLocation(modid + ":item.jelly cube", "inventory"));
 		}
-    }
+	}
 }

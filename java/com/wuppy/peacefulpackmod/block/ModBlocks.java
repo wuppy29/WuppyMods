@@ -1,5 +1,6 @@
 package com.wuppy.peacefulpackmod.block;
 
+import com.wuppy.peacefulpackmod.PeacefulPack;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
@@ -11,10 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-
-public class ModBlocks
-{
+public class ModBlocks {
 	public static Block oreBlock;
 	public static Block flax;
 	public static Block slimeSlab;
@@ -26,8 +24,7 @@ public class ModBlocks
 	public static Block blazeSapling;
 	public static Block remains;
 
-	public static void init(FMLPreInitializationEvent event)
-	{
+	public static void init(FMLPreInitializationEvent event) {
 		oreBlock = new BlockPeacefulOres();
 		flax = new BlockFlax();
 		slimeSlab = new BlockSlimeSlab();
@@ -38,34 +35,31 @@ public class ModBlocks
 		enderClam = new BlockEnderclam();
 		blazeSapling = new BlockBlazeSapling();
 		remains = new BlockRemains();
-		
-		if(event.getSide() == Side.CLIENT)
-		{
+
+		if (event.getSide() == Side.CLIENT) {
 			BlockPeacefulOres.OreType.registerVariants();
 		}
 	}
-	
-	public static void postInit(FMLPostInitializationEvent event)
-	{
-		if(event.getSide() == Side.CLIENT)
-		{
-		    RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-		    
-		    BlockPeacefulOres.OreType.registerRenders();
-		    
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(flax), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockFlax) flax).getName(), "inventory"));
-		    
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(slimeSlab), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockSlimeSlab) slimeSlab).getName(), "inventory"));
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(rottenPlant), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRottenPlant) rottenPlant).getName(), "inventory"));
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLog), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLog) blazeLog).getName(), "inventory"));
-		    
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLeaves), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLeaves) blazeLeaves).getName(), "inventory"));
-		    Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blazeLeaves, (new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {BlockBlazeLeaves.CHECK_DECAY, BlockBlazeLeaves.DECAYABLE}).build()));
-		    
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(ghastOre), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockGhastOre) ghastOre).getName(), "inventory"));
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(enderClam), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockEnderclam) enderClam).getName(), "inventory"));
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeSapling), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeSapling) blazeSapling).getName(), "inventory"));
-		    renderItem.getItemModelMesher().register(Item.getItemFromBlock(remains), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRemains) remains).getName(), "inventory"));
+
+	public static void postInit(FMLPostInitializationEvent event) {
+		if (event.getSide() == Side.CLIENT) {
+			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+
+			BlockPeacefulOres.OreType.registerRenders();
+
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(flax), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockFlax) flax).getName(), "inventory"));
+
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(slimeSlab), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockSlimeSlab) slimeSlab).getName(), "inventory"));
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(rottenPlant), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRottenPlant) rottenPlant).getName(), "inventory"));
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLog), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLog) blazeLog).getName(), "inventory"));
+
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeLeaves), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeLeaves) blazeLeaves).getName(), "inventory"));
+			Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blazeLeaves, (new StateMap.Builder().addPropertiesToIgnore(new IProperty[]{BlockBlazeLeaves.CHECK_DECAY, BlockBlazeLeaves.DECAYABLE}).build()));
+
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(ghastOre), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockGhastOre) ghastOre).getName(), "inventory"));
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(enderClam), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockEnderclam) enderClam).getName(), "inventory"));
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blazeSapling), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockBlazeSapling) blazeSapling).getName(), "inventory"));
+			renderItem.getItemModelMesher().register(Item.getItemFromBlock(remains), 0, new ModelResourceLocation(PeacefulPack.modid + ":" + ((BlockRemains) remains).getName(), "inventory"));
 		}
 	}
 }

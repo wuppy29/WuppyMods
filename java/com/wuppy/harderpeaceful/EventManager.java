@@ -9,64 +9,50 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.lang.reflect.Field;
 
-public class EventManager 
-{
+public class EventManager {
 	@SubscribeEvent
-	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event)
-	{
-		if(HarderPeaceful.outdated)
-		{
+	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
+		if (HarderPeaceful.outdated) {
 			event.player.addChatComponentMessage(new ChatComponentText("Harder Peaceful is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(HarderPeaceful.updates));
 		}
 	}
-	
+
 	@SubscribeEvent
-	public void saveFood(PlayerEvent.PlayerLoggedOutEvent event)
-	{
+	public void saveFood(PlayerEvent.PlayerLoggedOutEvent event) {
 		event.player.getEntityData().setInteger("hpfoodlevel", event.player.getFoodStats().getFoodLevel());
 		event.player.getEntityData().setFloat("hpsaturationlevel", event.player.getFoodStats().getSaturationLevel());
 	}
-	
+
 	@SubscribeEvent
-	public void updateFood(EntityJoinWorldEvent event) 
-	{
-		if(event.entity instanceof EntityPlayer)
-		{
+	public void updateFood(EntityJoinWorldEvent event) {
+		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = ((EntityPlayer) event.entity);
-			
+
 			setFoodStats(player, new FoodStatsHP());
-			
-			if(player.getFoodStats() instanceof FoodStatsHP)
-			{
-				if(player.getEntityData().hasKey("hpfoodlevel"))
-				{
+
+			if (player.getFoodStats() instanceof FoodStatsHP) {
+				if (player.getEntityData().hasKey("hpfoodlevel")) {
 					player.getFoodStats().setFoodLevel(player.getEntityData().getInteger(("hpfoodlevel")));
 					player.getFoodStats().setFoodSaturationLevel(player.getEntityData().getInteger(("hpsaturationlevel")));
 				}
 			}
 		}
-		
-		if(event.world.getGameRules().getGameRuleBooleanValue("naturalRegeneration"))
+
+		if (event.world.getGameRules().getGameRuleBooleanValue("naturalRegeneration"))
 			event.world.getGameRules().setOrCreateGameRule("naturalRegeneration", "false");
 	}
 
-	public static void setFoodStats(EntityPlayer player, FoodStats stats) 
-	{
+	public static void setFoodStats(EntityPlayer player, FoodStats stats) {
 		Field[] fields = EntityPlayer.class.getDeclaredFields();
 
-		for (Field f : fields) 
-		{
-			if (f.getType() == FoodStats.class) 
-			{
+		for (Field f : fields) {
+			if (f.getType() == FoodStats.class) {
 				f.setAccessible(true);
-				try 
-				{
+				try {
 					f.set(player, stats);
-				} 
-				catch (Exception e) 
-				{
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
