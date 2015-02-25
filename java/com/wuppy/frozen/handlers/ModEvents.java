@@ -5,7 +5,6 @@ import org.lwjgl.input.Mouse;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.MouseInputEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -42,7 +41,6 @@ public class ModEvents
 				{
 					if (player.getCurrentArmor(i) == null)
 					{
-						fullSuit = false;
 						return;
 					}
 					else if (!(player.getCurrentArmor(i).getItem() instanceof ItemElsaArmor))

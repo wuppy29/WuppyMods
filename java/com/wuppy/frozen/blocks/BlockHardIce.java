@@ -47,9 +47,6 @@ public class BlockHardIce extends Block
 	@Override
 	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
     {
-		if(player.getHeldItem().getItem() == ModItems.iceSaw)
-			return true;
-		else
-			return false;
+	    return player.getHeldItem().getItem() == ModItems.iceSaw;
     }
 }

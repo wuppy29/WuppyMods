@@ -5,11 +5,9 @@ import java.util.Random;
 import com.wuppy.peacefulpackmod.block.ModBlocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockVine;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 

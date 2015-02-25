@@ -1,15 +1,13 @@
 package com.wuppy.harderpeaceful;
 
-import java.lang.reflect.Field;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.FoodStats;
-import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+
+import java.lang.reflect.Field;
 
 public class EventManager 
 {
@@ -69,7 +67,7 @@ public class EventManager
 				} 
 				catch (Exception e) 
 				{
-					System.out.println(e);
+					e.printStackTrace();
 				}
 			}
 		}

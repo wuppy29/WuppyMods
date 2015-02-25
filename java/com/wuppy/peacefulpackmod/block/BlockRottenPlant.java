@@ -1,16 +1,13 @@
 package com.wuppy.peacefulpackmod.block;
 
-import java.util.List;
-import java.util.Random;
-
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -19,8 +16,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.item.ModItems;
+import java.util.List;
+import java.util.Random;
 
 public class BlockRottenPlant extends BlockBush implements IGrowable
 {
@@ -38,7 +35,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 		setHardness(0.0F);
 		disableStats();
 		
-		setCreativeTab((CreativeTabs) null);
+		setCreativeTab(null);
 	}
 	
 	public String getName()
@@ -49,37 +46,31 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(AGE, meta);
     }
 
 	@Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(AGE)).intValue();
+        return (Integer) state.getValue(AGE);
     }
 
 	@Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {AGE});
+        return new BlockState(this, AGE);
     }
 	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
-        if(worldIn.getBlockState(new BlockPos(pos.getX(), pos.getY() -1, pos.getZ())).getBlock() == Blocks.netherrack)
-        	return true;
-        else
-        	return false;
+	    return worldIn.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).getBlock() == Blocks.netherrack;
     }
 	
 	@Override
 	public boolean canPlaceBlockOn(Block ground)
 	{
-		if (ground == Blocks.netherrack)
-			return true;
-		else
-			return false;
+		return ground == Blocks.netherrack;
 	}
 
 	/**
@@ -92,7 +83,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 
         if (worldIn.getLightFromNeighbors(pos.up()) < 6)
         {
-            int i = ((Integer)state.getValue(AGE)).intValue();
+            int i = (Integer) state.getValue(AGE);
 
             if (i < 1)
             {
@@ -100,7 +91,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 
                 if (rand.nextInt((int)(25.0F / f) + 1) == 0)
                 {
-                    worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+                    worldIn.setBlockState(pos, state.withProperty(AGE, i + 1), 2);
                 }
             }
         }
@@ -166,7 +157,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 	{
 		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 		
-		int age = ((Integer)state.getValue(AGE)).intValue();
+		int age = (Integer) state.getValue(AGE);
 		Random rand = world instanceof World ? ((World)world).rand : new Random();
 
 		if (age > 0)
@@ -184,10 +175,7 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) 
 	{
-		if(((Integer)state.getValue(AGE)).intValue() < 2)
-			return true;
-		else
-			return false;
+		return (Integer) state.getValue(AGE) < 2;
 	}
 
 	@Override
@@ -199,6 +187,6 @@ public class BlockRottenPlant extends BlockBush implements IGrowable
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) 
 	{
-		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(1)), 2);
+		worldIn.setBlockState(pos, state.withProperty(AGE, 1), 2);
 	}
 }

@@ -1,9 +1,6 @@
 package com.wuppy.peacefulpackmod.block;
 
 import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockNewLog;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -66,7 +63,7 @@ public class BlockBlazeLog extends BlockLog
 	@Override
 	protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {LOG_AXIS});
+        return new BlockState(this, LOG_AXIS);
     }
 	
 	@Override
@@ -94,7 +91,6 @@ public class BlockBlazeLog extends BlockLog
              }
              catch (NoSuchFieldError var3)
              {
-                 ;
              }
 
              try
@@ -103,7 +99,6 @@ public class BlockBlazeLog extends BlockLog
              }
              catch (NoSuchFieldError var2)
              {
-                 ;
              }
 
              try
@@ -112,7 +107,6 @@ public class BlockBlazeLog extends BlockLog
              }
              catch (NoSuchFieldError var1)
              {
-                 ;
              }
          }
      }

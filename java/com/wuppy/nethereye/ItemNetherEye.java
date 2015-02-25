@@ -41,7 +41,7 @@ public class ItemNetherEye extends Item
                 var6.moveTowards((double)blockpos.getX(), blockpos.getY(), (double)blockpos.getZ());
                 par2World.spawnEntityInWorld(var6);
                 par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-                par2World.playAuxSFXAtEntity((EntityPlayer)null, 1002, new BlockPos(par3EntityPlayer), 0);
+                par2World.playAuxSFXAtEntity(null, 1002, new BlockPos(par3EntityPlayer), 0);
 
                 if (!par3EntityPlayer.capabilities.isCreativeMode)
                 {
@@ -53,7 +53,7 @@ public class ItemNetherEye extends Item
             	par3EntityPlayer.addChatComponentMessage(new ChatComponentText("There is no fortress nearby."));
             }
         }
-    	else if(!par2World.isRemote && par3EntityPlayer.dimension != -1)
+    	else if(!par2World.isRemote)
     	{
     		par3EntityPlayer.addChatComponentMessage(new ChatComponentText("You need to be in the Nether to use this."));
     	}

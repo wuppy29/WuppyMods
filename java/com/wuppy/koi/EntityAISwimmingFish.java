@@ -27,7 +27,7 @@ public class EntityAISwimmingFish extends EntityAIBase
     @Override
     public void updateTask()
     {
-    	if(entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY + 1, entity.posZ)).getBlock().getMaterial() == Material.water);
+    	if(entity.worldObj.getBlockState(new BlockPos(entity.posX, entity.posY + 1, entity.posZ)).getBlock().getMaterial() == Material.water)
     	{
 	        if (entity.getRNG().nextFloat() < 0.5F)
 	        {

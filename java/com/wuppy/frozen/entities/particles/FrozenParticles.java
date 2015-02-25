@@ -3,7 +3,6 @@ package com.wuppy.frozen.entities.particles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityBreakingFX;
 import net.minecraft.client.particle.EntityFX;
-import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 public class FrozenParticles 
@@ -46,9 +45,9 @@ public class FrozenParticles
 				}
 				
 				if(particle != null)
-					mc.effectRenderer.addEffect((EntityFX)particle);
+					mc.effectRenderer.addEffect(particle);
 				
-				return (EntityFX)particle;
+				return particle;
 			}
 		}
 		return null;

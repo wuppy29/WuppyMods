@@ -70,18 +70,9 @@ public class NetherEye
 		proxy.registerEntityRender();
 		
 		//recipes
-		GameRegistry.addShapelessRecipe(new ItemStack(nethereye, 1), new Object[]
-				{
-					new ItemStack(Items.ender_pearl), new ItemStack(Items.magma_cream)
-				});
-		GameRegistry.addRecipe(new ItemStack(nethereye, 1), new Object[]
-				{
-					" X ", "CVC", " X ", 'X', Items.gold_nugget, 'C', Items.glowstone_dust, 'V', Items.ender_pearl
-				});
-		GameRegistry.addRecipe(new ItemStack(nethereye, 1), new Object[]
-				{
-					" X ", "CVC", " X ", 'C', Items.gold_nugget, 'X', Items.glowstone_dust, 'V', Items.ender_pearl
-				});
+		GameRegistry.addShapelessRecipe(new ItemStack(nethereye, 1), new ItemStack(Items.ender_pearl), new ItemStack(Items.magma_cream));
+		GameRegistry.addRecipe(new ItemStack(nethereye, 1), " X ", "CVC", " X ", 'X', Items.gold_nugget, 'C', Items.glowstone_dust, 'V', Items.ender_pearl);
+		GameRegistry.addRecipe(new ItemStack(nethereye, 1), " X ", "CVC", " X ", 'C', Items.gold_nugget, 'X', Items.glowstone_dust, 'V', Items.ender_pearl);
 	}
 	
 	@EventHandler

@@ -1,28 +1,23 @@
 package com.wuppy.peacefulpackmod.block;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.item.ModItems;
+import java.util.List;
+import java.util.Random;
 
 public class BlockFlax extends BlockBush implements IGrowable
 {
@@ -40,7 +35,7 @@ public class BlockFlax extends BlockBush implements IGrowable
 		setStepSound(soundTypeGrass);
 		setHardness(0.0F);
 		
-		setCreativeTab((CreativeTabs) null);
+		setCreativeTab(null);
 	}
 	
 	public String getName()
@@ -51,28 +46,25 @@ public class BlockFlax extends BlockBush implements IGrowable
 	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(AGE, meta);
     }
 
 	@Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(AGE)).intValue();
+        return (Integer) state.getValue(AGE);
     }
 
 	@Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {AGE});
+        return new BlockState(this, AGE);
     }
 	
 	@Override
 	public boolean canPlaceBlockOn(Block ground)
 	{
-		if (ground == Blocks.grass)
-			return true;
-		else
-			return false;
+		return ground == Blocks.grass;
 	}
 	
 	@Override
@@ -82,7 +74,7 @@ public class BlockFlax extends BlockBush implements IGrowable
 
         if (worldIn.getLightFromNeighbors(pos.up()) >= 9)
         {
-            int i = ((Integer)state.getValue(AGE)).intValue();
+            int i = (Integer) state.getValue(AGE);
 
             if (i < 2)
             {
@@ -90,7 +82,7 @@ public class BlockFlax extends BlockBush implements IGrowable
 
                 if (rand.nextInt((int)(25.0F / f) + 1) == 0)
                 {
-                    worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+                    worldIn.setBlockState(pos, state.withProperty(AGE, i + 1), 2);
                 }
             }
         }
@@ -153,14 +145,14 @@ public class BlockFlax extends BlockBush implements IGrowable
 	
 	public void grow(World worldIn, BlockPos pos, IBlockState state)
     {
-        int newAge = ((Integer)state.getValue(AGE)).intValue() + 1;
+        int newAge = (Integer) state.getValue(AGE) + 1;
 
         if (newAge > 2)
         {
             newAge = 2;
         }
 
-        worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(newAge)), 2);
+        worldIn.setBlockState(pos, state.withProperty(AGE, newAge), 2);
     }
 
 	@Override
@@ -168,7 +160,7 @@ public class BlockFlax extends BlockBush implements IGrowable
     {
 		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
 		
-		int age = ((Integer)state.getValue(AGE)).intValue();
+		int age = (Integer) state.getValue(AGE);
 		Random rand = world instanceof World ? ((World)world).rand : new Random();
 		
 		if (age == 2)
@@ -192,10 +184,7 @@ public class BlockFlax extends BlockBush implements IGrowable
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) 
 	{
-		if(((Integer)state.getValue(AGE)).intValue() < 2)
-			return true;
-		else
-			return false;
+		return (Integer) state.getValue(AGE) < 2;
 	}
 
 	@Override

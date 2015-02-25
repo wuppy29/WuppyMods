@@ -1,7 +1,5 @@
 package com.wuppy.slimedungeons;
 
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

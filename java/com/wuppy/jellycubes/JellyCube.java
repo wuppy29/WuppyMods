@@ -1,7 +1,6 @@
 package com.wuppy.jellycubes;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.init.Items;
@@ -58,7 +57,7 @@ public class JellyCube
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(jellycube, 1), new Object[] { new ItemStack(Items.slime_ball), new ItemStack(Items.slime_ball) });
+		GameRegistry.addShapelessRecipe(new ItemStack(jellycube, 1), new ItemStack(Items.slime_ball), new ItemStack(Items.slime_ball));
 	}
 
 	@SubscribeEvent

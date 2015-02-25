@@ -1,10 +1,9 @@
 package com.wuppy.peacefulpackmod.block;
 
-import java.util.List;
-
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ItemPeacefulOresblock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -20,8 +19,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.item.ItemPeacefulOresblock;
+import java.util.List;
 
 public class BlockPeacefulOres extends Block
 {
@@ -62,7 +60,7 @@ public class BlockPeacefulOres extends Block
     @Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {VARIANT});
+        return new BlockState(this, VARIANT);
     }
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -96,13 +94,10 @@ public class BlockPeacefulOres extends Block
 		static
         {
 			BlockPeacefulOres.OreType[] values = values();
-            int length = values.length;
 
-            for (int i = 0; i < length; ++i)
-            {
-            	BlockPeacefulOres.OreType type = values[i];
-            	values()[type.getMetadata()] = type;
-            }
+	        for (OreType type : values) {
+		        values()[type.getMetadata()] = type;
+	        }
         }
 
 		public int getMetadata()

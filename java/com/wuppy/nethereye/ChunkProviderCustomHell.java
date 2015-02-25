@@ -1,17 +1,5 @@
 package com.wuppy.nethereye;
 
-import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SHROOM;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_BRIDGE;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_CAVE;
-import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.QUARTZ;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.FIRE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.GLOWSTONE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.NETHER_LAVA;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.NETHER_LAVA2;
-
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -27,17 +15,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.GeneratorBushFeature;
-import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCavesHell;
-import net.minecraft.world.gen.NoiseGenerator;
-import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenFire;
-import net.minecraft.world.gen.feature.WorldGenGlowStone1;
-import net.minecraft.world.gen.feature.WorldGenGlowStone2;
-import net.minecraft.world.gen.feature.WorldGenHellLava;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.gen.*;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
@@ -45,6 +24,15 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
+
+import java.util.List;
+import java.util.Random;
+
+import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SHROOM;
+import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_BRIDGE;
+import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_CAVE;
+import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.QUARTZ;
+import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.*;
 
 public class ChunkProviderCustomHell implements IChunkProvider
 {
@@ -134,13 +122,13 @@ public class ChunkProviderCustomHell implements IChunkProvider
                 for (int k1 = 0; k1 < 16; ++k1)
                 {
                     double d0 = 0.125D;
-                    double d1 = this.noiseField[((i1 + 0) * l + j1 + 0) * b2 + k1 + 0];
-                    double d2 = this.noiseField[((i1 + 0) * l + j1 + 1) * b2 + k1 + 0];
-                    double d3 = this.noiseField[((i1 + 1) * l + j1 + 0) * b2 + k1 + 0];
-                    double d4 = this.noiseField[((i1 + 1) * l + j1 + 1) * b2 + k1 + 0];
-                    double d5 = (this.noiseField[((i1 + 0) * l + j1 + 0) * b2 + k1 + 1] - d1) * d0;
-                    double d6 = (this.noiseField[((i1 + 0) * l + j1 + 1) * b2 + k1 + 1] - d2) * d0;
-                    double d7 = (this.noiseField[((i1 + 1) * l + j1 + 0) * b2 + k1 + 1] - d3) * d0;
+                    double d1 = this.noiseField[(((i1) * l + j1) * b2 + k1)];
+                    double d2 = this.noiseField[(((i1) * l + j1 + 1) * b2 + k1)];
+                    double d3 = this.noiseField[(((i1 + 1) * l + j1) * b2 + k1)];
+                    double d4 = this.noiseField[(((i1 + 1) * l + j1 + 1) * b2 + k1)];
+                    double d5 = (this.noiseField[((i1) * l + j1) * b2 + k1 + 1] - d1) * d0;
+                    double d6 = (this.noiseField[((i1) * l + j1 + 1) * b2 + k1 + 1] - d2) * d0;
+                    double d7 = (this.noiseField[((i1 + 1) * l + j1) * b2 + k1 + 1] - d3) * d0;
                     double d8 = (this.noiseField[((i1 + 1) * l + j1 + 1) * b2 + k1 + 1] - d4) * d0;
 
                     for (int l1 = 0; l1 < 8; ++l1)
@@ -306,7 +294,7 @@ public class ChunkProviderCustomHell implements IChunkProvider
         }
 
         Chunk chunk = new Chunk(this.worldObj, chunkprimer, x, z);
-        BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[])null, x * 16, z * 16, 16, 16);
+        BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(null, x * 16, z * 16, 16, 16);
         byte[] abyte = chunk.getBiomeArray();
 
         for (int k = 0; k < abyte.length; ++k)
@@ -369,7 +357,7 @@ public class ChunkProviderCustomHell implements IChunkProvider
 
                 for (int i2 = 0; i2 < p_73164_6_; ++i2)
                 {
-                    double d4 = 0.0D;
+                    double d4;
                     double d5 = adouble1[i2];
                     double d6 = this.noiseData2[k1] / 512.0D;
                     double d7 = this.noiseData3[k1] / 512.0D;
@@ -573,7 +561,7 @@ public class ChunkProviderCustomHell implements IChunkProvider
     @Override
     public void recreateStructures(Chunk p_180514_1_, int p_180514_2_, int p_180514_3_)
     {
-        this.genNetherBridge.func_175792_a(this, this.worldObj, p_180514_2_, p_180514_3_, (ChunkPrimer)null);
+        this.genNetherBridge.func_175792_a(this, this.worldObj, p_180514_2_, p_180514_3_, null);
     }
 
     @Override

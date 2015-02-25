@@ -101,185 +101,107 @@ public class SimplePack
 	{
 		if(craftClay)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), new Object[]
-			{
-				"ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand
-			});
-			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), new Object[]
-			{
-				"ZXZ", "XCX", "ZXZ", 'Z', Blocks.sand, 'C', Items.water_bucket, 'X', new ItemStack(Items.dye, 1, 15)
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), "ZXZ", "XCX", "ZXZ", 'Z', new ItemStack(Items.dye, 1, 15), 'C', Items.water_bucket, 'X', Blocks.sand);
+			GameRegistry.addRecipe(new ItemStack(Blocks.clay, 4), "ZXZ", "XCX", "ZXZ", 'Z', Blocks.sand, 'C', Items.water_bucket, 'X', new ItemStack(Items.dye, 1, 15));
 		}
 		if(craftMossyC)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.mossy_cobblestone, 1), new Object[]
-			{
-				" X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.mossy_cobblestone, 1), " X ", "XZX", " X ", 'Z', Blocks.cobblestone, 'X', Blocks.vine);
 		}
 		if(craftWeb)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.web, 5), new Object[]
-			{
-				"X X", " X ", "X X", 'X', Items.string
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.web, 5), "X X", " X ", "X X", 'X', Items.string);
 		}
 		if(craftObsidian)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian, 1), new Object[]
-			{
-				new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian, 1), new ItemStack(Items.water_bucket), new ItemStack(Items.lava_bucket));
 		}
 		if(craftGravel)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.gravel, 2), new Object[]
-			{
-				new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.gravel, 2), new ItemStack(Items.flint), new ItemStack(Blocks.cobblestone));
 		}
 		if(craftSponge)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.sponge, 4), new Object[]
-			{
-				" X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 4), 'Z', Items.water_bucket
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.sponge, 4), " X ", "XZX", " X ", 'X', new ItemStack(Blocks.wool, 1, 4), 'Z', Items.water_bucket);
 		}
 		if(craftIce)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.ice, 1), new Object[]
-			{
-				" X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.ice, 1), " X ", "XZX", " X ", 'X', Items.snowball, 'Z', Items.water_bucket);
 		}
 		if(craftStoneBrickMossy)
 		{
-			GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new Object[]
-			{
-				" X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine
-			});
+			GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 1), " X ", "XZX", " X ", 'Z', new ItemStack(Blocks.stonebrick, 1, 0), 'X', Blocks.vine);
 		}
 		if(craftGrass)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), new Object[]
-			{
-				new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), new ItemStack(Blocks.dirt), new ItemStack(Blocks.vine));
 		}
 		if(craftBone)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-			{
-				new ItemStack(Items.chicken)
-			});
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-			{
-				new ItemStack(Items.porkchop)
-			});
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new Object[]
-			{
-				new ItemStack(Items.beef)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.chicken));
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.porkchop));
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.bone), new ItemStack(Items.beef));
 		}
 		if(craftStoneBrickCracked)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 2), new Object[]
-			{
-				new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 2), new ItemStack(Items.flint), new ItemStack(Blocks.stonebrick));
 		}
 		if(craftRedstone)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.redstone, 2), new Object[]
-			{
-				new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.redstone, 2), new ItemStack(Items.glowstone_dust), new ItemStack(Items.dye, 1, 1));
 		}
 		if(craftGlowstone)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.glowstone_dust, 2), new Object[]
-			{
-				new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.glowstone_dust, 2), new ItemStack(Items.redstone), new ItemStack(Items.dye, 1, 11));
 		}
 		if(craftBook)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.book, 1), new Object[] 
-			{
-				new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.book, 1), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Blocks.wool));
 		}
 		if(craftDye)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 0), new Object[]
-			{
-				new ItemStack(Items.coal)
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 1, 0), new ItemStack(Items.coal));
 		}
 		if(craftArrow)
 		{
-			GameRegistry.addRecipe(new ItemStack(Items.arrow, 2), new Object[]
-			{
-				"XCX",
-				" V ",
-				" B ",
-				'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint
-			});
+			GameRegistry.addRecipe(new ItemStack(Items.arrow, 2), "XCX",
+					" V ",
+					" B ",
+					'X', Blocks.leaves, 'C', Items.string, 'V', Items.stick, 'B', Items.flint);
 		}
 		if(craftString)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new Object[]
-			{
-				Blocks.wool
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), Blocks.wool);
 		}
 		if(craftMycelium)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.mycelium), new Object[]
-			{
-				Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.dirt
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.mycelium), Blocks.brown_mushroom, Blocks.red_mushroom, Blocks.dirt);
 		}
 		if(craftPackedIce)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.packed_ice), new Object[]
-			{
-				Blocks.ice, Blocks.ice, Blocks.ice, Blocks.ice
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.packed_ice), Blocks.ice, Blocks.ice, Blocks.ice, Blocks.ice);
 		}
 		if(craftLead)
 		{
-			GameRegistry.addRecipe(new ItemStack(Items.lead), new Object[]
-			{
-				"X ",
-				"X ",
-				"XY",
-				'X', Items.leather, 'Y', Items.string
-			});
-			GameRegistry.addRecipe(new ItemStack(Items.lead), new Object[]
-			{
-				" X",
-				" X",
-				"YX",
-				'X', Items.leather, 'Y', Items.string
-			});
+			GameRegistry.addRecipe(new ItemStack(Items.lead), "X ",
+					"X ",
+					"XY",
+					'X', Items.leather, 'Y', Items.string);
+			GameRegistry.addRecipe(new ItemStack(Items.lead), " X",
+					" X",
+					"YX",
+					'X', Items.leather, 'Y', Items.string);
 		}
 		if(craftSaddle)
 		{
-			GameRegistry.addRecipe(new ItemStack(Items.saddle), new Object[]
-			{
-				"XYX",
-				"X X",
-				"X X",
-				'X', Items.leather, 'Y', Items.iron_ingot
-			});
+			GameRegistry.addRecipe(new ItemStack(Items.saddle), "XYX",
+					"X X",
+					"X X",
+					'X', Items.leather, 'Y', Items.iron_ingot);
 		}
 		if(craftGrass2)
 		{
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.dirt, 1, 2), new Object[]
-			{
-				Blocks.dirt, Blocks.leaves
-			});
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.dirt, 1, 2), Blocks.dirt, Blocks.leaves);
 		}
 		if(craftNetherBrick)
 			GameRegistry.addSmelting(Blocks.netherrack, new ItemStack(Blocks.nether_brick), 0.1F);

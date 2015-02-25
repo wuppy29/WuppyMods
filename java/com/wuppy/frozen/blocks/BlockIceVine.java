@@ -1,15 +1,12 @@
 package com.wuppy.frozen.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockVine;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -47,7 +44,7 @@ public class BlockIceVine extends BlockVine
 	@Override
 	protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {UP, NORTH, EAST, SOUTH, WEST});
+        return new BlockState(this, UP, NORTH, EAST, SOUTH, WEST);
     }
 	
 	@Override
@@ -55,22 +52,22 @@ public class BlockIceVine extends BlockVine
     {
         int i = 0;
 
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
+        if ((Boolean) state.getValue(NORTH))
         {
             i |= NORTH_FLAG;
         }
 
-        if (((Boolean)state.getValue(EAST)).booleanValue())
+        if ((Boolean) state.getValue(EAST))
         {
             i |= EAST_FLAG;
         }
 
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
+        if ((Boolean) state.getValue(SOUTH))
         {
             i |= SOUTH_FLAG;
         }
 
-        if (((Boolean)state.getValue(WEST)).booleanValue())
+        if ((Boolean) state.getValue(WEST))
         {
             i |= WEST_FLAG;
         }
@@ -81,7 +78,7 @@ public class BlockIceVine extends BlockVine
 	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(NORTH, Boolean.valueOf((meta & NORTH_FLAG) > 0)).withProperty(EAST, Boolean.valueOf((meta & EAST_FLAG) > 0)).withProperty(SOUTH, Boolean.valueOf((meta & SOUTH_FLAG) > 0)).withProperty(WEST, Boolean.valueOf((meta & WEST_FLAG) > 0));
+        return this.getDefaultState().withProperty(NORTH, (meta & NORTH_FLAG) > 0).withProperty(EAST, (meta & EAST_FLAG) > 0).withProperty(SOUTH, (meta & SOUTH_FLAG) > 0).withProperty(WEST, (meta & WEST_FLAG) > 0);
     }
 	
 	private static int getMetaFlag(EnumFacing face)

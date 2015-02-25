@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +13,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.wuppy.peacefulpackmod.PeacefulPack;
@@ -47,7 +45,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(STAGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(STAGE, meta);
     }
 
     @Override
@@ -59,7 +57,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
     @Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {STAGE});
+        return new BlockState(this, STAGE);
     }
     
     @Override
@@ -76,10 +74,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
     @Override
 	public boolean canPlaceBlockOn(Block ground)
 	{
-    	if(ground == Blocks.netherrack)
-    		return true;
-    	else
-    		return false;
+		return ground == Blocks.netherrack;
     }
     
     @Override
@@ -89,7 +84,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
         
         if(world.getLightFromNeighbors(pos.up()) < 7 && random.nextInt(7) == 0)
         {
-        	if (((Integer)state.getValue(STAGE)).intValue() == 0)
+        	if ((Integer) state.getValue(STAGE) == 0)
             {
                 world.setBlockState(pos, state.cycleProperty(STAGE), 4);
             }
@@ -117,10 +112,7 @@ public class BlockBlazeSapling extends BlockBush implements IGrowable
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) 
 	{
-		if(rand.nextInt(3) == 0)
-			return true;
-		else
-			return false;
+		return rand.nextInt(3) == 0;
 	}
 
 	@Override

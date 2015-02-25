@@ -48,7 +48,7 @@ public class UpdateChecker
 			InputStream is = connection.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line;
-			StringBuffer response = new StringBuffer();
+			StringBuilder response = new StringBuilder();
 
 			while ((line = br.readLine()) != null)
 			{
@@ -85,7 +85,7 @@ public class UpdateChecker
 			InputStream is = connection.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			String line;
-			StringBuffer response = new StringBuffer();
+			StringBuilder response = new StringBuilder();
 
 			while ((line = br.readLine()) != null)
 			{

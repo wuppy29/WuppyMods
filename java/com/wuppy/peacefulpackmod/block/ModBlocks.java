@@ -1,20 +1,16 @@
 package com.wuppy.peacefulpackmod.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import com.wuppy.frozen.blocks.BlockBoltObsidian;
-import com.wuppy.frozen.blocks.BlockHardIce;
 import com.wuppy.peacefulpackmod.PeacefulPack;
 
 public class ModBlocks

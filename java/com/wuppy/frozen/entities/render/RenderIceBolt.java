@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
@@ -50,7 +49,7 @@ public class RenderIceBolt extends Render
         byte b0 = 0;
         float f2 = 0.0F;
         float f3 = 0.5F;
-        float f4 = (float)(0 + b0 * 10) / 32.0F;
+        float f4 = (float)(b0 * 10) / 32.0F;
         float f5 = (float)(5 + b0 * 10) / 32.0F;
         float f6 = 0.0F;
         float f7 = 0.15625F;

@@ -6,7 +6,6 @@ import com.wuppy.frozen.FrozenCraft;
 
 import net.minecraft.block.BlockObsidian;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
@@ -22,7 +21,7 @@ public class BlockBoltObsidian extends BlockObsidian
 		super();
 		GameRegistry.registerBlock(this, name);
 		setUnlocalizedName(FrozenCraft.modid + "_" + name);
-		setCreativeTab((CreativeTabs) null);
+		setCreativeTab(null);
 		setHardness(50.0F);
 		setResistance(2000.0F);
 		setStepSound(soundTypePiston);

@@ -1,8 +1,7 @@
 package com.wuppy.frozen.generation;
 
-import java.util.Random;
-
-import net.minecraft.block.BlockVine;
+import com.wuppy.frozen.blocks.BlockIceVine;
+import com.wuppy.frozen.blocks.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -10,8 +9,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.wuppy.frozen.blocks.BlockIceVine;
-import com.wuppy.frozen.blocks.ModBlocks;
+import java.util.Random;
 
 public class WorldGenIceVines extends WorldGenerator
 {
@@ -23,19 +21,14 @@ public class WorldGenIceVines extends WorldGenerator
             if (worldIn.isAirBlock(pos))
             {
                 EnumFacing[] aenumfacing = EnumFacing.Plane.HORIZONTAL.facings();
-                int i = aenumfacing.length;
 
-                for (int j = 0; j < i; ++j)
-                {
-                    EnumFacing enumfacing = aenumfacing[j];
-
-                    if (ModBlocks.iceVine.canPlaceBlockOnSide(worldIn, pos, enumfacing) && worldIn.getBiomeGenForCoords(pos).getTempCategory() == BiomeGenBase.TempCategory.COLD)
-                    {
-                        IBlockState iblockstate = ModBlocks.iceVine.getDefaultState().withProperty(BlockIceVine.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockIceVine.WEST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockIceVine.NORTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockIceVine.EAST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
-                        worldIn.setBlockState(pos, iblockstate, 2);
-                        break;
-                    }
-                }
+	            for (EnumFacing enumfacing : aenumfacing) {
+		            if (ModBlocks.iceVine.canPlaceBlockOnSide(worldIn, pos, enumfacing) && worldIn.getBiomeGenForCoords(pos).getTempCategory() == BiomeGenBase.TempCategory.COLD) {
+			            IBlockState iblockstate = ModBlocks.iceVine.getDefaultState().withProperty(BlockIceVine.SOUTH, enumfacing == EnumFacing.NORTH).withProperty(BlockIceVine.WEST, enumfacing == EnumFacing.EAST).withProperty(BlockIceVine.NORTH, enumfacing == EnumFacing.SOUTH).withProperty(BlockIceVine.EAST, enumfacing == EnumFacing.WEST);
+			            worldIn.setBlockState(pos, iblockstate, 2);
+			            break;
+		            }
+	            }
             }
             else
             {

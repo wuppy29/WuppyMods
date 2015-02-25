@@ -6,12 +6,8 @@ import java.util.Random;
 
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -19,11 +15,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.item.ModItems;
 
 public class BlockBlazeLeaves extends BlockLeaves
 {
@@ -88,7 +81,7 @@ public class BlockBlazeLeaves extends BlockLeaves
 	@Override
     protected BlockState createBlockState()
     {
-        return new BlockState(this, new IProperty[] {DECAYABLE, CHECK_DECAY});
+        return new BlockState(this, DECAYABLE, CHECK_DECAY);
     }
 	
 	@Override

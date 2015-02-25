@@ -1,10 +1,7 @@
 package com.wuppy.peacefulpackmod.block;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.config.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,8 +14,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.config.Config;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class BlockGhastOre extends Block
 {
@@ -65,9 +63,8 @@ public class BlockGhastOre extends Block
 			if (i == Blocks.flowing_lava || i == Blocks.lava)
 			{
 				lavaAround = true;
-				int var8 = 0;
 
-				var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 7);
+				int var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 7);
 
 				this.dropXpOnBlockBreak(world, pos, var8);
 			}

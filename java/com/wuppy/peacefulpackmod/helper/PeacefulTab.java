@@ -22,9 +22,9 @@ public class PeacefulTab extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		if(name == "pp_blocks")
+		if(name.equals("pp_blocks"))
 			return Item.getItemFromBlock(ModBlocks.oreBlock);
-		else if(name == "pp_materials")
+		else if(name.equals("pp_materials"))
 			return ModItems.peacefulMaterial;
 		else
 		{

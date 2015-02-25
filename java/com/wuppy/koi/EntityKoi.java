@@ -73,10 +73,7 @@ public class EntityKoi extends EntityCreature
     @Override
     public boolean getCanSpawnHere()
     {
-    	if(worldObj.getBlockState(new BlockPos(posX, posY, posZ)).getBlock().getMaterial() == Material.water)
-    		return true;
-    	else
-    		return false;
+	    return worldObj.getBlockState(new BlockPos(posX, posY, posZ)).getBlock().getMaterial() == Material.water;
     }
 
     @Override
