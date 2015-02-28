@@ -12,7 +12,7 @@ public class ModEvents
 	{
 		if (SlimeDungeon.outdated)
 		{
-			event.player.addChatComponentMessage(new ChatComponentText("Magical Experience is outdated."));
+			event.player.addChatComponentMessage(new ChatComponentText("Slime Dungeons is outdated."));
 			event.player.addChatComponentMessage(new ChatComponentText("Changelog: "));
 			event.player.addChatComponentMessage(new ChatComponentText(SlimeDungeon.updates));
 		}

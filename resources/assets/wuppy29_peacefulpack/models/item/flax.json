@@ -1,7 +1,7 @@
 {
     "parent": "wuppy29_peacefulpack:block/flax_stage0",
     "textures": {
-        "layer0": "wuppy29_peacefulpack:block/flax2"
+        "layer0": "wuppy29_peacefulpack:blocks/flax2"
     },
     "display": {
         "thirdperson": {

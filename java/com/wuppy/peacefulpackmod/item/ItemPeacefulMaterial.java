@@ -14,31 +14,30 @@ import java.util.List;
 public class ItemPeacefulMaterial extends Item
 {
 	private final String name = "peacefulMaterial";
-	private final String[] metaNames = new String[] { "sulphdust", "niterdust", "flaxfibre", "cloth", "chain" };
+	private static final String[] metaNames = new String[] { "sulphdust", "niterdust", "flaxfibre", "cloth", "chain" };
 
 	public ItemPeacefulMaterial()
 	{
 		GameRegistry.registerItem(this, name);
 		setUnlocalizedName(PeacefulPack.modid + "_" + name);
 
-		registerVariants();
-
+		setHasSubtypes(true);
 		setCreativeTab(PeacefulPack.ppMaterialTab);
 	}
 
-	public String getNameFromDamage(int damage)
+	public static String getNameFromDamage(int damage)
 	{
 		return metaNames[damage];
 	}
 
-	void registerVariants()
+	public static void registerVariants()
 	{
 		String[] variantNames = new String[metaNames.length];
 		for (int i = 0; i < metaNames.length; i++)
 		{
 			variantNames[i] = PeacefulPack.modid + ":" + getNameFromDamage(i);
 		}
-		ModelBakery.addVariantName(this, variantNames);
+		ModelBakery.addVariantName(ModItems.peacefulMaterial, variantNames);
 	}
 
 	@Override

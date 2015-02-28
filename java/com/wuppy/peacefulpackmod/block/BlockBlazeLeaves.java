@@ -12,6 +12,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,24 @@ public class BlockBlazeLeaves extends BlockLeaves
 	{
 		return name;
 	}
+
+	@SideOnly(Side.CLIENT)
+    public int getBlockColor()
+    {
+        return 16777215;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(IBlockState state)
+    {
+        return 16777215;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int renderPass)
+    {
+        return 16777215;
+    }
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)

@@ -8,6 +8,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ModItems
@@ -18,12 +19,17 @@ public class ModItems
 	public static Item cookedFlesh;
 	public static Item rottenSeed;
 
-	public static void init()
+	public static void init(FMLPreInitializationEvent event)
 	{
 		peacefulMaterial = new ItemPeacefulMaterial();
 		flaxSeed = new ItemPeacefulSeed(ModBlocks.flax, Blocks.grass, "flaxseed");
 		cookedFlesh = new ItemCookedFlesh(4, 5, true);
 		rottenSeed = new ItemPeacefulSeed(ModBlocks.rottenPlant, Blocks.netherrack, "rottenseed");
+		
+		if(event.getSide() == Side.CLIENT)
+		{
+			ItemPeacefulMaterial.registerVariants();
+		}
 	}
 
 	public static void postInit(FMLPostInitializationEvent event)

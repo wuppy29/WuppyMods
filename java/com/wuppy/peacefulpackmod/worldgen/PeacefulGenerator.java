@@ -40,7 +40,7 @@ public class PeacefulGenerator implements IWorldGenerator
 			int Xcoord1 = blockX + random.nextInt(16);
 			int Ycoord1 = random.nextInt(60);
 			int Zcoord1 = blockZ + random.nextInt(16);
-			new WorldGenMinable(ModBlocks.oreBlock.getDefaultState(), 10, BlockHelper.forBlock(Blocks.stone)).generate(world, random, new BlockPos(Xcoord1, Ycoord1, Zcoord1));
+			new WorldGenMinable(ModBlocks.oreBlock.getStateFromMeta(1), 10, BlockHelper.forBlock(Blocks.stone)).generate(world, random, new BlockPos(Xcoord1, Ycoord1, Zcoord1));
 		}
 
 		if (Config.spawnFossils)
@@ -48,7 +48,7 @@ public class PeacefulGenerator implements IWorldGenerator
 			int Xcoord2 = blockX + random.nextInt(16);
 			int Ycoord2 = random.nextInt(60);
 			int Zcoord2 = blockZ + random.nextInt(16);
-			new WorldGenMinableFossil(ModBlocks.oreBlock.getDefaultState(), 15, BlockHelper.forBlock(Blocks.stone)).generate(world, random, new BlockPos(Xcoord2, Ycoord2, Zcoord2));
+			new WorldGenMinableFossil(ModBlocks.oreBlock.getStateFromMeta(2), 15, BlockHelper.forBlock(Blocks.stone)).generate(world, random, new BlockPos(Xcoord2, Ycoord2, Zcoord2));
 		}
 
 		if (Config.spawnFlax)

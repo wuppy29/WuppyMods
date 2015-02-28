@@ -1,7 +1,7 @@
 {
     "parent": "wuppy29_peacefulpack:block/rottenPlant_stage0",
     "textures": {
-        "layer0": "wuppy29_peacefulpack:block/rottenPlant1"
+        "layer0": "wuppy29_peacefulpack:blocks/rottenPlant1"
     },
     "display": {
         "thirdperson": {

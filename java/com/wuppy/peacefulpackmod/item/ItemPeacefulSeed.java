@@ -52,15 +52,18 @@ public class ItemPeacefulSeed extends Item implements IPlantable
 		if (side != EnumFacing.UP)
 		{
 			return false;
-		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack))
+		}
+		else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack))
 		{
 			return false;
-		} else if (worldIn.getBlockState(pos).getBlock() == soilBlock && worldIn.isAirBlock(pos.up()))
+		}
+		else if (worldIn.getBlockState(pos).getBlock() == soilBlock && worldIn.isAirBlock(pos.up()))
 		{
 			worldIn.setBlockState(pos.up(), this.blockType.getDefaultState());
 			--stack.stackSize;
 			return true;
-		} else
+		}
+		else
 		{
 			return false;
 		}

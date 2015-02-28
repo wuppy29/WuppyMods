@@ -1,7 +1,8 @@
 package com.wuppy.peacefulpackmod.block;
 
-import com.wuppy.peacefulpackmod.PeacefulPack;
-import com.wuppy.peacefulpackmod.item.ItemPeacefulOresblock;
+import java.util.List;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -19,7 +21,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
+import com.wuppy.peacefulpackmod.PeacefulPack;
+import com.wuppy.peacefulpackmod.item.ItemPeacefulOresblock;
+import com.wuppy.peacefulpackmod.item.ModItems;
 
 public class BlockPeacefulOres extends Block
 {
@@ -61,6 +65,26 @@ public class BlockPeacefulOres extends Block
 	protected BlockState createBlockState()
 	{
 		return new BlockState(this, VARIANT);
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		if (state.getValue(VARIANT) == OreType.SULPHER || state.getValue(VARIANT) == OreType.NITER)
+		{
+			return ModItems.peacefulMaterial;
+		}
+		else
+			return Items.bone;
+	}
+	
+	@Override
+	public int damageDropped(IBlockState state)
+	{
+		if(state.getValue(VARIANT) == OreType.NITER)
+			return 1;
+		else
+			return 0;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.9.0")
+@Mod(modid = PeacefulPack.modid, name = "Peacefulpack", version = "1.1.9.1")
 public class PeacefulPack
 {
 	public static final String modid = "wuppy29_peacefulpack";
 
-	public static final int VERSION = 8;
+	public static final int VERSION = 9;
 	public static String updates = "";
 	public static boolean outdated = false;
 
@@ -38,7 +38,7 @@ public class PeacefulPack
 
 		ModBlocks.init(event);
 
-		ModItems.init();
+		ModItems.init(event);
 
 		GameRegistry.registerWorldGenerator(new PeacefulGenerator(), 0);
 
